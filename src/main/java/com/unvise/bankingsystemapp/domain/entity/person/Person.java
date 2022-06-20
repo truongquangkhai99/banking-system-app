@@ -1,4 +1,4 @@
-package com.unvise.bankingsystemapp.domain.entity.Person;
+package com.unvise.bankingsystemapp.domain.entity.person;
 
 import com.unvise.bankingsystemapp.domain.entity.Audit;
 import com.unvise.bankingsystemapp.domain.entity.account.Account;
@@ -6,7 +6,6 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
