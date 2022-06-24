@@ -1,6 +1,6 @@
 package com.unvise.bankingsystemapp.account;
 
-import com.unvise.bankingsystemapp.currency.CurrencyType;
+import com.unvise.bankingsystemapp.currency.enums.CurrencyType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
