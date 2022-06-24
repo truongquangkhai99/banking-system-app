@@ -1,4 +1,4 @@
-package com.unvise.bankingsystemapp.currency;
+package com.unvise.bankingsystemapp.currency.enums;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
