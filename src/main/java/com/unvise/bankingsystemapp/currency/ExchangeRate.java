@@ -1,5 +1,6 @@
 package com.unvise.bankingsystemapp.currency;
 
+import com.unvise.bankingsystemapp.currency.enums.CurrencyType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,6 +11,7 @@ import java.math.BigDecimal;
 
 @Entity
 @Table(name = "exchange_rate")
+@IdClass(ExchangeRateId.class)
 @Builder
 @Data
 @NoArgsConstructor
@@ -22,10 +24,12 @@ public class ExchangeRate {
     @Column(name = "id", nullable = false)
     private Long id;
 
+    @Id
     @Column(name = "from_currency", nullable = false)
     @Enumerated(EnumType.STRING)
     private CurrencyType fromCurrency;
 
+    @Id
     @Column(name = "to_currency", nullable = false)
     @Enumerated(EnumType.STRING)
     private CurrencyType toCurrency;
