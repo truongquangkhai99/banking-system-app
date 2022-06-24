@@ -1,4 +1,4 @@
-package com.unvise.bankingsystemapp.domain.entity.person;
+package com.unvise.bankingsystemapp.person;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

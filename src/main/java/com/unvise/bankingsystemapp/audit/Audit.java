@@ -1,4 +1,4 @@
-package com.unvise.bankingsystemapp.domain.entity;
+package com.unvise.bankingsystemapp.audit;
 
 import lombok.Data;
 

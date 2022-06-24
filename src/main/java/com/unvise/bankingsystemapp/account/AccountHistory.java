@@ -1,8 +1,8 @@
-package com.unvise.bankingsystemapp.domain.entity.account;
+package com.unvise.bankingsystemapp.account;
 
-import com.unvise.bankingsystemapp.domain.entity.Deposit;
-import com.unvise.bankingsystemapp.domain.entity.credit.Credit;
-import com.unvise.bankingsystemapp.domain.entity.transaction.Transaction;
+import com.unvise.bankingsystemapp.deposit.Deposit;
+import com.unvise.bankingsystemapp.credit.Credit;
+import com.unvise.bankingsystemapp.transaction.Transaction;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

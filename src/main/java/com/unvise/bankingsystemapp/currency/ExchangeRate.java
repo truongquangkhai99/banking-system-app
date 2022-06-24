@@ -1,4 +1,4 @@
-package com.unvise.bankingsystemapp.domain.entity.currency;
+package com.unvise.bankingsystemapp.currency;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,4 +1,4 @@
-package com.unvise.bankingsystemapp.domain.entity.transaction;
+package com.unvise.bankingsystemapp.transaction;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

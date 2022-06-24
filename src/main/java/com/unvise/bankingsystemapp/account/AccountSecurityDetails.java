@@ -1,6 +1,6 @@
-package com.unvise.bankingsystemapp.domain.entity.account;
+package com.unvise.bankingsystemapp.account;
 
-import com.unvise.bankingsystemapp.domain.entity.Audit;
+import com.unvise.bankingsystemapp.audit.Audit;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

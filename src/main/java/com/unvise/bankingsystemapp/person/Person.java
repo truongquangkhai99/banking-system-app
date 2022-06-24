@@ -1,7 +1,7 @@
-package com.unvise.bankingsystemapp.domain.entity.person;
+package com.unvise.bankingsystemapp.person;
 
-import com.unvise.bankingsystemapp.domain.entity.Audit;
-import com.unvise.bankingsystemapp.domain.entity.account.Account;
+import com.unvise.bankingsystemapp.audit.Audit;
+import com.unvise.bankingsystemapp.account.Account;
 import lombok.*;
 
 import javax.persistence.*;

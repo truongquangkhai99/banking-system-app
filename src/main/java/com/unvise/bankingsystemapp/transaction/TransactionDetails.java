@@ -1,7 +1,7 @@
-package com.unvise.bankingsystemapp.domain.entity.transaction;
+package com.unvise.bankingsystemapp.transaction;
 
-import com.unvise.bankingsystemapp.domain.entity.account.Account;
-import com.unvise.bankingsystemapp.domain.entity.currency.CurrencyType;
+import com.unvise.bankingsystemapp.account.Account;
+import com.unvise.bankingsystemapp.currency.CurrencyType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
