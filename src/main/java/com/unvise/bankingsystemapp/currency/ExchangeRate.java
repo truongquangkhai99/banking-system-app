@@ -25,12 +25,12 @@ public class ExchangeRate {
     private Long id;
 
     @Id
-    @Column(name = "from_currency", nullable = false)
+    @Column(name = "from_currency", length = 3, nullable = false)
     @Enumerated(EnumType.STRING)
     private CurrencyType fromCurrency;
 
     @Id
-    @Column(name = "to_currency", nullable = false)
+    @Column(name = "to_currency", length = 3, nullable = false)
     @Enumerated(EnumType.STRING)
     private CurrencyType toCurrency;
 
