@@ -30,7 +30,7 @@ public class ExchangeRate {
     @Enumerated(EnumType.STRING)
     private CurrencyType toCurrency;
 
-    @Column(name = "ratio", nullable = false)
+    @Column(name = "ratio", precision = 18, scale = 4, nullable = false)
     private BigDecimal ratio;
 
 }
