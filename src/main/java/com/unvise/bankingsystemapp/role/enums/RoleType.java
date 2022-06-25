@@ -1,4 +1,4 @@
-package com.unvise.bankingsystemapp.person;
+package com.unvise.bankingsystemapp.role.enums;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public enum RoleType {
 
-    REGULAR_USER("REGULAR_USER"), EMPLOYEE("EMPLOYEE"), ADMIN("ADMIN");
+    USER("USER"), ADMIN("ADMIN");
 
     @Getter
     private final String roleTypeAsString;
