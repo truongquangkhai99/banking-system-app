@@ -1,7 +1,7 @@
 package com.unvise.bankingsystemapp.transaction;
 
 import com.unvise.bankingsystemapp.account.Account;
-import com.unvise.bankingsystemapp.currency.CurrencyType;
+import com.unvise.bankingsystemapp.currency.enums.CurrencyType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -35,12 +35,7 @@ public class TransactionDetails {
     @Enumerated(EnumType.STRING)
     private TransactionType transactionType;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(
-            name = "account_id",
-            nullable = false,
-            foreignKey = @ForeignKey(name = "transaction_details_account_fk")
-    )
-    private Account account;
+    @OneToOne(mappedBy = "transactionDetails")
+    private Transaction transaction;
 
 }
