@@ -15,7 +15,6 @@ import java.util.Set;
         @UniqueConstraint(name = "email_uk", columnNames = "email"),
         @UniqueConstraint(name = "phone_uk", columnNames = "phone")
 })
-@EntityListeners(AuditingEntityListener.class)
 @Builder
 @Data
 @EqualsAndHashCode(callSuper = true)
