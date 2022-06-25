@@ -1,10 +1,7 @@
 package com.unvise.bankingsystemapp.deposit;
 
-import com.unvise.bankingsystemapp.audit.Audit;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.unvise.bankingsystemapp.audit.DateAudit;
+import lombok.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -13,9 +10,10 @@ import java.math.BigDecimal;
 @Table(name = "deposit")
 @Builder
 @Data
+@EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
-public class Deposit {
+public class Deposit extends DateAudit {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "deposit_seq_gen")
@@ -25,8 +23,5 @@ public class Deposit {
 
     @Column(name = "intense_rate", nullable = false)
     private BigDecimal intenseRate;
-
-    @Embedded
-    private Audit audit = new Audit();
 
 }
