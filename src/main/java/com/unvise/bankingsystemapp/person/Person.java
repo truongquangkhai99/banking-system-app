@@ -1,20 +1,27 @@
 package com.unvise.bankingsystemapp.person;
 
-import com.unvise.bankingsystemapp.audit.Audit;
 import com.unvise.bankingsystemapp.account.Account;
+import com.unvise.bankingsystemapp.audit.DateAudit;
+import com.unvise.bankingsystemapp.role.Role;
 import lombok.*;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.List;
+import java.util.Set;
 
 @Entity
-@Table(name = "person")
+@Table(name = "person", uniqueConstraints = {
+        @UniqueConstraint(name = "email_uk", columnNames = "email"),
+        @UniqueConstraint(name = "phone_uk", columnNames = "phone")
+})
+@EntityListeners(AuditingEntityListener.class)
 @Builder
 @Data
+@EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
-public class Person {
+public class Person extends DateAudit {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "person_seq_gen")
@@ -22,25 +29,26 @@ public class Person {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "first_name", nullable = false)
+    @Column(name = "first_name", length = 70, nullable = false)
     private String firstname;
 
-    @Column(name = "last_name", nullable = false)
+    @Column(name = "last_name", length = 70, nullable = false)
     private String lastname;
 
     @Column(name = "date_of_birth", nullable = false)
     private LocalDate dateOfBirth;
 
-    @Column(name = "email", unique = true, nullable = false)
+    @Column(name = "email", length = 100, nullable = false)
     private String email;
 
-    @Column(name = "phone", unique = true, nullable = false)
+    @Column(name = "phone", length = 30, nullable = false)
     private String phone;
 
-    @Embedded
-    private Audit audit = new Audit();
-
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(
+            fetch = FetchType.LAZY,
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE},
+            orphanRemoval = true
+    )
     @JoinColumn(
             name = "account_id",
             nullable = false,
@@ -48,12 +56,15 @@ public class Person {
     )
     private Account account;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(
+            fetch = FetchType.EAGER,
+            cascade = CascadeType.ALL
+    )
     @JoinTable(
             name = "person_role",
             joinColumns = @JoinColumn(name = "person_role_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
-    private List<Role> roles;
+    private Set<Role> roles;
 
 }
