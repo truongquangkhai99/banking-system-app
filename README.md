@@ -35,4 +35,6 @@ Change string to 'prod' on 3 row in [application.yml](src/main/resources/applica
 - [ ] Add a Makefile
 
 ## Entity Relationship Diagram
-![plot](src/main/resources/erd/erd.svg)
+![plot](data/erd/erd.jpg)
+
+The diagram was automatically generated in the program DbVisualizer. [Link](https://www.dbvis.com/)
