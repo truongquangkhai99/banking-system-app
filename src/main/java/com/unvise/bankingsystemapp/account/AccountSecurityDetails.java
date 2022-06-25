@@ -1,10 +1,7 @@
 package com.unvise.bankingsystemapp.account;
 
-import com.unvise.bankingsystemapp.audit.Audit;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.unvise.bankingsystemapp.audit.DateAudit;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -12,9 +9,10 @@ import javax.persistence.*;
 @Table(name = "account_security_details")
 @Builder
 @Data
+@EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
-public class AccountSecurityDetails {
+public class AccountSecurityDetails extends DateAudit {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "acc_sec_details_seq_gen")
@@ -23,9 +21,6 @@ public class AccountSecurityDetails {
     private Long id;
 
     @Column(name = "password_hash", nullable = false)
-    private String password_hash;
-
-    @Embedded
-    private Audit audit = new Audit();
+    private String passwordHash;
 
 }
