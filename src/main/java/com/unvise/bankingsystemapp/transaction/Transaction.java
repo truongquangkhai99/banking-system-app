@@ -25,4 +25,14 @@ public class Transaction {
     @Column(name = "data", nullable = false)
     private LocalDate date;
 
+    @OneToOne(
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL
+    )
+    @JoinColumn(
+            name = "transaction_details_id",
+            nullable = false,
+            foreignKey = @ForeignKey(name = "transaction_transaction_details_fk")
+    )
+    private TransactionDetails transactionDetails;
 }
