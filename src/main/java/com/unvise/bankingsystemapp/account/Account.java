@@ -1,10 +1,12 @@
 package com.unvise.bankingsystemapp.account;
 
 import com.unvise.bankingsystemapp.currency.enums.CurrencyType;
+import com.unvise.bankingsystemapp.person.Person;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -23,14 +25,14 @@ public class Account {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "balance", nullable = false)
-    private BigDecimal balance = BigDecimal.ZERO;
+    @Column(name = "balance", nullable = false, precision = 18, scale = 4)
+    private BigDecimal balance;
 
     @Column(name = "currency", nullable = false)
     @Enumerated(EnumType.STRING)
     private CurrencyType currency;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(
             name = "account_security_details_id",
             nullable = false,
@@ -38,12 +40,22 @@ public class Account {
     )
     private AccountSecurityDetails accountSecurityDetails;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(
             name = "account_history_id",
             nullable = false,
             foreignKey = @ForeignKey(name = "account_account_history_fk")
     )
     private AccountHistory accountHistory;
+
+    @OneToOne(mappedBy = "account")
+    private Person person;
+
+    @PrePersist
+    private void insertBalance() {
+        if (balance == null) {
+            balance = BigDecimal.ZERO;
+        }
+    }
 
 }
