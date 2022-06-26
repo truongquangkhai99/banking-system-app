@@ -52,9 +52,13 @@ public class Account {
     private Person person;
 
     @PrePersist
-    private void insertBalance() {
+    private void insertNewInstance() {
         if (balance == null) {
             balance = BigDecimal.ZERO;
+        }
+
+        if (accountHistory == null) {
+            accountHistory = new AccountHistory();
         }
     }
 
