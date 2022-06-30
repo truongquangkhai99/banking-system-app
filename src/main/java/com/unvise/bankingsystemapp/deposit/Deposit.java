@@ -24,4 +24,14 @@ public class Deposit extends DateAudit {
     @Column(name = "intense_rate", nullable = false)
     private BigDecimal intenseRate;
 
+    @Column(name = "balance", precision = 18, scale = 4, nullable = false)
+    private BigDecimal balance;
+
+    @PrePersist
+    private void insertNewInstance() {
+        if (balance == null) {
+            balance = BigDecimal.ZERO;
+        }
+    }
+
 }
