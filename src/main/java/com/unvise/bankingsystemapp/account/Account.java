@@ -1,5 +1,7 @@
 package com.unvise.bankingsystemapp.account;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
 import com.unvise.bankingsystemapp.currency.enums.CurrencyType;
 import com.unvise.bankingsystemapp.person.Person;
 import lombok.AllArgsConstructor;
@@ -49,6 +51,7 @@ public class Account {
     private AccountHistory accountHistory;
 
     @OneToOne(mappedBy = "account")
+    @JsonIgnore
     private Person person;
 
     @PrePersist
