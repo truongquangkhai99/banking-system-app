@@ -37,24 +37,9 @@ public class AccountHistory {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "accountHistory")
     private List<Transaction> transaction;
-//    @ManyToMany(fetch = FetchType.LAZY)
-//    @JoinTable(
-//            name = "credit_history",
-//            joinColumns = @JoinColumn(name = "account_history_id"),
-//            inverseJoinColumns = @JoinColumn(name = "credit_id")
-//    )
-//    private List<Credit> credits;
-//
-//    @ManyToMany(fetch = FetchType.LAZY)
-//    @JoinTable(
-//            name = "transaction_history",
-//            joinColumns = @JoinColumn(name = "account_history_id"),
-//            inverseJoinColumns = @JoinColumn(name = "transaction_id")
-//    )
-//    private List<Transaction> transaction;
 
     @PrePersist
-    private void insertNewAccountHistory() {
+    private void insertNewInstance() {
         if (credits == null) {
             credits = List.of();
         }
