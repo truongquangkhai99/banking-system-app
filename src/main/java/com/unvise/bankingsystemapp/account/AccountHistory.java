@@ -1,7 +1,7 @@
 package com.unvise.bankingsystemapp.account;
 
-import com.unvise.bankingsystemapp.deposit.Deposit;
 import com.unvise.bankingsystemapp.credit.Credit;
+import com.unvise.bankingsystemapp.deposit.Deposit;
 import com.unvise.bankingsystemapp.transaction.Transaction;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -32,19 +32,34 @@ public class AccountHistory {
     )
     private Deposit deposit;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "credit_history",
-            joinColumns = @JoinColumn(name = "account_history_id"),
-            inverseJoinColumns = @JoinColumn(name = "credit_id")
-    )
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "accountHistory")
     private List<Credit> credits;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "transaction_history",
-            joinColumns = @JoinColumn(name = "account_history_id"),
-            inverseJoinColumns = @JoinColumn(name = "transaction_id")
-    )
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "accountHistory")
     private List<Transaction> transaction;
+//    @ManyToMany(fetch = FetchType.LAZY)
+//    @JoinTable(
+//            name = "credit_history",
+//            joinColumns = @JoinColumn(name = "account_history_id"),
+//            inverseJoinColumns = @JoinColumn(name = "credit_id")
+//    )
+//    private List<Credit> credits;
+//
+//    @ManyToMany(fetch = FetchType.LAZY)
+//    @JoinTable(
+//            name = "transaction_history",
+//            joinColumns = @JoinColumn(name = "account_history_id"),
+//            inverseJoinColumns = @JoinColumn(name = "transaction_id")
+//    )
+//    private List<Transaction> transaction;
+
+    @PrePersist
+    private void insertNewAccountHistory() {
+        if (credits == null) {
+            credits = List.of();
+        }
+        if (transaction == null) {
+            transaction = List.of();
+        }
+    }
 }

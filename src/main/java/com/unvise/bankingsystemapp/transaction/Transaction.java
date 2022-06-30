@@ -1,5 +1,7 @@
 package com.unvise.bankingsystemapp.transaction;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.unvise.bankingsystemapp.account.AccountHistory;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -35,4 +37,9 @@ public class Transaction {
             foreignKey = @ForeignKey(name = "transaction_transaction_details_fk")
     )
     private TransactionDetails transactionDetails;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "account_history_id", nullable = false, foreignKey = @ForeignKey(name = "transaction_account_history_fk"))
+    @JsonIgnore
+    private AccountHistory accountHistory;
 }
