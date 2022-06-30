@@ -1,6 +1,7 @@
 package com.unvise.bankingsystemapp.currency.web.dto;
 
 import com.fasterxml.jackson.annotation.JsonView;
+import com.unvise.bankingsystemapp.common.View;
 import com.unvise.bankingsystemapp.currency.enums.CurrencyType;
 import com.unvise.bankingsystemapp.currency.web.validator.FieldUnmatched;
 import lombok.AllArgsConstructor;
@@ -17,24 +18,25 @@ import java.math.BigDecimal;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@FieldUnmatched(first = "fromCurrency", second = "toCurrency", groups = ExchangeRateViews.New.class)
+@FieldUnmatched(first = "fromCurrency", second = "toCurrency", groups = {View.New.class, View.Update.class})
 public class ExchangeRateDto {
 
-    @Null(groups = {ExchangeRateViews.New.class})
-    @JsonView(ExchangeRateViews.Details.class)
+    @Null(groups = {View.New.class})
+    @NotNull(groups = {View.Update.class})
+    @JsonView(View.Details.class)
     private Long id;
 
-    @NotNull(groups = {ExchangeRateViews.New.class})
-    @JsonView(ExchangeRateViews.Details.class)
+    @NotNull(groups = {View.New.class, View.Update.class})
+    @JsonView(View.Details.class)
     private CurrencyType fromCurrency;
 
-    @NotNull(groups = {ExchangeRateViews.New.class})
-    @JsonView(ExchangeRateViews.Details.class)
+    @NotNull(groups = {View.New.class, View.Update.class})
+    @JsonView(View.Details.class)
     private CurrencyType toCurrency;
 
-    @NotNull(groups = {ExchangeRateViews.New.class})
-    @Positive(groups = {ExchangeRateViews.New.class})
-    @JsonView(ExchangeRateViews.Details.class)
+    @NotNull(groups = {View.New.class, View.Update.class})
+    @Positive(groups = {View.New.class, View.Update.class})
+    @JsonView(View.Details.class)
     private BigDecimal ratio;
 
 }
