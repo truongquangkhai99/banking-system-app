@@ -9,8 +9,8 @@ graph
 		id	0
 		graphics
 		[
-			x	1459.71875
-			y	482.8189911842346
+			x	1588.34375
+			y	366.2033040523529
 			w	179.0
 			h	84.56597709655762
 			customconfiguration	"DEFAULT"
@@ -33,16 +33,16 @@ graph
 			fontSize	14
 			fontStyle	"bold"
 			fontName	"Noto Sans"
-			x	1394.21875
-			y	474.96614599227905
+			x	1522.84375
+			y	358.35045886039734
 		]
 		LabelGraphics
 		[
 			text	"BIGINT"
 			fontSize	14
 			fontName	"Noto Sans"
-			x	1469.21875
-			y	474.96614599227905
+			x	1597.84375
+			y	358.35045886039734
 		]
 		LabelGraphics
 		[
@@ -52,16 +52,16 @@ graph
 			text	"deposit_id"
 			fontSize	14
 			fontName	"Noto Sans"
-			x	1394.21875
-			y	500.03406286239624
+			x	1522.84375
+			y	383.4183757305145
 		]
 		LabelGraphics
 		[
 			text	"BIGINT"
 			fontSize	14
 			fontName	"Noto Sans"
-			x	1469.21875
-			y	500.03406286239624
+			x	1597.84375
+			y	383.4183757305145
 		]
 	]
 	node
@@ -69,8 +69,8 @@ graph
 		id	1
 		graphics
 		[
-			x	950.71875
-			y	280.4281988143921
+			x	1057.15625
+			y	528.1959867477417
 			w	431.8125
 			h	159.76972770690918
 			customconfiguration	"DEFAULT"
@@ -93,16 +93,16 @@ graph
 			fontSize	14
 			fontStyle	"bold"
 			fontName	"Noto Sans"
-			x	758.8125
-			y	234.97347831726074
+			x	865.25
+			y	482.74126625061035
 		]
 		LabelGraphics
 		[
 			text	"BIGINT"
 			fontSize	14
 			fontName	"Noto Sans"
-			x	958.625
-			y	234.97347831726074
+			x	1065.0625
+			y	482.74126625061035
 		]
 		LabelGraphics
 		[
@@ -113,16 +113,16 @@ graph
 			fontSize	14
 			fontStyle	"bold"
 			fontName	"Noto Sans"
-			x	758.8125
-			y	260.04139518737793
+			x	865.25
+			y	507.80918312072754
 		]
 		LabelGraphics
 		[
 			text	"NUMERIC(18,4)"
 			fontSize	14
 			fontName	"Noto Sans"
-			x	958.625
-			y	260.04139518737793
+			x	1065.0625
+			y	507.80918312072754
 		]
 		LabelGraphics
 		[
@@ -133,16 +133,16 @@ graph
 			fontSize	14
 			fontStyle	"bold"
 			fontName	"Noto Sans"
-			x	758.8125
-			y	285.1093120574951
+			x	865.25
+			y	532.8770999908447
 		]
 		LabelGraphics
 		[
 			text	"CHARACTER VARYING(255)"
 			fontSize	14
 			fontName	"Noto Sans"
-			x	958.625
-			y	285.1093120574951
+			x	1065.0625
+			y	532.8770999908447
 		]
 		LabelGraphics
 		[
@@ -153,16 +153,16 @@ graph
 			fontSize	14
 			fontStyle	"bold"
 			fontName	"Noto Sans"
-			x	758.8125
-			y	310.1772289276123
+			x	865.25
+			y	557.9450168609619
 		]
 		LabelGraphics
 		[
 			text	"BIGINT"
 			fontSize	14
 			fontName	"Noto Sans"
-			x	958.625
-			y	310.1772289276123
+			x	1065.0625
+			y	557.9450168609619
 		]
 		LabelGraphics
 		[
@@ -173,16 +173,16 @@ graph
 			fontSize	14
 			fontStyle	"bold"
 			fontName	"Noto Sans"
-			x	758.8125
-			y	335.2451457977295
+			x	865.25
+			y	583.0129337310791
 		]
 		LabelGraphics
 		[
 			text	"BIGINT"
 			fontSize	14
 			fontName	"Noto Sans"
-			x	958.625
-			y	335.2451457977295
+			x	1065.0625
+			y	583.0129337310791
 		]
 	]
 	node
@@ -190,8 +190,8 @@ graph
 		id	2
 		graphics
 		[
-			x	1459.71875
-			y	353.1850972175598
+			x	1588.34375
+			y	615.9336957931519
 			w	400.6875
 			h	134.701810836792
 			customconfiguration	"DEFAULT"
@@ -214,16 +214,16 @@ graph
 			fontSize	14
 			fontStyle	"bold"
 			fontName	"Noto Sans"
-			x	1283.375
-			y	320.26433515548706
+			x	1412.0
+			y	583.0129337310791
 		]
 		LabelGraphics
 		[
 			text	"BIGINT"
 			fontSize	14
 			fontName	"Noto Sans"
-			x	1399.0625
-			y	320.26433515548706
+			x	1527.6875
+			y	583.0129337310791
 		]
 		LabelGraphics
 		[
@@ -234,16 +234,16 @@ graph
 			fontSize	14
 			fontStyle	"bold"
 			fontName	"Noto Sans"
-			x	1283.375
-			y	345.33225202560425
+			x	1412.0
+			y	608.0808506011963
 		]
 		LabelGraphics
 		[
 			text	"TIMESTAMP(6) WITHOUT TIME ZONE"
 			fontSize	14
 			fontName	"Noto Sans"
-			x	1399.0625
-			y	345.33225202560425
+			x	1527.6875
+			y	608.0808506011963
 		]
 		LabelGraphics
 		[
@@ -254,16 +254,16 @@ graph
 			fontSize	14
 			fontStyle	"bold"
 			fontName	"Noto Sans"
-			x	1283.375
-			y	370.40016889572144
+			x	1412.0
+			y	633.1487674713135
 		]
 		LabelGraphics
 		[
 			text	"TIMESTAMP(6) WITHOUT TIME ZONE"
 			fontSize	14
 			fontName	"Noto Sans"
-			x	1399.0625
-			y	370.40016889572144
+			x	1527.6875
+			y	633.1487674713135
 		]
 		LabelGraphics
 		[
@@ -274,16 +274,16 @@ graph
 			fontSize	14
 			fontStyle	"bold"
 			fontName	"Noto Sans"
-			x	1283.375
-			y	395.4680857658386
+			x	1412.0
+			y	658.2166843414307
 		]
 		LabelGraphics
 		[
 			text	"CHARACTER VARYING(255)"
 			fontSize	14
 			fontName	"Noto Sans"
-			x	1399.0625
-			y	395.4680857658386
+			x	1527.6875
+			y	658.2166843414307
 		]
 	]
 	node
@@ -291,10 +291,10 @@ graph
 		id	3
 		graphics
 		[
-			x	474.46875
-			y	130.02069759368896
+			x	525.96875
+			y	510.5183112621307
 			w	400.6875
-			h	260.04139518737793
+			h	310.1772289276123
 			customconfiguration	"DEFAULT"
 			fill	"#FFFFCC"
 			outline	"#808080"
@@ -315,16 +315,16 @@ graph
 			fontSize	14
 			fontStyle	"bold"
 			fontName	"Noto Sans"
-			x	298.125
-			y	34.43014335632324
+			x	349.625
+			y	389.85984015464777
 		]
 		LabelGraphics
 		[
 			text	"BIGINT"
 			fontSize	14
 			fontName	"Noto Sans"
-			x	397.8125
-			y	34.43014335632324
+			x	449.3125
+			y	389.85984015464777
 		]
 		LabelGraphics
 		[
@@ -335,16 +335,16 @@ graph
 			fontSize	14
 			fontStyle	"bold"
 			fontName	"Noto Sans"
-			x	298.125
-			y	59.49806022644043
+			x	349.625
+			y	414.92775702476496
 		]
 		LabelGraphics
 		[
 			text	"TIMESTAMP(6) WITHOUT TIME ZONE"
 			fontSize	14
 			fontName	"Noto Sans"
-			x	397.8125
-			y	59.49806022644043
+			x	449.3125
+			y	414.92775702476496
 		]
 		LabelGraphics
 		[
@@ -355,16 +355,16 @@ graph
 			fontSize	14
 			fontStyle	"bold"
 			fontName	"Noto Sans"
-			x	298.125
-			y	84.56597709655762
+			x	349.625
+			y	439.99567389488215
 		]
 		LabelGraphics
 		[
 			text	"TIMESTAMP(6) WITHOUT TIME ZONE"
 			fontSize	14
 			fontName	"Noto Sans"
-			x	397.8125
-			y	84.56597709655762
+			x	449.3125
+			y	439.99567389488215
 		]
 		LabelGraphics
 		[
@@ -375,16 +375,16 @@ graph
 			fontSize	14
 			fontStyle	"bold"
 			fontName	"Noto Sans"
-			x	298.125
-			y	109.6338939666748
+			x	349.625
+			y	465.06359076499933
 		]
 		LabelGraphics
 		[
 			text	"DATE"
 			fontSize	14
 			fontName	"Noto Sans"
-			x	397.8125
-			y	109.6338939666748
+			x	449.3125
+			y	465.06359076499933
 		]
 		LabelGraphics
 		[
@@ -395,16 +395,16 @@ graph
 			fontSize	14
 			fontStyle	"bold"
 			fontName	"Noto Sans"
-			x	298.125
-			y	134.701810836792
+			x	349.625
+			y	490.1315076351166
 		]
 		LabelGraphics
 		[
 			text	"CHARACTER VARYING(100)"
 			fontSize	14
 			fontName	"Noto Sans"
-			x	397.8125
-			y	134.701810836792
+			x	449.3125
+			y	490.1315076351166
 		]
 		LabelGraphics
 		[
@@ -415,16 +415,16 @@ graph
 			fontSize	14
 			fontStyle	"bold"
 			fontName	"Noto Sans"
-			x	298.125
-			y	159.76972770690918
+			x	349.625
+			y	515.1994245052338
 		]
 		LabelGraphics
 		[
 			text	"CHARACTER VARYING(70)"
 			fontSize	14
 			fontName	"Noto Sans"
-			x	397.8125
-			y	159.76972770690918
+			x	449.3125
+			y	515.1994245052338
 		]
 		LabelGraphics
 		[
@@ -435,16 +435,36 @@ graph
 			fontSize	14
 			fontStyle	"bold"
 			fontName	"Noto Sans"
-			x	298.125
-			y	184.83764457702637
+			x	349.625
+			y	540.267341375351
 		]
 		LabelGraphics
 		[
 			text	"CHARACTER VARYING(70)"
 			fontSize	14
 			fontName	"Noto Sans"
-			x	397.8125
-			y	184.83764457702637
+			x	449.3125
+			y	540.267341375351
+		]
+		LabelGraphics
+		[
+		]
+		LabelGraphics
+		[
+			text	"password"
+			fontSize	14
+			fontStyle	"bold"
+			fontName	"Noto Sans"
+			x	349.625
+			y	565.3352582454681
+		]
+		LabelGraphics
+		[
+			text	"CHARACTER VARYING(100)"
+			fontSize	14
+			fontName	"Noto Sans"
+			x	449.3125
+			y	565.3352582454681
 		]
 		LabelGraphics
 		[
@@ -455,16 +475,36 @@ graph
 			fontSize	14
 			fontStyle	"bold"
 			fontName	"Noto Sans"
-			x	298.125
-			y	209.90556144714355
+			x	349.625
+			y	590.4031751155853
 		]
 		LabelGraphics
 		[
 			text	"CHARACTER VARYING(30)"
 			fontSize	14
 			fontName	"Noto Sans"
-			x	397.8125
-			y	209.90556144714355
+			x	449.3125
+			y	590.4031751155853
+		]
+		LabelGraphics
+		[
+		]
+		LabelGraphics
+		[
+			text	"status"
+			fontSize	14
+			fontStyle	"bold"
+			fontName	"Noto Sans"
+			x	349.625
+			y	615.4710919857025
+		]
+		LabelGraphics
+		[
+			text	"BOOLEAN"
+			fontSize	14
+			fontName	"Noto Sans"
+			x	449.3125
+			y	615.4710919857025
 		]
 		LabelGraphics
 		[
@@ -475,16 +515,16 @@ graph
 			fontSize	14
 			fontStyle	"bold"
 			fontName	"Noto Sans"
-			x	298.125
-			y	234.97347831726074
+			x	349.625
+			y	640.5390088558197
 		]
 		LabelGraphics
 		[
 			text	"BIGINT"
 			fontSize	14
 			fontName	"Noto Sans"
-			x	397.8125
-			y	234.97347831726074
+			x	449.3125
+			y	640.5390088558197
 		]
 	]
 	node
@@ -492,10 +532,148 @@ graph
 		id	4
 		graphics
 		[
-			x	1942.4375
-			y	532.954824924469
+			x	525.96875
+			y	243.01087450981137
+			w	356.0
+			h	184.83764457702637
+			customconfiguration	"DEFAULT"
+			fill	"#FFFFCC"
+			outline	"#808080"
+		]
+		LabelGraphics
+		[
+			text	"transaction_details"
+			fontSize	15
+			fontName	"Noto Sans"
+			anchor	"t"
+		]
+		LabelGraphics
+		[
+		]
+		LabelGraphics
+		[
+			text	"id"
+			fontSize	14
+			fontStyle	"bold"
+			fontName	"Noto Sans"
+			x	371.96875
+			y	185.02219557762143
+		]
+		LabelGraphics
+		[
+			text	"BIGINT"
+			fontSize	14
+			fontName	"Noto Sans"
+			x	495.96875
+			y	185.02219557762143
+		]
+		LabelGraphics
+		[
+		]
+		LabelGraphics
+		[
+			text	"amount"
+			fontSize	14
+			fontStyle	"bold"
+			fontName	"Noto Sans"
+			x	371.96875
+			y	210.09011244773862
+		]
+		LabelGraphics
+		[
+			text	"NUMERIC(18,4)"
+			fontSize	14
+			fontName	"Noto Sans"
+			x	495.96875
+			y	210.09011244773862
+		]
+		LabelGraphics
+		[
+		]
+		LabelGraphics
+		[
+			text	"transaction_type"
+			fontSize	14
+			fontStyle	"bold"
+			fontName	"Noto Sans"
+			x	371.96875
+			y	235.15802931785583
+		]
+		LabelGraphics
+		[
+			text	"CHARACTER VARYING(255)"
+			fontSize	14
+			fontName	"Noto Sans"
+			x	495.96875
+			y	235.15802931785583
+		]
+		LabelGraphics
+		[
+		]
+		LabelGraphics
+		[
+			text	"credit_id"
+			fontSize	14
+			fontName	"Noto Sans"
+			x	371.96875
+			y	260.225946187973
+		]
+		LabelGraphics
+		[
+			text	"BIGINT"
+			fontSize	14
+			fontName	"Noto Sans"
+			x	495.96875
+			y	260.225946187973
+		]
+		LabelGraphics
+		[
+		]
+		LabelGraphics
+		[
+			text	"from_account_id"
+			fontSize	14
+			fontName	"Noto Sans"
+			x	371.96875
+			y	285.2938630580902
+		]
+		LabelGraphics
+		[
+			text	"BIGINT"
+			fontSize	14
+			fontName	"Noto Sans"
+			x	495.96875
+			y	285.2938630580902
+		]
+		LabelGraphics
+		[
+		]
+		LabelGraphics
+		[
+			text	"to_account_id"
+			fontSize	14
+			fontName	"Noto Sans"
+			x	371.96875
+			y	310.3617799282074
+		]
+		LabelGraphics
+		[
+			text	"BIGINT"
+			fontSize	14
+			fontName	"Noto Sans"
+			x	495.96875
+			y	310.3617799282074
+		]
+	]
+	node
+	[
+		id	5
+		graphics
+		[
+			x	2038.3125
+			y	441.40705466270447
 			w	379.25
-			h	134.701810836792
+			h	184.83764457702637
 			customconfiguration	"DEFAULT"
 			fill	"#FFFFCC"
 			outline	"#808080"
@@ -516,16 +694,16 @@ graph
 			fontSize	14
 			fontStyle	"bold"
 			fontName	"Noto Sans"
-			x	1776.8125
-			y	500.03406286239624
+			x	1872.6875
+			y	383.4183757305145
 		]
 		LabelGraphics
 		[
 			text	"BIGINT"
 			fontSize	14
 			fontName	"Noto Sans"
-			x	1871.0625
-			y	500.03406286239624
+			x	1966.9375
+			y	383.4183757305145
 		]
 		LabelGraphics
 		[
@@ -536,16 +714,16 @@ graph
 			fontSize	14
 			fontStyle	"bold"
 			fontName	"Noto Sans"
-			x	1776.8125
-			y	525.1019797325134
+			x	1872.6875
+			y	408.4862926006317
 		]
 		LabelGraphics
 		[
 			text	"TIMESTAMP(6) WITHOUT TIME ZONE"
 			fontSize	14
 			fontName	"Noto Sans"
-			x	1871.0625
-			y	525.1019797325134
+			x	1966.9375
+			y	408.4862926006317
 		]
 		LabelGraphics
 		[
@@ -556,16 +734,56 @@ graph
 			fontSize	14
 			fontStyle	"bold"
 			fontName	"Noto Sans"
-			x	1776.8125
-			y	550.1698966026306
+			x	1872.6875
+			y	433.5542094707489
 		]
 		LabelGraphics
 		[
 			text	"TIMESTAMP(6) WITHOUT TIME ZONE"
 			fontSize	14
 			fontName	"Noto Sans"
-			x	1871.0625
-			y	550.1698966026306
+			x	1966.9375
+			y	433.5542094707489
+		]
+		LabelGraphics
+		[
+		]
+		LabelGraphics
+		[
+			text	"balance"
+			fontSize	14
+			fontStyle	"bold"
+			fontName	"Noto Sans"
+			x	1872.6875
+			y	458.6221263408661
+		]
+		LabelGraphics
+		[
+			text	"NUMERIC(18,4)"
+			fontSize	14
+			fontName	"Noto Sans"
+			x	1966.9375
+			y	458.6221263408661
+		]
+		LabelGraphics
+		[
+		]
+		LabelGraphics
+		[
+			text	"currency"
+			fontSize	14
+			fontStyle	"bold"
+			fontName	"Noto Sans"
+			x	1872.6875
+			y	483.6900432109833
+		]
+		LabelGraphics
+		[
+			text	"CHARACTER VARYING(3)"
+			fontSize	14
+			fontName	"Noto Sans"
+			x	1966.9375
+			y	483.6900432109833
 		]
 		LabelGraphics
 		[
@@ -576,77 +794,16 @@ graph
 			fontSize	14
 			fontStyle	"bold"
 			fontName	"Noto Sans"
-			x	1776.8125
-			y	575.2378134727478
+			x	1872.6875
+			y	508.75796008110046
 		]
 		LabelGraphics
 		[
-			text	"NUMERIC(19,2)"
+			text	"NUMERIC(18,6)"
 			fontSize	14
 			fontName	"Noto Sans"
-			x	1871.0625
-			y	575.2378134727478
-		]
-	]
-	node
-	[
-		id	5
-		graphics
-		[
-			x	950.71875
-			y	717.018862247467
-			w	225.875
-			h	84.56597709655762
-			customconfiguration	"DEFAULT"
-			fill	"#FFFFCC"
-			outline	"#808080"
-		]
-		LabelGraphics
-		[
-			text	"credit_history"
-			fontSize	15
-			fontName	"Noto Sans"
-			anchor	"t"
-		]
-		LabelGraphics
-		[
-		]
-		LabelGraphics
-		[
-			text	"account_history_id"
-			fontSize	14
-			fontStyle	"bold"
-			fontName	"Noto Sans"
-			x	845.78125
-			y	709.1660170555115
-		]
-		LabelGraphics
-		[
-			text	"BIGINT"
-			fontSize	14
-			fontName	"Noto Sans"
-			x	983.65625
-			y	709.1660170555115
-		]
-		LabelGraphics
-		[
-		]
-		LabelGraphics
-		[
-			text	"credit_id"
-			fontSize	14
-			fontStyle	"bold"
-			fontName	"Noto Sans"
-			x	845.78125
-			y	734.2339339256287
-		]
-		LabelGraphics
-		[
-			text	"BIGINT"
-			fontSize	14
-			fontName	"Noto Sans"
-			x	983.65625
-			y	734.2339339256287
+			x	1966.9375
+			y	508.75796008110046
 		]
 	]
 	node
@@ -654,71 +811,10 @@ graph
 		id	6
 		graphics
 		[
-			x	950.71875
-			y	505.14035844802856
-			w	225.875
-			h	84.56597709655762
-			customconfiguration	"DEFAULT"
-			fill	"#FFFFCC"
-			outline	"#808080"
-		]
-		LabelGraphics
-		[
-			text	"transaction_history"
-			fontSize	15
-			fontName	"Noto Sans"
-			anchor	"t"
-		]
-		LabelGraphics
-		[
-		]
-		LabelGraphics
-		[
-			text	"account_history_id"
-			fontSize	14
-			fontStyle	"bold"
-			fontName	"Noto Sans"
-			x	845.78125
-			y	497.287513256073
-		]
-		LabelGraphics
-		[
-			text	"BIGINT"
-			fontSize	14
-			fontName	"Noto Sans"
-			x	983.65625
-			y	497.287513256073
-		]
-		LabelGraphics
-		[
-		]
-		LabelGraphics
-		[
-			text	"transaction_id"
-			fontSize	14
-			fontStyle	"bold"
-			fontName	"Noto Sans"
-			x	845.78125
-			y	522.3554301261902
-		]
-		LabelGraphics
-		[
-			text	"BIGINT"
-			fontSize	14
-			fontName	"Noto Sans"
-			x	983.65625
-			y	522.3554301261902
-		]
-	]
-	node
-	[
-		id	7
-		graphics
-		[
-			x	1459.71875
-			y	817.2905297279358
-			w	466.1875
-			h	234.97347831726074
+			x	1057.15625
+			y	285.75646686553955
+			w	541.6875
+			h	285.1093120574951
 			customconfiguration	"DEFAULT"
 			fill	"#FFFFCC"
 			outline	"#808080"
@@ -739,16 +835,16 @@ graph
 			fontSize	14
 			fontStyle	"bold"
 			fontName	"Noto Sans"
-			x	1250.625
-			y	734.2339339256287
+			x	810.3125
+			y	177.63195419311523
 		]
 		LabelGraphics
 		[
 			text	"BIGINT"
 			fontSize	14
 			fontName	"Noto Sans"
-			x	1431.8125
-			y	734.2339339256287
+			x	1051.0
+			y	177.63195419311523
 		]
 		LabelGraphics
 		[
@@ -759,16 +855,16 @@ graph
 			fontSize	14
 			fontStyle	"bold"
 			fontName	"Noto Sans"
-			x	1250.625
-			y	759.3018507957458
+			x	810.3125
+			y	202.69987106323242
 		]
 		LabelGraphics
 		[
 			text	"TIMESTAMP(6) WITHOUT TIME ZONE"
 			fontSize	14
 			fontName	"Noto Sans"
-			x	1431.8125
-			y	759.3018507957458
+			x	1051.0
+			y	202.69987106323242
 		]
 		LabelGraphics
 		[
@@ -779,16 +875,36 @@ graph
 			fontSize	14
 			fontStyle	"bold"
 			fontName	"Noto Sans"
-			x	1250.625
-			y	784.369767665863
+			x	810.3125
+			y	227.7677879333496
 		]
 		LabelGraphics
 		[
 			text	"TIMESTAMP(6) WITHOUT TIME ZONE"
 			fontSize	14
 			fontName	"Noto Sans"
-			x	1431.8125
-			y	784.369767665863
+			x	1051.0
+			y	227.7677879333496
+		]
+		LabelGraphics
+		[
+		]
+		LabelGraphics
+		[
+			text	"currency"
+			fontSize	14
+			fontStyle	"bold"
+			fontName	"Noto Sans"
+			x	810.3125
+			y	252.8357048034668
+		]
+		LabelGraphics
+		[
+			text	"INTEGER"
+			fontSize	14
+			fontName	"Noto Sans"
+			x	1051.0
+			y	252.8357048034668
 		]
 		LabelGraphics
 		[
@@ -799,36 +915,36 @@ graph
 			fontSize	14
 			fontStyle	"bold"
 			fontName	"Noto Sans"
-			x	1250.625
-			y	809.4376845359802
+			x	810.3125
+			y	277.903621673584
 		]
 		LabelGraphics
 		[
 			text	"NUMERIC(18,4)"
 			fontSize	14
 			fontName	"Noto Sans"
-			x	1431.8125
-			y	809.4376845359802
+			x	1051.0
+			y	277.903621673584
 		]
 		LabelGraphics
 		[
 		]
 		LabelGraphics
 		[
-			text	"date_between_payments"
+			text	"date_between_payments_in_days"
 			fontSize	14
 			fontStyle	"bold"
 			fontName	"Noto Sans"
-			x	1250.625
-			y	834.5056014060974
+			x	810.3125
+			y	302.9715385437012
 		]
 		LabelGraphics
 		[
-			text	"DATE"
+			text	"INTEGER"
 			fontSize	14
 			fontName	"Noto Sans"
-			x	1431.8125
-			y	834.5056014060974
+			x	1051.0
+			y	302.9715385437012
 		]
 		LabelGraphics
 		[
@@ -838,16 +954,16 @@ graph
 			text	"is_closed"
 			fontSize	14
 			fontName	"Noto Sans"
-			x	1250.625
-			y	859.5735182762146
+			x	810.3125
+			y	328.03945541381836
 		]
 		LabelGraphics
 		[
 			text	"BOOLEAN"
 			fontSize	14
 			fontName	"Noto Sans"
-			x	1431.8125
-			y	859.5735182762146
+			x	1051.0
+			y	328.03945541381836
 		]
 		LabelGraphics
 		[
@@ -858,16 +974,16 @@ graph
 			fontSize	14
 			fontStyle	"bold"
 			fontName	"Noto Sans"
-			x	1250.625
-			y	884.6414351463318
+			x	810.3125
+			y	353.10737228393555
 		]
 		LabelGraphics
 		[
 			text	"NUMERIC(18,4)"
 			fontSize	14
 			fontName	"Noto Sans"
-			x	1431.8125
-			y	884.6414351463318
+			x	1051.0
+			y	353.10737228393555
 		]
 		LabelGraphics
 		[
@@ -878,16 +994,136 @@ graph
 			fontSize	14
 			fontStyle	"bold"
 			fontName	"Noto Sans"
-			x	1250.625
-			y	909.709352016449
+			x	810.3125
+			y	378.17528915405273
 		]
 		LabelGraphics
 		[
 			text	"NUMERIC(18,4)"
 			fontSize	14
 			fontName	"Noto Sans"
-			x	1431.8125
-			y	909.709352016449
+			x	1051.0
+			y	378.17528915405273
+		]
+		LabelGraphics
+		[
+		]
+		LabelGraphics
+		[
+			text	"account_history_id"
+			fontSize	14
+			fontStyle	"bold"
+			fontName	"Noto Sans"
+			x	810.3125
+			y	403.2432060241699
+		]
+		LabelGraphics
+		[
+			text	"BIGINT"
+			fontSize	14
+			fontName	"Noto Sans"
+			x	1051.0
+			y	403.2432060241699
+		]
+	]
+	node
+	[
+		id	7
+		graphics
+		[
+			x	132.8125
+			y	67.350905418396
+			w	265.625
+			h	134.701810836792
+			customconfiguration	"DEFAULT"
+			fill	"#FFFFCC"
+			outline	"#808080"
+		]
+		LabelGraphics
+		[
+			text	"transaction"
+			fontSize	15
+			fontName	"Noto Sans"
+			anchor	"t"
+		]
+		LabelGraphics
+		[
+		]
+		LabelGraphics
+		[
+			text	"id"
+			fontSize	14
+			fontStyle	"bold"
+			fontName	"Noto Sans"
+			x	24.0
+			y	34.43014335632324
+		]
+		LabelGraphics
+		[
+			text	"BIGINT"
+			fontSize	14
+			fontName	"Noto Sans"
+			x	185.625
+			y	34.43014335632324
+		]
+		LabelGraphics
+		[
+		]
+		LabelGraphics
+		[
+			text	"data"
+			fontSize	14
+			fontStyle	"bold"
+			fontName	"Noto Sans"
+			x	24.0
+			y	59.49806022644043
+		]
+		LabelGraphics
+		[
+			text	"DATE"
+			fontSize	14
+			fontName	"Noto Sans"
+			x	185.625
+			y	59.49806022644043
+		]
+		LabelGraphics
+		[
+		]
+		LabelGraphics
+		[
+			text	"account_history_id"
+			fontSize	14
+			fontName	"Noto Sans"
+			x	24.0
+			y	84.56597709655762
+		]
+		LabelGraphics
+		[
+			text	"BIGINT"
+			fontSize	14
+			fontName	"Noto Sans"
+			x	185.625
+			y	84.56597709655762
+		]
+		LabelGraphics
+		[
+		]
+		LabelGraphics
+		[
+			text	"transaction_details_id"
+			fontSize	14
+			fontStyle	"bold"
+			fontName	"Noto Sans"
+			x	24.0
+			y	109.6338939666748
+		]
+		LabelGraphics
+		[
+			text	"BIGINT"
+			fontSize	14
+			fontName	"Noto Sans"
+			x	185.625
+			y	109.6338939666748
 		]
 	]
 	node
@@ -896,7 +1132,7 @@ graph
 		graphics
 		[
 			x	154.34375
-			y	1047.1281743049622
+			y	882.5238082408905
 			w	308.6875
 			h	134.701810836792
 			customconfiguration	"DEFAULT"
@@ -915,32 +1151,12 @@ graph
 		]
 		LabelGraphics
 		[
-			text	"from_currency"
-			fontSize	14
-			fontStyle	"bold"
-			fontName	"Noto Sans"
-			x	24.0
-			y	1014.2074122428894
-		]
-		LabelGraphics
-		[
-			text	"CHARACTER VARYING(3)"
-			fontSize	14
-			fontName	"Noto Sans"
-			x	132.6875
-			y	1014.2074122428894
-		]
-		LabelGraphics
-		[
-		]
-		LabelGraphics
-		[
 			text	"id"
 			fontSize	14
 			fontStyle	"bold"
 			fontName	"Noto Sans"
 			x	24.0
-			y	1039.2753291130066
+			y	849.6030461788177
 		]
 		LabelGraphics
 		[
@@ -948,19 +1164,19 @@ graph
 			fontSize	14
 			fontName	"Noto Sans"
 			x	132.6875
-			y	1039.2753291130066
+			y	849.6030461788177
 		]
 		LabelGraphics
 		[
 		]
 		LabelGraphics
 		[
-			text	"to_currency"
+			text	"from_currency"
 			fontSize	14
 			fontStyle	"bold"
 			fontName	"Noto Sans"
 			x	24.0
-			y	1064.3432459831238
+			y	874.6709630489349
 		]
 		LabelGraphics
 		[
@@ -968,7 +1184,7 @@ graph
 			fontSize	14
 			fontName	"Noto Sans"
 			x	132.6875
-			y	1064.3432459831238
+			y	874.6709630489349
 		]
 		LabelGraphics
 		[
@@ -980,7 +1196,7 @@ graph
 			fontStyle	"bold"
 			fontName	"Noto Sans"
 			x	24.0
-			y	1089.411162853241
+			y	899.7388799190521
 		]
 		LabelGraphics
 		[
@@ -988,7 +1204,27 @@ graph
 			fontSize	14
 			fontName	"Noto Sans"
 			x	132.6875
-			y	1089.411162853241
+			y	899.7388799190521
+		]
+		LabelGraphics
+		[
+		]
+		LabelGraphics
+		[
+			text	"to_currency"
+			fontSize	14
+			fontStyle	"bold"
+			fontName	"Noto Sans"
+			x	24.0
+			y	924.8067967891693
+		]
+		LabelGraphics
+		[
+			text	"CHARACTER VARYING(3)"
+			fontSize	14
+			fontName	"Noto Sans"
+			x	132.6875
+			y	924.8067967891693
 		]
 	]
 	node
@@ -996,9 +1232,9 @@ graph
 		id	9
 		graphics
 		[
-			x	107.0625
-			y	154.78891706466675
-			w	214.125
+			x	132.8125
+			y	565.5132447878519
+			w	179.9375
 			h	84.56597709655762
 			customconfiguration	"DEFAULT"
 			fill	"#FFFFCC"
@@ -1016,20 +1252,20 @@ graph
 		]
 		LabelGraphics
 		[
-			text	"person_role_id"
+			text	"person_id"
 			fontSize	14
 			fontStyle	"bold"
 			fontName	"Noto Sans"
-			x	24.0
-			y	146.93607187271118
+			x	66.84375
+			y	557.6603995958964
 		]
 		LabelGraphics
 		[
 			text	"BIGINT"
 			fontSize	14
 			fontName	"Noto Sans"
-			x	134.125
-			y	146.93607187271118
+			x	142.78125
+			y	557.6603995958964
 		]
 		LabelGraphics
 		[
@@ -1040,16 +1276,16 @@ graph
 			fontSize	14
 			fontStyle	"bold"
 			fontName	"Noto Sans"
-			x	24.0
-			y	172.00398874282837
+			x	66.84375
+			y	582.7283164660136
 		]
 		LabelGraphics
 		[
 			text	"BIGINT"
 			fontSize	14
 			fontName	"Noto Sans"
-			x	134.125
-			y	172.00398874282837
+			x	142.78125
+			y	582.7283164660136
 		]
 	]
 	node
@@ -1057,8 +1293,8 @@ graph
 		id	10
 		graphics
 		[
-			x	474.46875
-			y	322.32438373565674
+			x	525.96875
+			y	727.8899142742157
 			w	249.75
 			h	84.56597709655762
 			customconfiguration	"DEFAULT"
@@ -1081,16 +1317,16 @@ graph
 			fontSize	14
 			fontStyle	"bold"
 			fontName	"Noto Sans"
-			x	373.59375
-			y	314.4715385437012
+			x	425.09375
+			y	720.0370690822601
 		]
 		LabelGraphics
 		[
 			text	"BIGINT"
 			fontSize	14
 			fontName	"Noto Sans"
-			x	407.34375
-			y	314.4715385437012
+			x	458.84375
+			y	720.0370690822601
 		]
 		LabelGraphics
 		[
@@ -1101,198 +1337,16 @@ graph
 			fontSize	14
 			fontStyle	"bold"
 			fontName	"Noto Sans"
-			x	373.59375
-			y	339.53945541381836
+			x	425.09375
+			y	745.1049859523773
 		]
 		LabelGraphics
 		[
 			text	"CHARACTER VARYING(255)"
 			fontSize	14
 			fontName	"Noto Sans"
-			x	407.34375
-			y	339.53945541381836
-		]
-	]
-	node
-	[
-		id	11
-		graphics
-		[
-			x	1942.4375
-			y	687.656635761261
-			w	340.0
-			h	134.701810836792
-			customconfiguration	"DEFAULT"
-			fill	"#FFFFCC"
-			outline	"#808080"
-		]
-		LabelGraphics
-		[
-			text	"transaction_details"
-			fontSize	15
-			fontName	"Noto Sans"
-			anchor	"t"
-		]
-		LabelGraphics
-		[
-		]
-		LabelGraphics
-		[
-			text	"id"
-			fontSize	14
-			fontStyle	"bold"
-			fontName	"Noto Sans"
-			x	1796.4375
-			y	654.7358736991882
-		]
-		LabelGraphics
-		[
-			text	"BIGINT"
-			fontSize	14
-			fontName	"Noto Sans"
-			x	1920.4375
-			y	654.7358736991882
-		]
-		LabelGraphics
-		[
-		]
-		LabelGraphics
-		[
-			text	"amount"
-			fontSize	14
-			fontStyle	"bold"
-			fontName	"Noto Sans"
-			x	1796.4375
-			y	679.8037905693054
-		]
-		LabelGraphics
-		[
-			text	"NUMERIC(19,2)"
-			fontSize	14
-			fontName	"Noto Sans"
-			x	1920.4375
-			y	679.8037905693054
-		]
-		LabelGraphics
-		[
-		]
-		LabelGraphics
-		[
-			text	"currency"
-			fontSize	14
-			fontStyle	"bold"
-			fontName	"Noto Sans"
-			x	1796.4375
-			y	704.8717074394226
-		]
-		LabelGraphics
-		[
-			text	"CHARACTER VARYING(255)"
-			fontSize	14
-			fontName	"Noto Sans"
-			x	1920.4375
-			y	704.8717074394226
-		]
-		LabelGraphics
-		[
-		]
-		LabelGraphics
-		[
-			text	"transaction_type"
-			fontSize	14
-			fontStyle	"bold"
-			fontName	"Noto Sans"
-			x	1796.4375
-			y	729.9396243095398
-		]
-		LabelGraphics
-		[
-			text	"CHARACTER VARYING(255)"
-			fontSize	14
-			fontName	"Noto Sans"
-			x	1920.4375
-			y	729.9396243095398
-		]
-	]
-	node
-	[
-		id	12
-		graphics
-		[
-			x	1459.71875
-			y	624.986843585968
-			w	265.625
-			h	109.6338939666748
-			customconfiguration	"DEFAULT"
-			fill	"#FFFFCC"
-			outline	"#808080"
-		]
-		LabelGraphics
-		[
-			text	"transaction"
-			fontSize	15
-			fontName	"Noto Sans"
-			anchor	"t"
-		]
-		LabelGraphics
-		[
-		]
-		LabelGraphics
-		[
-			text	"id"
-			fontSize	14
-			fontStyle	"bold"
-			fontName	"Noto Sans"
-			x	1350.90625
-			y	604.6000399589539
-		]
-		LabelGraphics
-		[
-			text	"BIGINT"
-			fontSize	14
-			fontName	"Noto Sans"
-			x	1512.53125
-			y	604.6000399589539
-		]
-		LabelGraphics
-		[
-		]
-		LabelGraphics
-		[
-			text	"data"
-			fontSize	14
-			fontStyle	"bold"
-			fontName	"Noto Sans"
-			x	1350.90625
-			y	629.667956829071
-		]
-		LabelGraphics
-		[
-			text	"DATE"
-			fontSize	14
-			fontName	"Noto Sans"
-			x	1512.53125
-			y	629.667956829071
-		]
-		LabelGraphics
-		[
-		]
-		LabelGraphics
-		[
-			text	"transaction_details_id"
-			fontSize	14
-			fontStyle	"bold"
-			fontName	"Noto Sans"
-			x	1350.90625
-			y	654.7358736991882
-		]
-		LabelGraphics
-		[
-			text	"BIGINT"
-			fontSize	14
-			fontName	"Noto Sans"
-			x	1512.53125
-			y	654.7358736991882
+			x	458.84375
+			y	745.1049859523773
 		]
 	]
 	edge
@@ -1307,23 +1361,23 @@ graph
 			[
 				point
 				[
-					x	950.71875
-					y	280.4281988143921
+					x	1057.15625
+					y	528.1959867477417
 				]
 				point
 				[
-					x	1206.625
-					y	320.7111873626709
+					x	1358.0
+					y	568.4789752960205
 				]
 				point
 				[
-					x	1206.625
-					y	485.50010442733765
+					x	1358.0
+					y	368.88441729545593
 				]
 				point
 				[
-					x	1459.71875
-					y	482.8189911842346
+					x	1588.34375
+					y	366.2033040523529
 				]
 			]
 		]
@@ -1343,29 +1397,6 @@ graph
 		[
 			fill	"#808080"
 			targetArrow	"standard"
-			Line
-			[
-				point
-				[
-					x	950.71875
-					y	280.4281988143921
-				]
-				point
-				[
-					x	1186.625
-					y	345.7791042327881
-				]
-				point
-				[
-					x	1186.625
-					y	330.79829359054565
-				]
-				point
-				[
-					x	1459.71875
-					y	353.1850972175598
-				]
-			]
 		]
 		edgeAnchor
 		[
@@ -1383,11 +1414,114 @@ graph
 		[
 			fill	"#808080"
 			targetArrow	"standard"
+			Line
+			[
+				point
+				[
+					x	525.96875
+					y	510.5183112621307
+				]
+				point
+				[
+					x	746.3125
+					y	651.0729672908783
+				]
+				point
+				[
+					x	746.3125
+					y	493.27522468566895
+				]
+				point
+				[
+					x	1057.15625
+					y	528.1959867477417
+				]
+			]
 		]
 		edgeAnchor
 		[
 			xSource	1.0
-			ySource	0.888218104839325
+			ySource	0.9062861204147339
+			xTarget	-1.0
+			yTarget	-0.4371386468410492
+		]
+	]
+	edge
+	[
+		source	4
+		target	1
+		graphics
+		[
+			fill	"#808080"
+			targetArrow	"standard"
+			Line
+			[
+				point
+				[
+					x	525.96875
+					y	243.01087450981137
+				]
+				point
+				[
+					x	766.3125
+					y	295.8278214931488
+				]
+				point
+				[
+					x	766.3125
+					y	493.27522468566895
+				]
+				point
+				[
+					x	1057.15625
+					y	528.1959867477417
+				]
+			]
+		]
+		edgeAnchor
+		[
+			xSource	1.0
+			ySource	0.5714955925941467
+			xTarget	-1.0
+			yTarget	-0.4371386468410492
+		]
+	]
+	edge
+	[
+		source	4
+		target	1
+		graphics
+		[
+			fill	"#808080"
+			targetArrow	"standard"
+			Line
+			[
+				point
+				[
+					x	525.96875
+					y	243.01087450981137
+				]
+				point
+				[
+					x	756.3125
+					y	320.895738363266
+				]
+				point
+				[
+					x	756.3125
+					y	493.27522468566895
+				]
+				point
+				[
+					x	1057.15625
+					y	528.1959867477417
+				]
+			]
+		]
+		edgeAnchor
+		[
+			xSource	1.0
+			ySource	0.8427380919456482
 			xTarget	-1.0
 			yTarget	-0.4371386468410492
 		]
@@ -1395,7 +1529,7 @@ graph
 	edge
 	[
 		source	0
-		target	4
+		target	5
 		graphics
 		[
 			fill	"#808080"
@@ -1406,47 +1540,7 @@ graph
 			xSource	1.0
 			ySource	0.656269371509552
 			xTarget	-1.0
-			yTarget	-0.33239054679870605
-		]
-	]
-	edge
-	[
-		source	5
-		target	0
-		graphics
-		[
-			fill	"#808080"
-			targetArrow	"standard"
-			Line
-			[
-				point
-				[
-					x	950.71875
-					y	717.018862247467
-				]
-				point
-				[
-					x	1196.625
-					y	719.6999754905701
-				]
-				point
-				[
-					x	1196.625
-					y	485.50010442733765
-				]
-				point
-				[
-					x	1459.71875
-					y	482.8189911842346
-				]
-			]
-		]
-		edgeAnchor
-		[
-			xSource	1.0
-			ySource	0.06340879201889038
-			xTarget	-1.0
-			yTarget	0.06340879201889038
+			yTarget	-0.5134746432304382
 		]
 	]
 	edge
@@ -1461,49 +1555,122 @@ graph
 			[
 				point
 				[
-					x	950.71875
-					y	505.14035844802856
+					x	1057.15625
+					y	285.75646686553955
 				]
 				point
 				[
-					x	1186.625
-					y	507.8214716911316
+					x	1348.0
+					y	413.7771644592285
 				]
 				point
 				[
-					x	1186.625
-					y	485.50010442733765
+					x	1348.0
+					y	368.88441729545593
 				]
 				point
 				[
-					x	1459.71875
-					y	482.8189911842346
+					x	1588.34375
+					y	366.2033040523529
 				]
 			]
 		]
 		edgeAnchor
 		[
 			xSource	1.0
-			ySource	0.06340879201889038
+			ySource	0.8980464339256287
 			xTarget	-1.0
 			yTarget	0.06340879201889038
 		]
 	]
 	edge
 	[
-		source	5
-		target	7
+		source	7
+		target	0
 		graphics
 		[
 			fill	"#808080"
 			targetArrow	"standard"
+			Line
+			[
+				point
+				[
+					x	132.8125
+					y	67.350905418396
+				]
+				point
+				[
+					x	295.625
+					y	95.09993553161621
+				]
+				point
+				[
+					x	295.625
+					y	56.32431888580322
+				]
+				point
+				[
+					x	1368.0
+					y	56.32431888580322
+				]
+				point
+				[
+					x	1368.0
+					y	368.88441729545593
+				]
+				point
+				[
+					x	1588.34375
+					y	366.2033040523529
+				]
+			]
 		]
 		edgeAnchor
 		[
 			xSource	1.0
-			ySource	0.656269371509552
+			ySource	0.41200679540634155
 			xTarget	-1.0
-			yTarget	-0.6172835826873779
+			yTarget	0.06340879201889038
+		]
+	]
+	edge
+	[
+		source	4
+		target	6
+		graphics
+		[
+			fill	"#808080"
+			targetArrow	"standard"
+			Line
+			[
+				point
+				[
+					x	525.96875
+					y	243.01087450981137
+				]
+				point
+				[
+					x	746.3125
+					y	270.7599046230316
+				]
+				point
+				[
+					x	746.3125
+					y	188.16591262817383
+				]
+				point
+				[
+					x	1057.15625
+					y	285.75646686553955
+				]
+			]
+		]
+		edgeAnchor
+		[
+			xSource	1.0
+			ySource	0.3002530038356781
+			xTarget	-1.0
+			yTarget	-0.6845834255218506
 		]
 	]
 	edge
@@ -1518,23 +1685,23 @@ graph
 			[
 				point
 				[
-					x	107.0625
-					y	154.78891706466675
+					x	132.8125
+					y	565.5132447878519
 				]
 				point
 				[
-					x	244.125
-					y	157.47003030776978
+					x	295.625
+					y	568.194358030955
 				]
 				point
 				[
-					x	244.125
-					y	44.964101791381836
+					x	295.625
+					y	400.39379858970636
 				]
 				point
 				[
-					x	474.46875
-					y	130.02069759368896
+					x	525.96875
+					y	510.5183112621307
 				]
 			]
 		]
@@ -1543,7 +1710,7 @@ graph
 			xSource	1.0
 			ySource	0.06340879201889038
 			xTarget	-1.0
-			yTarget	-0.6541773676872253
+			yTarget	-0.710074782371521
 		]
 	]
 	edge
@@ -1558,23 +1725,23 @@ graph
 			[
 				point
 				[
-					x	107.0625
-					y	154.78891706466675
+					x	132.8125
+					y	565.5132447878519
 				]
 				point
 				[
-					x	244.125
-					y	182.53794717788696
+					x	295.625
+					y	593.2622749010721
 				]
 				point
 				[
-					x	244.125
-					y	325.00549697875977
+					x	295.625
+					y	730.5710275173187
 				]
 				point
 				[
-					x	474.46875
-					y	322.32438373565674
+					x	525.96875
+					y	727.8899142742157
 				]
 			]
 		]
@@ -1588,25 +1755,8 @@ graph
 	]
 	edge
 	[
-		source	12
-		target	11
-		graphics
-		[
-			fill	"#808080"
-			targetArrow	"standard"
-		]
-		edgeAnchor
-		[
-			xSource	1.0
-			ySource	0.7348637580871582
-			xTarget	-1.0
-			yTarget	-0.33239054679870605
-		]
-	]
-	edge
-	[
-		source	6
-		target	12
+		source	7
+		target	4
 		graphics
 		[
 			fill	"#808080"
@@ -1615,32 +1765,32 @@ graph
 			[
 				point
 				[
-					x	950.71875
-					y	505.14035844802856
+					x	132.8125
+					y	67.350905418396
 				]
 				point
 				[
-					x	1206.625
-					y	532.8893885612488
+					x	295.625
+					y	120.1678524017334
 				]
 				point
 				[
-					x	1206.625
-					y	615.1339983940125
+					x	295.625
+					y	195.55615401268003
 				]
 				point
 				[
-					x	1459.71875
-					y	624.986843585968
+					x	525.96875
+					y	243.01087450981137
 				]
 			]
 		]
 		edgeAnchor
 		[
 			xSource	1.0
-			ySource	0.656269371509552
+			ySource	0.784205436706543
 			xTarget	-1.0
-			yTarget	-0.17974086105823517
+			yTarget	-0.5134746432304382
 		]
 	]
 ]
