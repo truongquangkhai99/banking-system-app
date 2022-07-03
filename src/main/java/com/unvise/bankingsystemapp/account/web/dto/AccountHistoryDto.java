@@ -1,8 +1,9 @@
 package com.unvise.bankingsystemapp.account.web.dto;
 
-import com.unvise.bankingsystemapp.credit.Credit;
-import com.unvise.bankingsystemapp.deposit.Deposit;
-import com.unvise.bankingsystemapp.transaction.Transaction;
+import com.unvise.bankingsystemapp.common.View;
+import com.unvise.bankingsystemapp.credit.web.dto.CreditDto;
+import com.unvise.bankingsystemapp.deposit.web.dto.DepositDto;
+import com.unvise.bankingsystemapp.transaction.web.dto.TransactionDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,15 +16,15 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Null(groups = {View.New.class, View.Update.class})
 public class AccountHistoryDto {
 
-    @Null
     private Long id;
 
-    private Deposit deposit;
+    private DepositDto deposit;
 
-    private List<Credit> credits;
+    private List<CreditDto> credits;
 
-    private List<Transaction> transaction;
+    private List<TransactionDto> transaction;
 
 }
