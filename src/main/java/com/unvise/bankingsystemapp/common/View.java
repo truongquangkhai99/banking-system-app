@@ -2,22 +2,19 @@ package com.unvise.bankingsystemapp.common;
 
 public final class View {
 
-
     /**
      * Used when saving new data
+     * Should be used when validating data
      */
-    public interface New { }
+    public interface New {
+    }
 
 
     /**
      * Used when updating existing data
+     * Should be used when validating data
      */
-    public interface Update { }
-
-    /**
-     * Used to display details.
-     * Ex. id, name, phone and etc
-     */
-    public interface Details { }
+    public interface Update {
+    }
 
 }
