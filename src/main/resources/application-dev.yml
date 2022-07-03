@@ -1,0 +1,29 @@
+spring:
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+  datasource:
+    url: jdbc:postgresql://localhost:5438/postgres
+    driverClassName: org.postgresql.Driver
+    username: postgres
+    password: postgres
+
+  sql:
+    init:
+      platform: postgres
+
+server:
+  port: 8181
+
+logging:
+  level:
+    com:
+      unvise:
+        bankingsystemapp: 'DEBUG'
