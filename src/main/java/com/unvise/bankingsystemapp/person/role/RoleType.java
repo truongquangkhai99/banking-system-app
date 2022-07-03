@@ -1,4 +1,4 @@
-package com.unvise.bankingsystemapp.role.enums;
+package com.unvise.bankingsystemapp.person.role;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

@@ -1,13 +1,17 @@
-package com.unvise.bankingsystemapp.person;
+package com.unvise.bankingsystemapp.person.person;
 
-import com.unvise.bankingsystemapp.account.Account;
+import com.unvise.bankingsystemapp.account.account.Account;
 import com.unvise.bankingsystemapp.audit.DateAudit;
-import com.unvise.bankingsystemapp.role.Role;
+import com.unvise.bankingsystemapp.person.role.Role;
 import lombok.*;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -43,6 +47,12 @@ public class Person extends DateAudit {
     @Column(name = "phone", length = 30, nullable = false)
     private String phone;
 
+    @Column(name = "password", length = 100, nullable = false)
+    private String password;
+
+    @Column(name = "status", nullable = false)
+    private Boolean status;
+
     @OneToOne(
             fetch = FetchType.LAZY,
             cascade = {CascadeType.PERSIST, CascadeType.MERGE},
@@ -55,15 +65,20 @@ public class Person extends DateAudit {
     )
     private Account account;
 
-    @ManyToMany(
-            fetch = FetchType.EAGER,
-            cascade = CascadeType.ALL
-    )
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.REFRESH})
     @JoinTable(
             name = "person_role",
-            joinColumns = @JoinColumn(name = "person_role_id"),
+            joinColumns = @JoinColumn(name = "person_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
-    private Set<Role> roles;
+    private Set<Role> roles = new HashSet<>();
+
+    public void addRole(Role role) {
+        roles.add(role);
+    }
+
+    public void removeRole(Role role) {
+        roles.remove(role);
+    }
 
 }
