@@ -1,6 +1,8 @@
 package com.unvise.bankingsystemapp.account.web.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
+import com.unvise.bankingsystemapp.common.View;
 import com.unvise.bankingsystemapp.currency.enums.CurrencyType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,22 +19,21 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 public class AccountDto {
 
-    @Null(groups = {AccountViews.New.class})
-    @JsonView({AccountViews.Details.class})
+    @Null(groups = {View.New.class, View.Update.class})
     private Long id;
 
-    @Null(groups = {AccountViews.New.class})
-    @JsonView({AccountViews.Details.class})
+    @Null(groups = {View.New.class})
+    @NotNull(groups = {View.Update.class})
     private BigDecimal balance;
 
-    @NotNull(groups = {AccountViews.New.class})
-    @JsonView({AccountViews.Details.class})
+    @NotNull(groups = {View.New.class, View.Update.class})
     private CurrencyType currency;
 
-    @NotNull(groups = {AccountViews.New.class})
+    @NotNull(groups = {View.New.class, View.Update.class})
     private AccountSecurityDetailsDto accountSecurityDetails;
 
-    @Null(groups = {AccountViews.New.class})
-    private AccountHistoryDto accountHistory;
+    @Null(groups = {View.New.class})
+    @NotNull(groups = {View.Update.class})
+    private Long accountHistoryId;
 
 }
