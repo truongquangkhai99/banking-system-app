@@ -28,7 +28,7 @@ public class PersonRestController {
         return new ResponseEntity<>(personService.getByFirstname(firstname), HttpStatus.OK);
     }
 
-    @GetMapping(params = "{lastname}")
+    @GetMapping(params = "lastname")
     public ResponseEntity<List<PersonDto>> getPersonsByLastname(@RequestParam String lastname) {
         return new ResponseEntity<>(personService.getByLastname(lastname), HttpStatus.OK);
     }
