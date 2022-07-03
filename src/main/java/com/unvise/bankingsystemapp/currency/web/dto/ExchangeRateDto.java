@@ -18,25 +18,25 @@ import java.math.BigDecimal;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@FieldUnmatched(first = "fromCurrency", second = "toCurrency", groups = {View.New.class, View.Update.class})
+@FieldUnmatched(
+        first = "fromCurrency",
+        second = "toCurrency",
+        message = "The fromCurrency field must not be equal toCurrency field",
+        groups = {View.New.class, View.Update.class}
+)
 public class ExchangeRateDto {
 
-    @Null(groups = {View.New.class})
-    @NotNull(groups = {View.Update.class})
-    @JsonView(View.Details.class)
+    @Null(groups = {View.New.class, View.Update.class})
     private Long id;
 
     @NotNull(groups = {View.New.class, View.Update.class})
-    @JsonView(View.Details.class)
     private CurrencyType fromCurrency;
 
     @NotNull(groups = {View.New.class, View.Update.class})
-    @JsonView(View.Details.class)
     private CurrencyType toCurrency;
 
     @NotNull(groups = {View.New.class, View.Update.class})
     @Positive(groups = {View.New.class, View.Update.class})
-    @JsonView(View.Details.class)
     private BigDecimal ratio;
 
 }
