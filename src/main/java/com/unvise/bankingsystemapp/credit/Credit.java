@@ -1,14 +1,12 @@
 package com.unvise.bankingsystemapp.credit;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.unvise.bankingsystemapp.account.AccountHistory;
+import com.unvise.bankingsystemapp.account.history.AccountHistory;
 import com.unvise.bankingsystemapp.audit.DateAudit;
+import com.unvise.bankingsystemapp.currency.enums.CurrencyType;
 import lombok.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.List;
 
 @Entity
 @Table(name = "credit")
@@ -37,12 +35,15 @@ public class Credit extends DateAudit {
     @Column(name = "date_between_payments_in_days", nullable = false)
     private Integer dateBetweenPaymentsInDays;
 
+    @Column(name = "currency", length = 3, nullable = false)
+    private CurrencyType currency;
+
     @Column(name = "is_closed")
     private Boolean isClosed;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "account_history_id", nullable = false, foreignKey = @ForeignKey(name = "credit_account_history_fk"))
-    @JsonIgnore
+    @ToString.Exclude
     private AccountHistory accountHistory;
 
     @PrePersist
@@ -59,5 +60,27 @@ public class Credit extends DateAudit {
             isClosed = false;
         }
     }
+
+    public void topUp(BigDecimal value) {
+        addToCurrent(value);
+        subtractFromRemain(value);
+    }
+
+    public void addToCurrent(BigDecimal value) {
+        this.current = this.current.add(value);
+    }
+
+    public void subtractFromCurrent(BigDecimal value) {
+        this.current = this.current.subtract(value);
+    }
+
+    public void addToRemain(BigDecimal value) {
+        this.remain = this.remain.add(value);
+    }
+
+    public void subtractFromRemain(BigDecimal value) {
+        this.remain = this.remain.subtract(value);
+    }
+
 
 }

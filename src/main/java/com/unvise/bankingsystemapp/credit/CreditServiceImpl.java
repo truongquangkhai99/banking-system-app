@@ -1,12 +1,13 @@
 package com.unvise.bankingsystemapp.credit;
 
-import com.unvise.bankingsystemapp.account.Account;
-import com.unvise.bankingsystemapp.account.AccountRepository;
+import com.unvise.bankingsystemapp.account.account.Account;
+import com.unvise.bankingsystemapp.account.account.AccountRepository;
 import com.unvise.bankingsystemapp.credit.web.dto.CreditDto;
 import com.unvise.bankingsystemapp.exception.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Map;
 
@@ -19,12 +20,14 @@ public class CreditServiceImpl implements CreditService {
     private final CreditMapper creditMapper;
 
     @Override
+    @Transactional
     public List<CreditDto> getAll() {
         List<Credit> foundCredits = creditRepository.findAll();
         return creditMapper.toDtoList(foundCredits);
     }
 
     @Override
+    @Transactional
     public CreditDto getById(Long aLong) {
         Credit foundCredit = creditRepository.findById(aLong).orElseThrow(() ->
                 new ResourceNotFoundException("Credit", Map.of("id", aLong)));
@@ -32,6 +35,7 @@ public class CreditServiceImpl implements CreditService {
     }
 
     @Override
+    @Transactional
     public CreditDto save(CreditDto creditDto) {
         Account foundAccount = getAccountByAccountHistoryId(creditDto.getAccountHistoryId());
 
@@ -43,6 +47,7 @@ public class CreditServiceImpl implements CreditService {
     }
 
     @Override
+    @Transactional
     public CreditDto updateById(Long aLong, CreditDto creditDto) {
         creditRepository.findById(aLong).orElseThrow(() ->
                 new ResourceNotFoundException("Credit", Map.of("id", aLong)));
@@ -59,6 +64,7 @@ public class CreditServiceImpl implements CreditService {
     }
 
     @Override
+    @Transactional
     public CreditDto deleteById(Long aLong) {
         Credit foundCredit = creditRepository.findById(aLong).orElseThrow(() ->
                 new ResourceNotFoundException("Credit", Map.of("id", aLong)));

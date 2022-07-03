@@ -13,6 +13,7 @@ public interface CreditMapper {
     CreditDto toDto(Credit credit);
 
     @Mapping(target = "accountHistory", ignore = true)
+    @Mapping(source = "currency", target = "currency")
     Credit toEntity(CreditDto creditDto);
 
     List<CreditDto> toDtoList(List<Credit> credits);

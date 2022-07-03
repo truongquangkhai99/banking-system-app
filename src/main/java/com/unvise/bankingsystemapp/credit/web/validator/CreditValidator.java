@@ -19,7 +19,7 @@ public class CreditValidator implements ConstraintValidator<ValidateCredit, Cred
                 && creditDto.getIsClosed() != null) {
             boolean check = creditDto.getTotal().equals(creditDto.getCurrent().add(creditDto.getRemain()));
 
-            if (creditDto.getIsClosed() != null) {
+            if (creditDto.getIsClosed()) {
                 return check && creditDto.getTotal().compareTo(creditDto.getCurrent()) == 0;
             }
 
