@@ -10,8 +10,9 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "exchange_rate")
-@IdClass(ExchangeRateId.class)
+@Table(name = "exchange_rate", uniqueConstraints = {
+        @UniqueConstraint(name = "currencies", columnNames = {"from_currency", "to_currency"})
+})
 @Builder
 @Data
 @NoArgsConstructor
@@ -24,12 +25,10 @@ public class ExchangeRate {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Id
     @Column(name = "from_currency", length = 3, nullable = false)
     @Enumerated(EnumType.STRING)
     private CurrencyType fromCurrency;
 
-    @Id
     @Column(name = "to_currency", length = 3, nullable = false)
     @Enumerated(EnumType.STRING)
     private CurrencyType toCurrency;

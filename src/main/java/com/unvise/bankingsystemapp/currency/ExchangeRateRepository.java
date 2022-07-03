@@ -8,9 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface ExchangeRateRepository extends BaseRepository<ExchangeRate, ExchangeRateId> {
-
-    Optional<ExchangeRate> findById(Long id);
+public interface ExchangeRateRepository extends BaseRepository<ExchangeRate, Long> {
 
     List<ExchangeRate> findByToCurrency(CurrencyType toCurrency);
 

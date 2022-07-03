@@ -1,6 +1,5 @@
 package com.unvise.bankingsystemapp.currency.web.rest;
 
-import com.fasterxml.jackson.annotation.JsonView;
 import com.unvise.bankingsystemapp.common.View;
 import com.unvise.bankingsystemapp.currency.ExchangeRateService;
 import com.unvise.bankingsystemapp.currency.enums.CurrencyType;
@@ -16,36 +15,31 @@ import java.util.List;
 @RestController
 @RequestMapping("api/v1/exchange-rate")
 @RequiredArgsConstructor
-public class ExchangeRateController {
+public class ExchangeRateRestController {
 
     private final ExchangeRateService exchangeRateService;
 
     @GetMapping
-    @JsonView(View.Details.class)
     public ResponseEntity<List<ExchangeRateDto>> getExchangeRates() {
         return new ResponseEntity<>(exchangeRateService.getAll(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    @JsonView(View.Details.class)
     public ResponseEntity<ExchangeRateDto> getExchangeRate(@PathVariable Long id) {
         return new ResponseEntity<>(exchangeRateService.getById(id), HttpStatus.OK);
     }
 
     @GetMapping(params = "toCurrency")
-    @JsonView(View.Details.class)
     public ResponseEntity<List<ExchangeRateDto>> getExchangeRateByToCurrency(@RequestParam String toCurrency) {
         return new ResponseEntity<>(exchangeRateService.getByToCurrency(CurrencyType.valueOf(toCurrency)), HttpStatus.OK);
     }
 
     @GetMapping(params = "fromCurrency")
-    @JsonView(View.Details.class)
     public ResponseEntity<List<ExchangeRateDto>> getExchangeRateByFromCurrency(@RequestParam String fromCurrency) {
         return new ResponseEntity<>(exchangeRateService.getByFromCurrency(CurrencyType.valueOf(fromCurrency)), HttpStatus.OK);
     }
 
     @GetMapping(params = {"fromCurrency", "toCurrency"})
-    @JsonView(View.Details.class)
     public ResponseEntity<ExchangeRateDto> getExchangeRateByFromCurrency(@RequestParam String fromCurrency,
                                                                          @RequestParam String toCurrency) {
         return new ResponseEntity<>(exchangeRateService.getByFromCurrencyAndToCurrency(
@@ -55,14 +49,12 @@ public class ExchangeRateController {
     }
 
     @PostMapping
-    @JsonView(View.Details.class)
     public ResponseEntity<ExchangeRateDto> addExchangeRate(@Validated(View.New.class)
                                                            @RequestBody ExchangeRateDto exchangeRateDto) {
         return new ResponseEntity<>(exchangeRateService.save(exchangeRateDto), HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    @JsonView(View.Details.class)
     public ResponseEntity<ExchangeRateDto> fullyUpdateExchangeRate(@PathVariable Long id,
                                                                    @Validated(View.Update.class)
                                                                    @RequestBody ExchangeRateDto exchangeRateDto) {
@@ -70,7 +62,6 @@ public class ExchangeRateController {
     }
 
     @DeleteMapping("/{id}")
-    @JsonView(View.Details.class)
     public ResponseEntity<ExchangeRateDto> deleteExchangeRate(@PathVariable Long id) {
         return new ResponseEntity<>(exchangeRateService.deleteById(id), HttpStatus.OK);
     }
