@@ -20,21 +20,17 @@ import java.math.BigDecimal;
 public class DepositDto {
 
     @Null(groups = {View.New.class})
-    @JsonView({View.Details.class})
     private Long id;
 
     @NotNull(groups = {View.New.class, View.Update.class})
-    @JsonView({View.Details.class})
     private BigDecimal intenseRate;
 
     @Null(groups = {View.New.class})
     @NotNull(groups = {View.Update.class})
     @PositiveOrZero(groups = {View.Update.class})
-    @JsonView({View.Details.class})
     private BigDecimal balance;
 
     @NotNull(groups = {View.New.class, View.Update.class})
-    @JsonView({View.Details.class})
     private CurrencyType currency;
 
     @NotNull(groups = {View.New.class, View.Update.class})
