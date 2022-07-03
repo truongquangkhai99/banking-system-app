@@ -1,11 +1,8 @@
-package com.unvise.bankingsystemapp.transaction;
+package com.unvise.bankingsystemapp.transaction.transaction;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.unvise.bankingsystemapp.account.AccountHistory;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.unvise.bankingsystemapp.account.history.AccountHistory;
+import com.unvise.bankingsystemapp.transaction.details.TransactionDetails;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -39,7 +36,8 @@ public class Transaction {
     private TransactionDetails transactionDetails;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "account_history_id", nullable = false, foreignKey = @ForeignKey(name = "transaction_account_history_fk"))
-    @JsonIgnore
+    @JoinColumn(name = "account_history_id", foreignKey = @ForeignKey(name = "transaction_account_history_fk"))
+    @ToString.Exclude
     private AccountHistory accountHistory;
+
 }

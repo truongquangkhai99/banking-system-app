@@ -1,4 +1,4 @@
-package com.unvise.bankingsystemapp.transaction;
+package com.unvise.bankingsystemapp.transaction.enums;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
