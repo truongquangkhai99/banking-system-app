@@ -1,7 +1,7 @@
 package com.unvise.bankingsystemapp.deposit;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.unvise.bankingsystemapp.account.AccountHistory;
+import com.unvise.bankingsystemapp.account.history.AccountHistory;
 import com.unvise.bankingsystemapp.audit.DateAudit;
 import com.unvise.bankingsystemapp.currency.enums.CurrencyType;
 import lombok.*;
@@ -24,7 +24,7 @@ public class Deposit extends DateAudit {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "intense_rate", precision = 1, scale = 10, nullable = false)
+    @Column(name = "intense_rate", precision = 18, scale = 6, nullable = false)
     private BigDecimal intenseRate;
 
     @Column(name = "balance", precision = 18, scale = 4, nullable = false)
@@ -35,7 +35,7 @@ public class Deposit extends DateAudit {
     private CurrencyType currency;
 
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "deposit")
-    @JsonIgnore
+    @ToString.Exclude
     private AccountHistory accountHistory;
 
     @PrePersist
@@ -43,6 +43,14 @@ public class Deposit extends DateAudit {
         if (balance == null) {
             balance = BigDecimal.ZERO;
         }
+    }
+
+    public void addToBalance(BigDecimal value) {
+        this.balance = this.balance.add(value);
+    }
+
+    public void subtractFromBalance(BigDecimal value) {
+        this.balance = this.balance.subtract(value);
     }
 
 }

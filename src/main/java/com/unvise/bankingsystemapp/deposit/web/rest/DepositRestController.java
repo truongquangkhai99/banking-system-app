@@ -15,31 +15,27 @@ import java.util.List;
 @RestController
 @RequestMapping("api/v1/deposit")
 @RequiredArgsConstructor
-public class DepositController {
+public class DepositRestController {
 
     private final DepositService depositService;
 
     @GetMapping
-    @JsonView(View.Details.class)
     public ResponseEntity<List<DepositDto>> getDeposits() {
         return new ResponseEntity<>(depositService.getAll(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    @JsonView(View.Details.class)
     public ResponseEntity<DepositDto> getDeposit(@PathVariable Long id) {
         return new ResponseEntity<>(depositService.getById(id), HttpStatus.OK);
     }
 
     @PostMapping
-    @JsonView(View.Details.class)
     public ResponseEntity<DepositDto> addDeposit(@Validated({View.New.class})
                                                  @RequestBody DepositDto depositDto) {
         return new ResponseEntity<>(depositService.save(depositDto), HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    @JsonView(View.Details.class)
     public ResponseEntity<DepositDto> fullyUpdateDeposit(@PathVariable Long id,
                                                          @Validated({View.Update.class})
                                                          @RequestBody DepositDto depositDto) {
@@ -47,7 +43,6 @@ public class DepositController {
     }
 
     @DeleteMapping("/{id}")
-    @JsonView(View.Details.class)
     public ResponseEntity<DepositDto> deleteDeposit(@PathVariable Long id) {
         return new ResponseEntity<>(depositService.deleteById(id), HttpStatus.OK);
     }

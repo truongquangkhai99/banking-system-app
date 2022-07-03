@@ -1,12 +1,13 @@
 package com.unvise.bankingsystemapp.deposit;
 
-import com.unvise.bankingsystemapp.account.Account;
-import com.unvise.bankingsystemapp.account.AccountRepository;
+import com.unvise.bankingsystemapp.account.account.Account;
+import com.unvise.bankingsystemapp.account.account.AccountRepository;
 import com.unvise.bankingsystemapp.deposit.web.dto.DepositDto;
 import com.unvise.bankingsystemapp.exception.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Map;
 
@@ -19,12 +20,14 @@ public class DepositServiceImpl implements DepositService {
     private final DepositMapper depositMapper;
 
     @Override
+    @Transactional
     public List<DepositDto> getAll() {
         List<Deposit> foundDeposits = depositRepository.findAll();
         return depositMapper.toDtoList(foundDeposits);
     }
 
     @Override
+    @Transactional
     public DepositDto getById(Long aLong) {
         Deposit foundDeposit = depositRepository.findById(aLong).orElseThrow(() ->
                 new ResourceNotFoundException("Deposit", Map.of("id", aLong)));
@@ -32,6 +35,7 @@ public class DepositServiceImpl implements DepositService {
     }
 
     @Override
+    @Transactional
     public DepositDto save(DepositDto depositDto) {
         Deposit deposit = depositMapper.toEntity(depositDto);
 
@@ -44,6 +48,7 @@ public class DepositServiceImpl implements DepositService {
     }
 
     @Override
+    @Transactional
     public DepositDto updateById(Long aLong, DepositDto depositDto) {
         depositRepository.findById(aLong).orElseThrow(() ->
                 new ResourceNotFoundException("Deposit", Map.of("id", aLong)));
@@ -53,6 +58,7 @@ public class DepositServiceImpl implements DepositService {
     }
 
     @Override
+    @Transactional
     public DepositDto deleteById(Long aLong) {
         Deposit foundDeposit = depositRepository.findById(aLong).orElseThrow(() ->
                 new ResourceNotFoundException("Deposit", Map.of("id", aLong)));
