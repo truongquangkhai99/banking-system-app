@@ -11,6 +11,8 @@ services:
       - prod
     networks:
       - spring-cloud-network
+    depends_on:
+      - db
 
   db:
     container_name: postgersql
@@ -23,6 +25,8 @@ services:
       - POSTGRES_PASSWORD=postgres
     networks:
       - spring-cloud-network
+    volumes:
+      - ./data/dump:/docker-entrypoint-initdb.d
 
 networks:
   spring-cloud-network:
