@@ -1,4 +1,4 @@
-package com.unvise.bankingsystemapp.account;
+package com.unvise.bankingsystemapp.account.security;
 
 import com.unvise.bankingsystemapp.account.web.dto.AccountSecurityDetailsDto;
 import org.mapstruct.Mapper;

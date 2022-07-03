@@ -1,5 +1,7 @@
-package com.unvise.bankingsystemapp.account;
+package com.unvise.bankingsystemapp.account.security;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.unvise.bankingsystemapp.account.account.Account;
 import com.unvise.bankingsystemapp.audit.DateAudit;
 import lombok.*;
 
@@ -22,5 +24,9 @@ public class AccountSecurityDetails extends DateAudit {
 
     @Column(name = "password_hash", nullable = false)
     private String passwordHash;
+
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "accountSecurityDetails")
+    @ToString.Exclude
+    private Account account;
 
 }

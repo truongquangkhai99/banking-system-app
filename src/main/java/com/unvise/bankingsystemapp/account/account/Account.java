@@ -1,14 +1,10 @@
-package com.unvise.bankingsystemapp.account;
+package com.unvise.bankingsystemapp.account.account;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonView;
+import com.unvise.bankingsystemapp.account.history.AccountHistory;
+import com.unvise.bankingsystemapp.account.security.AccountSecurityDetails;
 import com.unvise.bankingsystemapp.currency.enums.CurrencyType;
-import com.unvise.bankingsystemapp.person.Person;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.hibernate.annotations.ColumnDefault;
+import com.unvise.bankingsystemapp.person.person.Person;
+import lombok.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -51,7 +47,7 @@ public class Account {
     private AccountHistory accountHistory;
 
     @OneToOne(mappedBy = "account")
-    @JsonIgnore
+    @ToString.Exclude
     private Person person;
 
     @PrePersist
@@ -64,5 +60,14 @@ public class Account {
             accountHistory = new AccountHistory();
         }
     }
+
+    public void addToBalance(BigDecimal value) {
+        this.balance = this.balance.add(value);
+    }
+
+    public void subtractFromBalance(BigDecimal value) {
+        this.balance = this.balance.subtract(value);
+    }
+
 
 }

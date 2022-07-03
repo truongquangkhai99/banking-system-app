@@ -1,12 +1,10 @@
-package com.unvise.bankingsystemapp.account;
+package com.unvise.bankingsystemapp.account.history;
 
+import com.unvise.bankingsystemapp.account.account.Account;
 import com.unvise.bankingsystemapp.credit.Credit;
 import com.unvise.bankingsystemapp.deposit.Deposit;
-import com.unvise.bankingsystemapp.transaction.Transaction;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.unvise.bankingsystemapp.transaction.transaction.Transaction;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
@@ -35,8 +33,12 @@ public class AccountHistory {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "accountHistory")
     private List<Credit> credits;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "accountHistory")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "accountHistory", cascade = CascadeType.ALL)
     private List<Transaction> transaction;
+
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "accountHistory")
+    @ToString.Exclude
+    private Account account;
 
     @PrePersist
     private void insertNewInstance() {

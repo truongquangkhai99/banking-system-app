@@ -1,4 +1,4 @@
-package com.unvise.bankingsystemapp.account;
+package com.unvise.bankingsystemapp.account.account;
 
 import com.unvise.bankingsystemapp.account.web.dto.AccountDto;
 import com.unvise.bankingsystemapp.common.BaseService;
