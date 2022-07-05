@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -39,7 +40,7 @@ public class TransactionManagerResolver {
 
     private void manageCredit(Transaction transaction) throws TransactionFailedException {
         Account fromAccount = transaction.getTransactionDetails().getFromAccount();
-        Credit neededCredit = findCreditByIdInList(
+        Credit neededCredit = findCreditByIdInCollection(
                 fromAccount.getAccountHistory().getCredits(),
                 transaction.getTransactionDetails().getCredit().getId()
         );
@@ -136,7 +137,7 @@ public class TransactionManagerResolver {
         }
     }
 
-    private void checkCreditsByEmpty(List<Credit> credits) throws TransactionFailedException {
+    private void checkCreditsByEmpty(Collection<Credit> credits) throws TransactionFailedException {
         if (credits.isEmpty()) {
             throw new TransactionFailedException("Transaction failed because from account don't have credits");
         }
@@ -162,7 +163,7 @@ public class TransactionManagerResolver {
         }
     }
 
-    private Credit findCreditByIdInList(List<Credit> credits, Long creditId) {
+    private Credit findCreditByIdInCollection(Collection<Credit> credits, Long creditId) {
         if (credits.isEmpty()) {
             return null;
         }
