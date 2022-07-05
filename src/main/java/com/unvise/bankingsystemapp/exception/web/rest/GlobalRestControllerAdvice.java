@@ -1,6 +1,9 @@
-package com.unvise.bankingsystemapp.exception;
+package com.unvise.bankingsystemapp.exception.web.rest;
 
-import com.unvise.bankingsystemapp.api.ApiResponse;
+import com.unvise.bankingsystemapp.exception.ExchangeRateAlreadyExistException;
+import com.unvise.bankingsystemapp.exception.ResourceNotFoundException;
+import com.unvise.bankingsystemapp.exception.TransactionFailedException;
+import com.unvise.bankingsystemapp.exception.web.dto.ApiErrorDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -14,8 +17,8 @@ import java.util.Map;
 public class GlobalRestControllerAdvice {
 
     @ExceptionHandler(RuntimeException.class)
-    protected ResponseEntity<ApiResponse> handleRuntimeException(RuntimeException e, WebRequest request) {
-        ApiResponse apiResponse = ApiResponse.builder()
+    protected ResponseEntity<ApiErrorDto> handleRuntimeException(RuntimeException e, WebRequest request) {
+        ApiErrorDto apiErrorDto = ApiErrorDto.builder()
                 .message("RuntimeException message: " + e.getMessage())
                 .fields(Map.of(
                         "Class: ", e.getClass(),
@@ -24,13 +27,13 @@ public class GlobalRestControllerAdvice {
                 .status(HttpStatus.INTERNAL_SERVER_ERROR)
                 .build();
 
-        return new ResponseEntity<>(apiResponse, apiResponse.getStatus());
+        return new ResponseEntity<>(apiErrorDto, apiErrorDto.getStatus());
     }
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
-    protected ResponseEntity<ApiResponse> handleHttpMessageNotReadableException(HttpMessageNotReadableException e,
+    protected ResponseEntity<ApiErrorDto> handleHttpMessageNotReadableException(HttpMessageNotReadableException e,
                                                                                 WebRequest request) {
-        ApiResponse apiResponse = ApiResponse.builder()
+        ApiErrorDto apiErrorDto = ApiErrorDto.builder()
                 .message("Invalid json. Check the json request for syntax errors.")
                 .fields(Map.of(
                         "Class: ", e.getClass(),
@@ -39,39 +42,39 @@ public class GlobalRestControllerAdvice {
                 .status(HttpStatus.BAD_REQUEST)
                 .build();
 
-        return new ResponseEntity<>(apiResponse, apiResponse.getStatus());
+        return new ResponseEntity<>(apiErrorDto, apiErrorDto.getStatus());
     }
 
     @ExceptionHandler(ResourceNotFoundException.class)
-    protected ResponseEntity<ApiResponse> handleResourceNotFound(ResourceNotFoundException e, WebRequest request) {
-        ApiResponse apiResponse = ApiResponse.builder()
+    protected ResponseEntity<ApiErrorDto> handleResourceNotFound(ResourceNotFoundException e, WebRequest request) {
+        ApiErrorDto apiErrorDto = ApiErrorDto.builder()
                 .message("Can't find resource: " + e.getResourceName())
                 .fields(e.getFieldNameAndValue())
                 .status(HttpStatus.NOT_FOUND)
                 .build();
 
-        return new ResponseEntity<>(apiResponse, apiResponse.getStatus());
+        return new ResponseEntity<>(apiErrorDto, apiErrorDto.getStatus());
     }
 
     @ExceptionHandler(TransactionFailedException.class)
-    protected ResponseEntity<ApiResponse> handleTransaction(TransactionFailedException e, WebRequest request) {
-        ApiResponse apiResponse = ApiResponse.builder()
+    protected ResponseEntity<ApiErrorDto> handleTransaction(TransactionFailedException e, WebRequest request) {
+        ApiErrorDto apiErrorDto = ApiErrorDto.builder()
                 .message("Can't manage transaction. " + e.getMessage())
                 .fields(e.getFieldNameAndValue())
                 .status(HttpStatus.FORBIDDEN)
                 .build();
-        return new ResponseEntity<>(apiResponse, apiResponse.getStatus());
+        return new ResponseEntity<>(apiErrorDto, apiErrorDto.getStatus());
     }
 
     @ExceptionHandler(ExchangeRateAlreadyExistException.class)
-    protected ResponseEntity<ApiResponse> handleExchangeRate(ExchangeRateAlreadyExistException e, WebRequest request) {
-        ApiResponse apiResponse = ApiResponse.builder()
+    protected ResponseEntity<ApiErrorDto> handleExchangeRate(ExchangeRateAlreadyExistException e, WebRequest request) {
+        ApiErrorDto apiErrorDto = ApiErrorDto.builder()
                 .message("Can't create new Exchange rate. "
                         + e.getMessage())
                 .fields(e.getFieldNameAndValue())
                 .status(HttpStatus.FORBIDDEN)
                 .build();
-        return new ResponseEntity<>(apiResponse, apiResponse.getStatus());
+        return new ResponseEntity<>(apiErrorDto, apiErrorDto.getStatus());
     }
 
 }

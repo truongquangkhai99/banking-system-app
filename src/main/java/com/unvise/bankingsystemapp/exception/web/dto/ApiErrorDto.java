@@ -1,4 +1,4 @@
-package com.unvise.bankingsystemapp.api;
+package com.unvise.bankingsystemapp.exception.web.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,7 +10,7 @@ import java.util.Map;
 @Builder
 @Data
 @AllArgsConstructor
-public class ApiResponse {
+public class ApiErrorDto {
 
     private String message;
 
