@@ -1,6 +1,6 @@
 package com.unvise.bankingsystemapp.exception;
 
-import com.unvise.bankingsystemapp.transaction.transaction.Transaction;
+import com.unvise.bankingsystemapp.domain.transaction.transaction.Transaction;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
