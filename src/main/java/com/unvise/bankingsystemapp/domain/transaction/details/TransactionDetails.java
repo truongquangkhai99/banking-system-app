@@ -12,8 +12,7 @@ import java.math.BigDecimal;
 @Entity
 @Table(name = "transaction_details")
 @Builder
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class TransactionDetails {
