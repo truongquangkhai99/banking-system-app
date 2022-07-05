@@ -1,5 +1,6 @@
 package com.unvise.bankingsystemapp.domain.account.account;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.unvise.bankingsystemapp.domain.account.history.AccountHistory;
 import com.unvise.bankingsystemapp.domain.account.security.AccountSecurityDetails;
 import com.unvise.bankingsystemapp.domain.currency.enums.CurrencyType;
@@ -15,6 +16,13 @@ import java.math.BigDecimal;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@NamedEntityGraph(
+        name = "account-sec-details-person-graph",
+        attributeNodes = {
+                @NamedAttributeNode(value = "accountSecurityDetails"),
+                @NamedAttributeNode(value = "person")
+        }
+)
 public class Account {
 
     @Id

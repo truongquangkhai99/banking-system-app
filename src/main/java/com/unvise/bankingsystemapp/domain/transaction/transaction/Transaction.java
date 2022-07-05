@@ -10,9 +10,17 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "transaction")
 @Builder
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@NamedEntityGraph(
+        name = "transaction-details-account-history-graph",
+        attributeNodes = {
+                @NamedAttributeNode(value = "transactionDetails"),
+                @NamedAttributeNode(value = "accountHistory")
+        }
+)
 public class Transaction {
 
     @Id
@@ -37,7 +45,6 @@ public class Transaction {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "account_history_id", foreignKey = @ForeignKey(name = "transaction_account_history_fk"))
-    @ToString.Exclude
     private AccountHistory accountHistory;
 
 }

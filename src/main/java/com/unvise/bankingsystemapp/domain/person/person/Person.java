@@ -20,6 +20,19 @@ import java.util.Set;
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
+@NamedEntityGraph(
+        name = "person-account-roles-graph",
+        attributeNodes = {
+                @NamedAttributeNode(value = "account", subgraph = "account-account-sec-details-subgraph"),
+                @NamedAttributeNode(value = "roles")
+        },
+        subgraphs = {
+                @NamedSubgraph(
+                        name = "account-account-sec-details-subgraph",
+                        attributeNodes = @NamedAttributeNode(value = "accountSecurityDetails")
+                )
+        }
+)
 public class Person extends DateAudit {
 
     @Id

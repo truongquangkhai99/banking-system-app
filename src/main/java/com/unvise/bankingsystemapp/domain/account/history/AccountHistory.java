@@ -7,7 +7,7 @@ import com.unvise.bankingsystemapp.domain.transaction.transaction.Transaction;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "account_history")
@@ -15,6 +15,19 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@NamedEntityGraph(
+        name = "deposit-transactions-credits-entity-graph",
+        attributeNodes = {
+                @NamedAttributeNode(value = "deposit"),
+                @NamedAttributeNode(value = "credits"),
+                @NamedAttributeNode(value = "transaction", subgraph = "transaction-subgraph")
+        },
+        subgraphs = {
+                @NamedSubgraph(name = "transaction-subgraph", attributeNodes = {
+                        @NamedAttributeNode(value = "transactionDetails")
+                })
+        }
+)
 public class AccountHistory {
 
     @Id
@@ -31,10 +44,10 @@ public class AccountHistory {
     private Deposit deposit;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "accountHistory")
-    private List<Credit> credits;
+    private Set<Credit> credits;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "accountHistory", cascade = CascadeType.ALL)
-    private List<Transaction> transaction;
+    private Set<Transaction> transaction;
 
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "accountHistory")
     @ToString.Exclude
@@ -43,10 +56,10 @@ public class AccountHistory {
     @PrePersist
     private void insertNewInstance() {
         if (credits == null) {
-            credits = List.of();
+            credits = Set.of();
         }
         if (transaction == null) {
-            transaction = List.of();
+            transaction = Set.of();
         }
     }
 }
