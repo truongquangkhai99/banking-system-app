@@ -117,7 +117,7 @@ public class TransactionManagerResolver {
                 transaction.getTransactionDetails().getAmount()
         );
 
-        fromAccount.subtractFromBalance(fromAccount.getBalance());
+        fromAccount.subtractFromBalance(transaction.getTransactionDetails().getAmount());
         toAccount.addToBalance(transactionBalance);
     }
 
