@@ -1,6 +1,7 @@
 package com.unvise.bankingsystemapp.account.web.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.unvise.bankingsystemapp.common.View;
 import com.unvise.bankingsystemapp.currency.enums.CurrencyType;
@@ -11,6 +12,7 @@ import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
+import javax.validation.constraints.Positive;
 import java.math.BigDecimal;
 
 @Builder
@@ -30,10 +32,13 @@ public class AccountDto {
     private CurrencyType currency;
 
     @NotNull(groups = {View.New.class, View.Update.class})
+    @JsonProperty("account_security_details")
     private AccountSecurityDetailsDto accountSecurityDetails;
 
     @Null(groups = {View.New.class})
     @NotNull(groups = {View.Update.class})
+    @Positive(groups = {View.Update.class})
+    @JsonProperty("account_history_id")
     private Long accountHistoryId;
 
 }

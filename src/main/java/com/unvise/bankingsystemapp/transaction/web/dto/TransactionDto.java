@@ -1,5 +1,6 @@
 package com.unvise.bankingsystemapp.transaction.web.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.unvise.bankingsystemapp.common.View;
 import com.unvise.bankingsystemapp.transaction.web.validator.ValidateTransaction;
 import lombok.AllArgsConstructor;
@@ -25,6 +26,7 @@ public class TransactionDto {
     private LocalDate date;
 
     @NotNull(groups = {View.New.class})
+    @JsonProperty("transaction_details")
     private TransactionDetailsDto transactionDetails;
 
 }

@@ -1,5 +1,6 @@
 package com.unvise.bankingsystemapp.person.web.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.unvise.bankingsystemapp.account.web.dto.AccountDto;
 import com.unvise.bankingsystemapp.common.View;
 import lombok.AllArgsConstructor;
@@ -35,6 +36,7 @@ public class PersonDto {
 
     @NotNull(groups = {View.New.class, View.Update.class})
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonProperty("date_of_birth")
     private LocalDate dateOfBirth;
 
     @Email

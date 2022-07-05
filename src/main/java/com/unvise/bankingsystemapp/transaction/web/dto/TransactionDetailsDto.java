@@ -1,5 +1,6 @@
 package com.unvise.bankingsystemapp.transaction.web.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.unvise.bankingsystemapp.common.View;
 import com.unvise.bankingsystemapp.currency.web.validator.FieldUnmatched;
 import com.unvise.bankingsystemapp.transaction.enums.TransactionType;
@@ -34,15 +35,22 @@ public class TransactionDetailsDto {
     private BigDecimal amount;
 
     @NotNull(groups = {View.New.class})
+    @JsonProperty("transaction_type")
     private TransactionType transactionType;
 
     @NotNull(groups = {View.New.class})
+    @Positive(groups = {View.New.class})
+    @JsonProperty("from_account_id")
     private Long fromAccountId;
 
     @CanBeNull(groups = {View.New.class})
+    @Positive(groups = {View.New.class})
+    @JsonProperty("to_account_id")
     private Long toAccountId;
 
     @CanBeNull(groups = {View.New.class})
+    @Positive(groups = {View.New.class})
+    @JsonProperty("credit_id")
     private Long creditId;
 
 }

@@ -1,5 +1,6 @@
 package com.unvise.bankingsystemapp.credit.web.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.unvise.bankingsystemapp.common.View;
 import com.unvise.bankingsystemapp.credit.web.validator.ValidateCredit;
@@ -40,6 +41,7 @@ public class CreditDto {
     private BigDecimal remain;
 
     @NotNull(groups = {View.New.class, View.Update.class})
+    @JsonProperty("date_between_payments_in_days")
     private Integer dateBetweenPaymentsInDays;
 
     @NotNull(groups = {View.New.class, View.Update.class})
@@ -47,9 +49,12 @@ public class CreditDto {
 
     @Null(groups = {View.New.class})
     @NotNull(groups = {View.Update.class})
+    @JsonProperty("is_closed")
     private Boolean isClosed;
 
     @NotNull(groups = {View.New.class, View.Update.class})
+    @Positive
+    @JsonProperty("account_history_id")
     private Long accountHistoryId;
 
 }

@@ -1,5 +1,6 @@
 package com.unvise.bankingsystemapp.currency.web.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.unvise.bankingsystemapp.common.View;
 import com.unvise.bankingsystemapp.currency.enums.CurrencyType;
@@ -30,9 +31,11 @@ public class ExchangeRateDto {
     private Long id;
 
     @NotNull(groups = {View.New.class, View.Update.class})
+    @JsonProperty("from_currency")
     private CurrencyType fromCurrency;
 
     @NotNull(groups = {View.New.class, View.Update.class})
+    @JsonProperty("to_currency")
     private CurrencyType toCurrency;
 
     @NotNull(groups = {View.New.class, View.Update.class})
