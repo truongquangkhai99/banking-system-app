@@ -1,8 +1,8 @@
 package com.unvise.bankingsystemapp.domain.person.web.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.unvise.bankingsystemapp.domain.account.web.dto.AccountDto;
 import com.unvise.bankingsystemapp.common.View;
+import com.unvise.bankingsystemapp.domain.account.web.dto.AccountDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,7 +13,6 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
 import javax.validation.constraints.Pattern;
-import java.time.LocalDate;
 import java.util.Set;
 
 @Builder
@@ -36,7 +35,7 @@ public class PersonDto {
     @NotNull(groups = {View.New.class, View.Update.class})
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @JsonProperty("date_of_birth")
-    private LocalDate dateOfBirth;
+    private String dateOfBirth;
 
     @Email
     @NotNull(groups = {View.New.class, View.Update.class})
