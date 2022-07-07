@@ -1,11 +1,13 @@
 package com.unvise.bankingsystemapp.domain.person.person;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 
+@Getter
 @AllArgsConstructor
 public class PersonPrincipal implements UserDetails {
 
