@@ -22,7 +22,7 @@ public class TransactionManagerResolver {
 
     private final CurrencyConverter currencyConverter;
 
-    public void manage(Transaction transaction) {
+    public void manage(Transaction transaction) throws TransactionFailedException {
         switch (transaction.getTransactionDetails().getTransactionType()) {
             case CREDIT:
                 manageCredit(transaction);
@@ -99,7 +99,7 @@ public class TransactionManagerResolver {
                 transaction.getTransactionDetails().getAmount()
         );
 
-        fromAccount.subtractFromBalance(fromAccount.getBalance());
+        fromAccount.subtractFromBalance(transaction.getTransactionDetails().getAmount());
         fromAccount.getAccountHistory().getDeposit().addToBalance(transactionBalance);
     }
 
