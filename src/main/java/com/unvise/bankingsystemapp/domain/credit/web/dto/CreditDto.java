@@ -22,37 +22,37 @@ import java.math.BigDecimal;
 @ValidateCredit(groups = {View.Update.class})
 public class CreditDto {
 
-    @Null(groups = {View.New.class, View.Update.class})
+    @Null(message = "id must be null", groups = {View.New.class, View.Update.class})
     private Long id;
 
-    @NotNull(groups = {View.New.class, View.Update.class})
-    @Positive(groups = {View.New.class})
+    @NotNull(message = "total must be not null", groups = {View.New.class, View.Update.class})
+    @Positive(message = "total must be positive", groups = {View.New.class})
     private BigDecimal total;
 
-    @Null(groups = {View.New.class})
-    @NotNull(groups = {View.Update.class})
-    @Positive(groups = {View.Update.class})
+    @Null(message ="while creating new credit, current must be null", groups = {View.New.class})
+    @NotNull(message ="while updating credit, current must not be null", groups = {View.Update.class})
+    @Positive(message ="while updating credit, current must be positive", groups = {View.Update.class})
     private BigDecimal current;
 
-    @Null(groups = {View.New.class})
-    @NotNull(groups = {View.Update.class})
-    @PositiveOrZero(groups = {View.Update.class})
+    @Null(message ="while creating new credit, remain must be null", groups = {View.New.class})
+    @NotNull(message ="while updating credit, remain must not be null", groups = {View.Update.class})
+    @PositiveOrZero(message ="while updating credit, remain must be positive or zero", groups = {View.Update.class})
     private BigDecimal remain;
 
-    @NotNull(groups = {View.New.class, View.Update.class})
+    @NotNull(message ="date_between_payments_in_days must not be null", groups = {View.New.class, View.Update.class})
     @JsonProperty("date_between_payments_in_days")
     private Integer dateBetweenPaymentsInDays;
 
-    @NotNull(groups = {View.New.class, View.Update.class})
+    @NotNull(message = "currency must not be null", groups = {View.New.class, View.Update.class})
     private CurrencyType currency;
 
-    @Null(groups = {View.New.class})
-    @NotNull(groups = {View.Update.class})
+    @Null(message = "while creating new credit, is_closed must be null", groups = {View.New.class})
+    @NotNull(message ="while updating credit, is_closed must not be null", groups = {View.Update.class})
     @JsonProperty("is_closed")
     private Boolean isClosed;
 
-    @NotNull(groups = {View.New.class, View.Update.class})
-    @Positive
+    @NotNull(message = "account_history_id must not be null", groups = {View.New.class, View.Update.class})
+    @Positive(message ="account_history_id must be positive", groups = {View.New.class, View.Update.class})
     @JsonProperty("account_history_id")
     private Long accountHistoryId;
 

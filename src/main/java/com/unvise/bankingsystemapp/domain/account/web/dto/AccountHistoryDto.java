@@ -1,5 +1,6 @@
 package com.unvise.bankingsystemapp.domain.account.web.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.unvise.bankingsystemapp.common.View;
 import com.unvise.bankingsystemapp.domain.credit.web.dto.CreditDto;
 import com.unvise.bankingsystemapp.domain.deposit.web.dto.DepositDto;
@@ -16,7 +17,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Null(groups = {View.New.class, View.Update.class})
+@Null(message = "account_history must be null", groups = {View.New.class, View.Update.class})
 public class AccountHistoryDto {
 
     private Long id;

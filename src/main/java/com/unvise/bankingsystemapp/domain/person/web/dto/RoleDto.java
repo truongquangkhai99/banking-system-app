@@ -16,10 +16,10 @@ import javax.validation.constraints.Null;
 @AllArgsConstructor
 public class RoleDto {
 
-    @Null(groups = {View.New.class, View.Update.class})
+    @Null(message = "id must be null", groups = {View.New.class, View.Update.class})
     private Long id;
 
-    @NotNull(groups = {View.New.class, View.Update.class})
+    @NotNull(message = "role must be not null and have valid type", groups = {View.New.class, View.Update.class})
     private RoleType role;
 
 }

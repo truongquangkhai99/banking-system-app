@@ -20,23 +20,23 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 public class DepositDto {
 
-    @Null(groups = {View.New.class})
+    @Null(message = "id must be null", groups = {View.New.class})
     private Long id;
 
-    @NotNull(groups = {View.New.class, View.Update.class})
+    @NotNull(message = "intense_rate must be not null", groups = {View.New.class, View.Update.class})
     @JsonProperty("intense_rate")
     private BigDecimal intenseRate;
 
-    @Null(groups = {View.New.class})
-    @NotNull(groups = {View.Update.class})
-    @PositiveOrZero(groups = {View.Update.class})
+    @Null(message = "while creating new deposit balance must be null", groups = {View.New.class})
+    @NotNull(message = "while updating deposit balance must not be null", groups = {View.Update.class})
+    @PositiveOrZero(message = "while updating deposit balance must be positive or zero", groups = {View.Update.class})
     private BigDecimal balance;
 
-    @NotNull(groups = {View.New.class, View.Update.class})
+    @NotNull(message = "currency must not be null", groups = {View.New.class, View.Update.class})
     private CurrencyType currency;
 
-    @NotNull(groups = {View.New.class, View.Update.class})
-    @Positive(groups = {View.New.class, View.Update.class})
+    @NotNull(message = "account_history_id must not be null", groups = {View.New.class, View.Update.class})
+    @Positive(message = "account_history_id must be positive", groups = {View.New.class, View.Update.class})
     @JsonProperty("account_history_id")
     private Long accountHistoryId;
 

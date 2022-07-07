@@ -19,23 +19,23 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 public class AccountDto {
 
-    @Null(groups = {View.New.class, View.Update.class})
+    @Null(message = "id must be null", groups = {View.New.class, View.Update.class})
     private Long id;
 
-    @Null(groups = {View.New.class})
-    @NotNull(groups = {View.Update.class})
+    @Null(message = "while creating new account, balance must be null", groups = {View.New.class})
+    @NotNull(message = "while updating account, balance must not be null", groups = {View.Update.class})
     private BigDecimal balance;
 
-    @NotNull(groups = {View.New.class, View.Update.class})
+    @NotNull(message = "currency must not be null", groups = {View.New.class, View.Update.class})
     private CurrencyType currency;
 
-    @NotNull(groups = {View.New.class, View.Update.class})
+    @NotNull(message = "account_security_details must not be null with json object with fields inside", groups = {View.New.class, View.Update.class})
     @JsonProperty("account_security_details")
     private AccountSecurityDetailsDto accountSecurityDetails;
 
-    @Null(groups = {View.New.class})
-    @NotNull(groups = {View.Update.class})
-    @Positive(groups = {View.Update.class})
+    @Null(message = "while creating new account, account_history_id must be null",groups = {View.New.class})
+    @NotNull(message = "while updating account, account_history_id must not be null", groups = {View.Update.class})
+    @Positive(message = "while updating account, account_history_id must be positive", groups = {View.Update.class})
     @JsonProperty("account_history_id")
     private Long accountHistoryId;
 

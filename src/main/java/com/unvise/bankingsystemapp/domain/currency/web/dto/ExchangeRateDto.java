@@ -21,24 +21,24 @@ import java.math.BigDecimal;
 @FieldUnmatched(
         first = "fromCurrency",
         second = "toCurrency",
-        message = "The fromCurrency field must not be equal toCurrency field",
+        message = "The from_currency field must not be equal to_currency field",
         groups = {View.New.class, View.Update.class}
 )
 public class ExchangeRateDto {
 
-    @Null(groups = {View.New.class, View.Update.class})
+    @Null(message = "id must be null", groups = {View.New.class, View.Update.class})
     private Long id;
 
-    @NotNull(groups = {View.New.class, View.Update.class})
+    @NotNull(message = "from_currency must not be null", groups = {View.New.class, View.Update.class})
     @JsonProperty("from_currency")
     private CurrencyType fromCurrency;
 
-    @NotNull(groups = {View.New.class, View.Update.class})
+    @NotNull(message = "to_currency must not be null", groups = {View.New.class, View.Update.class})
     @JsonProperty("to_currency")
     private CurrencyType toCurrency;
 
-    @NotNull(groups = {View.New.class, View.Update.class})
-    @Positive(groups = {View.New.class, View.Update.class})
+    @NotNull(message = "ratio must not be null", groups = {View.New.class, View.Update.class})
+    @Positive(message = "ratio deposit balance must be positive", groups = {View.New.class, View.Update.class})
     private BigDecimal ratio;
 
 }
