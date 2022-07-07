@@ -11,7 +11,8 @@ import java.math.BigDecimal;
 @Entity
 @Table(name = "credit")
 @Builder
-@Data
+@Getter
+@Setter
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
