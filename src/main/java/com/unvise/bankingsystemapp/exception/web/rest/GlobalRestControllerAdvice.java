@@ -7,11 +7,16 @@ import com.unvise.bankingsystemapp.exception.web.dto.ApiErrorDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 
+import javax.validation.ConstraintViolationException;
+import java.util.List;
 import java.util.Map;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 @RestControllerAdvice
 public class GlobalRestControllerAdvice {
@@ -28,6 +33,32 @@ public class GlobalRestControllerAdvice {
                 .build();
 
         return new ResponseEntity<>(apiErrorDto, apiErrorDto.getStatus());
+    }
+
+    @ExceptionHandler(ConstraintViolationException.class)
+    public ResponseEntity<List<ApiErrorDto>> onConstraintValidationException(ConstraintViolationException e) {
+        List<ApiErrorDto> apiErrorDtos = e.getConstraintViolations().stream()
+                .map(violation -> ApiErrorDto.builder()
+                        .message(violation.getMessage())
+                        .fields(Map.of("path", violation.getPropertyPath().toString()))
+                        .status(HttpStatus.BAD_REQUEST)
+                        .build()
+                )
+                .collect(Collectors.toList());
+        return new ResponseEntity<>(apiErrorDtos, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<List<ApiErrorDto>> onMethodArgumentNotValidException(MethodArgumentNotValidException e) {
+        List<ApiErrorDto> apiErrorDtos = e.getBindingResult().getFieldErrors().stream()
+                .map(error -> ApiErrorDto.builder()
+                        .message(error.getDefaultMessage())
+                        .fields(Map.of(error.getField(), Objects.requireNonNull(error.getDefaultMessage())))
+                        .status(HttpStatus.BAD_REQUEST)
+                        .build()
+                )
+                .collect(Collectors.toList());
+        return new ResponseEntity<>(apiErrorDtos, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
