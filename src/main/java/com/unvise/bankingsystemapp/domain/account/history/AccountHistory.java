@@ -12,7 +12,8 @@ import java.util.Set;
 @Entity
 @Table(name = "account_history")
 @Builder
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @NamedEntityGraph(
