@@ -19,7 +19,7 @@ import java.math.BigDecimal;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@ValidateCredit(groups = {View.Update.class})
+@ValidateCredit(message = "Invalid credit. Check current, remain and is closed field", groups = {View.Update.class})
 public class CreditDto {
 
     @Null(message = "id must be null", groups = {View.New.class, View.Update.class})
@@ -31,7 +31,7 @@ public class CreditDto {
 
     @Null(message ="while creating new credit, current must be null", groups = {View.New.class})
     @NotNull(message ="while updating credit, current must not be null", groups = {View.Update.class})
-    @Positive(message ="while updating credit, current must be positive", groups = {View.Update.class})
+    @PositiveOrZero(message ="while updating credit, current must be positive or zero", groups = {View.Update.class})
     private BigDecimal current;
 
     @Null(message ="while creating new credit, remain must be null", groups = {View.New.class})
