@@ -1,6 +1,6 @@
 package com.unvise.bankingsystemapp.domain.auth.web.mvc;
 
-import com.unvise.bankingsystemapp.common.View;
+import com.unvise.bankingsystemapp.domain.common.View;
 import com.unvise.bankingsystemapp.domain.auth.AuthServiceImpl;
 import com.unvise.bankingsystemapp.domain.auth.web.dto.SignInDto;
 import com.unvise.bankingsystemapp.domain.auth.web.dto.SignUpDto;

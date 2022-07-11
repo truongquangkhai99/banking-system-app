@@ -1,6 +1,6 @@
 package com.unvise.bankingsystemapp.domain.account.web.dto;
 
-import com.unvise.bankingsystemapp.common.View;
+import com.unvise.bankingsystemapp.domain.common.View;
 import com.unvise.bankingsystemapp.domain.currency.enums.CurrencyType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

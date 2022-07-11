@@ -1,7 +1,7 @@
 package com.unvise.bankingsystemapp.domain.deposit.web.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.unvise.bankingsystemapp.common.View;
+import com.unvise.bankingsystemapp.domain.common.View;
 import com.unvise.bankingsystemapp.domain.currency.enums.CurrencyType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

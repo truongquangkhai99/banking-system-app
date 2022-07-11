@@ -1,6 +1,6 @@
 package com.unvise.bankingsystemapp.domain.admin.web.mvc;
 
-import com.unvise.bankingsystemapp.common.View;
+import com.unvise.bankingsystemapp.domain.common.View;
 import com.unvise.bankingsystemapp.domain.account.account.AccountService;
 import com.unvise.bankingsystemapp.domain.account.web.dto.AccountDto;
 import com.unvise.bankingsystemapp.domain.credit.CreditService;

@@ -1,6 +1,6 @@
 package com.unvise.bankingsystemapp.domain.account.security;
 
-import com.unvise.bankingsystemapp.common.BaseRepository;
+import com.unvise.bankingsystemapp.domain.common.BaseRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;

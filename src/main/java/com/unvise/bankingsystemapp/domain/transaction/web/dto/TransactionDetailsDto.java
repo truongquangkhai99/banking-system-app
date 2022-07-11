@@ -2,12 +2,11 @@ package com.unvise.bankingsystemapp.domain.transaction.web.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.unvise.bankingsystemapp.common.View;
+import com.unvise.bankingsystemapp.domain.common.View;
 import com.unvise.bankingsystemapp.domain.currency.enums.CurrencyType;
 import com.unvise.bankingsystemapp.domain.currency.web.validator.FieldUnmatched;
 import com.unvise.bankingsystemapp.domain.transaction.enums.TransactionType;
 import com.unvise.bankingsystemapp.domain.transaction.web.validator.CanBeNull;
-import com.unvise.bankingsystemapp.domain.transaction.web.validator.ValidateTransaction;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

@@ -1,6 +1,6 @@
 package com.unvise.bankingsystemapp.domain.currency.web.rest;
 
-import com.unvise.bankingsystemapp.common.View;
+import com.unvise.bankingsystemapp.domain.common.View;
 import com.unvise.bankingsystemapp.domain.currency.ExchangeRateService;
 import com.unvise.bankingsystemapp.domain.currency.enums.CurrencyType;
 import com.unvise.bankingsystemapp.domain.currency.web.dto.ExchangeRateDto;

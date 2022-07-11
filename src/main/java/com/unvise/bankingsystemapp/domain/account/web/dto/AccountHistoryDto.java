@@ -1,7 +1,6 @@
 package com.unvise.bankingsystemapp.domain.account.web.dto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.unvise.bankingsystemapp.common.View;
+import com.unvise.bankingsystemapp.domain.common.View;
 import com.unvise.bankingsystemapp.domain.credit.web.dto.CreditDto;
 import com.unvise.bankingsystemapp.domain.deposit.web.dto.DepositDto;
 import com.unvise.bankingsystemapp.domain.transaction.web.dto.TransactionDto;

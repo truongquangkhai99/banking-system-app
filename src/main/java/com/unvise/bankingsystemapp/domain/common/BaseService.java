@@ -1,4 +1,4 @@
-package com.unvise.bankingsystemapp.common;
+package com.unvise.bankingsystemapp.domain.common;
 
 import com.unvise.bankingsystemapp.exception.resource.ResourceException;
 

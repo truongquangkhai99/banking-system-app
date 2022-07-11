@@ -1,4 +1,4 @@
-package com.unvise.bankingsystemapp.common;
+package com.unvise.bankingsystemapp.domain.common;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.NoRepositoryBean;

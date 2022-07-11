@@ -1,6 +1,6 @@
 package com.unvise.bankingsystemapp.domain.deposit.web.mvc;
 
-import com.unvise.bankingsystemapp.common.View;
+import com.unvise.bankingsystemapp.domain.common.View;
 import com.unvise.bankingsystemapp.domain.account.history.AccountHistoryService;
 import com.unvise.bankingsystemapp.domain.currency.util.CurrencyConverter;
 import com.unvise.bankingsystemapp.domain.deposit.DepositService;

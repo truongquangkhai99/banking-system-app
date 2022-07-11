@@ -1,4 +1,4 @@
-package com.unvise.bankingsystemapp.common;
+package com.unvise.bankingsystemapp.domain.common;
 
 public final class View {
 

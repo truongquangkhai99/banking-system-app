@@ -1,6 +1,6 @@
 package com.unvise.bankingsystemapp.domain.account.web.mvc;
 
-import com.unvise.bankingsystemapp.common.View;
+import com.unvise.bankingsystemapp.domain.common.View;
 import com.unvise.bankingsystemapp.domain.account.account.AccountService;
 import com.unvise.bankingsystemapp.domain.account.history.AccountHistoryService;
 import com.unvise.bankingsystemapp.domain.account.web.dto.TopUpAccountBalanceDto;

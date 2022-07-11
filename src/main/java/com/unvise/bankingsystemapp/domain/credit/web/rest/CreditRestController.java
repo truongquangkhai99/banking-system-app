@@ -1,6 +1,6 @@
 package com.unvise.bankingsystemapp.domain.credit.web.rest;
 
-import com.unvise.bankingsystemapp.common.View;
+import com.unvise.bankingsystemapp.domain.common.View;
 import com.unvise.bankingsystemapp.domain.credit.CreditService;
 import com.unvise.bankingsystemapp.domain.credit.web.dto.CreditDto;
 import lombok.RequiredArgsConstructor;

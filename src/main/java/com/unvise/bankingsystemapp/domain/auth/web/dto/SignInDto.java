@@ -1,6 +1,6 @@
 package com.unvise.bankingsystemapp.domain.auth.web.dto;
 
-import com.unvise.bankingsystemapp.common.View;
+import com.unvise.bankingsystemapp.domain.common.View;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

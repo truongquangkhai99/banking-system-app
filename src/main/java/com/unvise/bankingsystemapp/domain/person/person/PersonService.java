@@ -1,6 +1,6 @@
 package com.unvise.bankingsystemapp.domain.person.person;
 
-import com.unvise.bankingsystemapp.common.BaseService;
+import com.unvise.bankingsystemapp.domain.common.BaseService;
 import com.unvise.bankingsystemapp.domain.person.web.dto.PersonDto;
 import com.unvise.bankingsystemapp.exception.resource.ResourceNotFoundException;
 import org.springframework.security.core.userdetails.UserDetailsService;

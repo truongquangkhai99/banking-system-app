@@ -1,6 +1,6 @@
 package com.unvise.bankingsystemapp.domain.transaction.web.mvc;
 
-import com.unvise.bankingsystemapp.common.View;
+import com.unvise.bankingsystemapp.domain.common.View;
 import com.unvise.bankingsystemapp.domain.person.person.Person;
 import com.unvise.bankingsystemapp.domain.transaction.enums.TransactionType;
 import com.unvise.bankingsystemapp.domain.transaction.transaction.TransactionService;

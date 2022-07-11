@@ -1,6 +1,6 @@
 package com.unvise.bankingsystemapp.domain.person.person;
 
-import com.unvise.bankingsystemapp.common.BaseRepository;
+import com.unvise.bankingsystemapp.domain.common.BaseRepository;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.stereotype.Repository;
 

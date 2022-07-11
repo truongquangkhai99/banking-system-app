@@ -4,7 +4,7 @@ import com.unvise.bankingsystemapp.domain.account.account.AccountService;
 import com.unvise.bankingsystemapp.domain.account.history.AccountHistoryService;
 import com.unvise.bankingsystemapp.domain.account.web.dto.AccountDto;
 import com.unvise.bankingsystemapp.domain.account.web.dto.AccountHistoryDto;
-import com.unvise.bankingsystemapp.common.View;
+import com.unvise.bankingsystemapp.domain.common.View;
 import com.unvise.bankingsystemapp.domain.currency.enums.CurrencyType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

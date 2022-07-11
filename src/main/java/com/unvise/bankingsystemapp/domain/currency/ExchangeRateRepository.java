@@ -1,6 +1,6 @@
 package com.unvise.bankingsystemapp.domain.currency;
 
-import com.unvise.bankingsystemapp.common.BaseRepository;
+import com.unvise.bankingsystemapp.domain.common.BaseRepository;
 import com.unvise.bankingsystemapp.domain.currency.enums.CurrencyType;
 import org.springframework.stereotype.Repository;
 

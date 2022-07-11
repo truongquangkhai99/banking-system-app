@@ -1,6 +1,6 @@
 package com.unvise.bankingsystemapp.domain.transaction.web.rest;
 
-import com.unvise.bankingsystemapp.common.View;
+import com.unvise.bankingsystemapp.domain.common.View;
 import com.unvise.bankingsystemapp.domain.transaction.transaction.TransactionService;
 import com.unvise.bankingsystemapp.domain.transaction.web.dto.TransactionDto;
 import lombok.RequiredArgsConstructor;
