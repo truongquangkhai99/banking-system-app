@@ -4,9 +4,12 @@ import com.unvise.bankingsystemapp.domain.account.account.Account;
 import com.unvise.bankingsystemapp.domain.audit.DateAudit;
 import com.unvise.bankingsystemapp.domain.person.role.Role;
 import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -33,7 +36,7 @@ import java.util.Set;
                 )
         }
 )
-public class Person extends DateAudit {
+public class Person extends DateAudit implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "person_seq_gen")
@@ -88,6 +91,36 @@ public class Person extends DateAudit {
 
     public void removeRole(Role role) {
         roles.remove(role);
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return roles;
+    }
+
+    @Override
+    public String getUsername() {
+        return email;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return status;
     }
 
 }
