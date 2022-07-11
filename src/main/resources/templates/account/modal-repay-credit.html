@@ -1,0 +1,40 @@
+<div th:fragment="modalRepayCredit" class="modal fade" id="staticBackdropRepayCredit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel"
+     aria-hidden="true"
+     xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Deposit</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <form th:action="@{/credit/repay}" th:object="${repayCredit}" method="post">
+                    <input type="hidden" th:value="${account.id}" th:attr="name='accountId'"/>
+
+                    <input th:field="*{amount}" type="number" id="amount" class="form-control"/>
+                    <label class="form-label" for="amount">Amount</label>
+                    <div th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}" class="alert alert-info"></div>
+
+                    <select id="creditCurrency" class="form-select" th:field="*{currency}" aria-label="creditCurrency">
+                        <option th:each="currencyType: ${allCurrencies}"
+                                th:text="${currencyType.currencyTypeAsString}"
+                                th:value="${currencyType.currencyTypeAsString}"
+                                th:selected="${allCurrencies[0].currencyTypeAsString}"/>
+                    </select>
+                    <label class="form-label" for="creditCurrency">Currency</label>
+
+                    <input th:field="*{creditId}" type="number" id="creditId" class="form-control"/>
+                    <label class="form-label" for="creditId">Credit ID</label>
+                    <div th:if="${#fields.hasErrors('creditId')}" th:errors="*{creditId}" class="alert alert-info"></div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Open</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

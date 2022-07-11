@@ -1,0 +1,34 @@
+<div th:fragment="modalTopUpAccountBalance" class="modal" id="staticBackdropTopUpAccountBalance" data-bs-backdrop="static" data-bs-keyboard="false"
+     tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel"
+     aria-hidden="true"
+     xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Balance</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="topUpAccountBalanceForm" th:action="@{/account/top-up}" th:object="${topUpBalance}" method="post">
+                    <input id="amount" th:field="*{amount}" type="number" class="form-control">
+                    <label for="amount">How much?</label>
+                    <div th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}" class="alert alert-info"></div>
+
+                    <select id="creditCurrency" class="form-select" th:field="*{currency}" aria-label="Currency">
+                        <option th:each="currencyType: ${allCurrencies}"
+                                th:text="${currencyType.currencyTypeAsString}"
+                                th:value="${currencyType.currencyTypeAsString}"
+                                th:selected="${allCurrencies[0].currencyTypeAsString}"/>
+                    </select>
+                    <div th:if="${#fields.hasErrors('currency')}" th:errors="*{currency}" class="alert alert-info"></div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Top Up</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

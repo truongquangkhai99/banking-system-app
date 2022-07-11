@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Transaction</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+
+<header th:insert="fragments/navbar :: navbar"></header>
+
+<div class="container-fluid w-100 p-0">
+    <section class="vh-100" style="background-color: #eee;">
+        <div class="container h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-lg-12 col-xl-11">
+                    <div class="card text-black" style="border-radius: 25px;">
+                        <div class="card-body p-md-5">
+                            <div class="row justify-content-center">
+                                <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+
+                                    <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Transaction</p>
+
+                                    <form id="transactionForm" th:action="@{/transaction}" th:object="${transactionDetails}" class="mx-1 mx-md-4"
+                                          method="post">
+                                        <input type="hidden" th:field="*{fromAccountId}"/>
+
+                                        <div class="d-flex flex-row align-items-center mb-4">
+                                            <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                                            <div class="form-outline flex-fill mb-0">
+                                                <label class="form-label">Type:
+                                                    <select th:field="*{transactionType}" id="transactionType"
+                                                            class="form-select" aria-label="Default select example">
+                                                        <option th:each="type : ${transactionTypes}"
+                                                                th:value="${type.transactionTypeAsString}"
+                                                                th:text="${type.transactionTypeAsString.replace('_', ' ').toLowerCase()}"
+                                                                th:selected="${transactionTypes[0].transactionTypeAsString}">
+
+                                                        </option>
+                                                    </select>
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex flex-row align-items-center mb-4">
+                                            <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                                            <div class="form-outline flex-fill mb-0">
+                                                <select th:field="*{currency}" id="currency" class="form-select" aria-label="Choose account currency">
+                                                    <option selected value="RUB">RUB</option>
+                                                    <option value="USD">USD</option>
+                                                    <option value="EUR">EUR</option>
+                                                </select>
+                                                <label class="form-label" for="currency">Currency</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex flex-row align-items-center mb-4">
+                                            <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                                            <div class="form-outline flex-fill mb-0">
+                                                <input th:field="*{amount}"
+                                                       type="number" id="amount" class="form-control"/>
+                                                <label class="form-label" for="amount">Amount</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex flex-row align-items-center mb-4">
+                                            <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                                            <div class="form-outline flex-fill mb-0">
+                                                <input th:field="*{toAccountId}"
+                                                       type="number" id="toAccountId" class="form-control"/>
+                                                <label class="form-label" for="toAccountId">To account id</label>
+                                                <br>
+                                                <label style="font-size: 10px;" class="form-label">
+                                                    *Required if transaction type is transfer</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex flex-row align-items-center mb-4">
+                                            <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                                            <div class="form-outline flex-fill mb-0">
+                                                <input th:field="*{creditId}"
+                                                       type="number" id="creditId" class="form-control"/>
+                                                <label class="form-label" for="creditId">Credit id</label>
+                                                <br>
+                                                <label style="font-size: 10px;" class="form-label">
+                                                    *Required if transaction type is credit</label>
+                                            </div>
+                                        </div>
+
+                                        <div id="manageButtonDiv" class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                                            <button id="manageButton" type="submit" class="btn btn-primary btn-lg">Manage
+                                            </button>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!--<script th:inline="javascript">-->
+<!--    function createCustomElement(obj) {-->
+<!--        let generatedElement = document.createElement(obj.textElement)-->
+<!--        generatedElement.innerHTML = obj.text-->
+
+<!--        return generatedElement;-->
+<!--    }-->
+
+<!--    function removeChildrenFromParent(children, parent) {-->
+<!--        for (const child of children) {-->
+<!--            parent.removeChild(child)-->
+<!--        }-->
+<!--    }-->
+
+<!--    function insertChildrenBeforeParentElement(children, parent, refElement) {-->
+<!--        for (const child of children) {-->
+<!--            parent.insertBefore(child, refElement)-->
+<!--        }-->
+<!--    }-->
+
+<!--    const transactionType = document.getElementById("transactionType");-->
+<!--    let elementsToAppend = []-->
+
+<!--    transactionType.addEventListener('change', function (event) {-->
+<!--        let parent = document.getElementById('transactionForm')-->
+<!--        let manageButtonDiv = document.getElementById('manageButtonDiv')-->
+
+<!--        removeChildrenFromParent(elementsToAppend, parent)-->
+<!--        elementsToAppend = []-->
+
+<!--        switch (event.target.value) {-->
+<!--            case "DEPOSIT":-->
+<!--                insertChildrenBeforeParentElement(elementsToAppend, parent, manageButtonDiv)-->
+<!--                break-->
+
+<!--            case "CREDIT":-->
+<!--                elementsToAppend.push(createCustomElement({-->
+<!--                    textElement: 'div',-->
+<!--                    text:-->
+<!--                        '<div class="d-flex flex-row align-items-center mb-4">' +-->
+<!--                        '<i class="fas fa-lock fa-lg me-3 fa-fw"></i>' +-->
+<!--                        '<div class="form-outline flex-fill mb-0">' +-->
+<!--                        '<input class="form-control" type="number" th:field="*{creditId}" />' +-->
+<!--                        '<label class="form-label">Credit Id</label> ' +-->
+<!--                        '</div>' +-->
+<!--                        '</div>'-->
+<!--                }))-->
+<!--                insertChildrenBeforeParentElement(elementsToAppend, parent, manageButtonDiv)-->
+<!--                break-->
+
+<!--            case "TRANSFER":-->
+<!--                elementsToAppend.push(createCustomElement({-->
+<!--                    textElement: 'div',-->
+<!--                    text:-->
+<!--                        '<div class="d-flex flex-row align-items-center mb-4">' +-->
+<!--                        '<i class="fas fa-lock fa-lg me-3 fa-fw"></i>' +-->
+<!--                        '<div class="form-outline flex-fill mb-0">' +-->
+<!--                        '<input class="form-control" type="email" th:field="*{email}" />' +-->
+<!--                        '<label class="form-label">To Account (email): </label> ' +-->
+<!--                        '</div>' +-->
+<!--                        '</div>'-->
+<!--                }))-->
+<!--                insertChildrenBeforeParentElement(elementsToAppend, parent, manageButtonDiv)-->
+<!--                break-->
+
+<!--            case "TOP_UP_ACCOUNT_BALANCE":-->
+<!--                insertChildrenBeforeParentElement(elementsToAppend, parent, manageButtonDiv)-->
+<!--                break-->
+
+<!--            case "WITHDRAW_DEPOSIT":-->
+<!--                insertChildrenBeforeParentElement(elementsToAppend, parent, manageButtonDiv)-->
+<!--                break-->
+<!--        }-->
+
+<!--    })-->
+<!--</script>-->
+
+<script th:inline="javascript" th:if="${success != null}">
+    let message = [[${success}]]
+    window.onload = function () {
+        alert(message)
+    }
+</script>
+
+<script th:inline="javascript" th:if="${errors != null && !errors.isEmpty()}">
+    let message = [[${errors}]]
+    window.onload = function () {
+        alert(message)
+    }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+        integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+</body>
+</html>

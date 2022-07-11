@@ -1,0 +1,55 @@
+<div class="container-fluid p-0" th:fragment="navbar"
+     xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark nav-fill w-100">
+        <a class="navbar-brand ps-2">Banking System App</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent" aria-controls="navContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navContent">
+
+            <div class="navbar-nav" id="navStartContent">
+                <a class="nav-item nav-link" th:href="@{/}">Home</a>
+
+                <div class="navbar-nav" sec:authorize="isAuthenticated()">
+                    <a class="nav-item nav-link" th:href="@{/account}">Account</a>
+                    <a class="nav-item nav-link" th:href="@{/transaction}">Transaction</a>
+
+                    <div class="nav-item dropdown" sec:authorize="hasAuthority('ADMIN')">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false">Admin Panel
+                        </a>
+
+                        <div id="adminDropdownMenu" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" th:href="@{/admin/person}">Persons</a>
+                            <a class="dropdown-item" th:href="@{/admin/account}">Accounts</a>
+                            <a class="dropdown-item" th:href="@{/admin/deposit}">Deposits</a>
+                            <a class="dropdown-item" th:href="@{/admin/credit}">Credits</a>
+                            <a class="dropdown-item" th:href="@{/admin/transaction}">Transactions</a>
+                        </div>
+                    </div>
+
+                    <div sec:authorize="hasAuthority('ADMIN')">
+                        <a class="nav-item nav-link" th:href="@{/swagger-ui/}">Swagger Docs</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="navbar-nav ms-auto" id="navEndContent">
+                <div sec:authorize="isAnonymous()">
+                    <a class="nav-item nav-link" th:href="@{/signin}">Sign In</a>
+                </div>
+
+                <div sec:authorize="isAnonymous()">
+                    <a class="nav-item nav-link" th:href="@{/signup}">Sign Up</a>
+                </div>
+
+                <div sec:authorize="isAuthenticated()">
+                    <a class="nav-item nav-link" th:href="@{/logout}">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>

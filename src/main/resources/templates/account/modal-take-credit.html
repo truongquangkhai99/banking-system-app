@@ -1,0 +1,43 @@
+<div th:fragment="modalTakeCredit" class="modal fade" id="staticBackdropTakeCredit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel"
+     aria-hidden="true"
+     xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Deposit</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <form th:action="@{/credit}" th:object="${credit}" method="post">
+                    <input type="hidden" th:value="${account.accountHistoryId}" th:attr="name='accountHistoryId'"/>
+
+                    <input th:field="*{total}" type="number" id="creditTotal" class="form-control"/>
+                    <label class="form-label" for="creditTotal">Total</label>
+                    <div th:if="${#fields.hasErrors('total')}" th:errors="*{total}" class="alert alert-info"></div>
+
+                    <select id="creditCurrency" class="form-select" th:field="*{currency}" aria-label="Currency">
+                        <option th:each="currencyType: ${allCurrencies}"
+                                th:text="${currencyType.currencyTypeAsString}"
+                                th:value="${currencyType.currencyTypeAsString}"
+                                th:selected="${allCurrencies[0].currencyTypeAsString}"/>
+                    </select>
+                    <label class="form-label" for="creditCurrency">Currency</label>
+
+                    <input th:field="*{dateBetweenPaymentsInDays}" type="number"
+                           id="creditDateBetweenPaymentsInDays" class="form-control" step="1"/>
+                    <label class="form-label" for="creditDateBetweenPaymentsInDays">Date Between Payments In Days</label>
+                    <div th:if="${#fields.hasErrors('dateBetweenPaymentsInDays')}"
+                         th:errors="*{dateBetweenPaymentsInDays}" class="alert alert-info"></div>
+
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Open</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
