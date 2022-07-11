@@ -8,10 +8,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Null;
-import javax.validation.constraints.Positive;
-import javax.validation.constraints.PositiveOrZero;
+import javax.validation.constraints.*;
 import java.math.BigDecimal;
 
 @Builder
@@ -23,7 +20,9 @@ public class DepositDto {
     @Null(message = "id must be null", groups = {View.New.class})
     private Long id;
 
-    @NotNull(message = "intense_rate must be not null", groups = {View.New.class, View.Update.class})
+    @NotNull(message = "intense rate must be not null", groups = {View.New.class, View.Update.class})
+    @DecimalMin(message = "intense rate must be greater than 1.0001 ", value = "1.0001", groups = {View.New.class, View.Update.class})
+    @DecimalMax(message = "intense rate must be lower than 1.0079 ", value = "1.0079", groups = {View.New.class, View.Update.class})
     @JsonProperty("intense_rate")
     private BigDecimal intenseRate;
 
