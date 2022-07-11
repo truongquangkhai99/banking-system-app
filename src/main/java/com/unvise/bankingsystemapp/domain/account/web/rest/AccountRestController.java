@@ -43,14 +43,9 @@ public class AccountRestController {
         return new ResponseEntity<>(accountHistoryService.getById(id), HttpStatus.OK);
     }
 
-    @PostMapping
-    public ResponseEntity<AccountDto> addAccount(@Validated({View.New.class})
-                                                 @RequestBody AccountDto AccountDto) {
-        return new ResponseEntity<>(accountService.save(AccountDto), HttpStatus.CREATED);
-    }
-
     @PutMapping("/{id}")
     public ResponseEntity<AccountDto> fullyUpdateAccount(@PathVariable Long id,
+                                                         @Validated({View.Update.class})
                                                          @RequestBody AccountDto AccountDto) {
         return new ResponseEntity<>(accountService.updateById(id, AccountDto), HttpStatus.OK);
     }
