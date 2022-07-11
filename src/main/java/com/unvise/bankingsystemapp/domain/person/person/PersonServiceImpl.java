@@ -1,10 +1,13 @@
 package com.unvise.bankingsystemapp.domain.person.person;
 
 import com.unvise.bankingsystemapp.domain.account.security.AccountSecurityDetails;
-import com.unvise.bankingsystemapp.exception.ResourceNotFoundException;
 import com.unvise.bankingsystemapp.domain.person.role.RoleRepository;
 import com.unvise.bankingsystemapp.domain.person.web.dto.PersonDto;
+import com.unvise.bankingsystemapp.exception.resource.ResourceNotFoundException;
+import com.unvise.bankingsystemapp.exception.resource.ResourceAlreadyExists;
+import com.unvise.bankingsystemapp.exception.resource.ResourceException;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -13,7 +16,9 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class PersonServiceImpl implements PersonService {
@@ -32,21 +37,47 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     @Transactional
-    public PersonDto getById(Long aLong) {
-        Person foundPerson = personRepository.findById(aLong).orElseThrow(() ->
-                new ResourceNotFoundException("Person", Map.of("id", aLong)));
+    public PersonDto getById(Long aLong) throws ResourceNotFoundException {
+        Person foundPerson = personRepository.findById(aLong).orElseThrow(() -> {
+            ResourceException e = new ResourceNotFoundException("Can't find person with id: " + aLong);
+
+            e.setResourceName("Person");
+            e.setFieldsAndValues(Map.of("id", aLong));
+
+            return e;
+        });
+
         return personMapper.toDto(foundPerson);
     }
 
     @Override
     @Transactional
-    public PersonDto save(PersonDto personDto) {
+    public PersonDto save(PersonDto personDto) throws ResourceAlreadyExists {
+
+        if (personRepository.findByEmail(personDto.getEmail()).isPresent()) {
+            ResourceException e = new ResourceAlreadyExists("Person with given email already exist");
+
+            e.setFieldsAndValues(Map.of("email", personDto.getEmail()));
+
+            throw e;
+
+        }
+
+        if  (personRepository.findByPhone(personDto.getPhone()).isPresent()) {
+            ResourceException e = new ResourceAlreadyExists("Person with given phone already exist");
+
+            e.setFieldsAndValues(Map.of("phone", personDto.getPhone()));
+
+            throw e;
+        }
+
         Person unsavedPerson = personMapper.toEntity(personDto);
+
         setRolesIdToPerson(unsavedPerson);
 
         setEncodedPasswordToPerson(unsavedPerson, personDto.getPassword());
 
-        // set encoded password in AccountSecurityDetailsDto
+        // set encoded password in AccountSecurityDetails
         setEncodedPasswordToAccountSecurityDetails(
                 unsavedPerson.getAccount().getAccountSecurityDetails(),
                 personDto.getAccount().getAccountSecurityDetails().getPasswordHash()
@@ -58,10 +89,42 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     @Transactional
-    public PersonDto updateById(Long aLong, PersonDto personDto) {
-        personRepository.findById(aLong).orElseThrow(() ->
-                new ResourceNotFoundException("Person", Map.of("id", aLong)));
+    public PersonDto updateById(Long aLong, PersonDto personDto)
+            throws ResourceNotFoundException, ResourceAlreadyExists {
+
+        personRepository.findById(aLong).orElseThrow(() -> {
+            ResourceException e = new ResourceNotFoundException("Can't find person with id: " + aLong);
+
+            e.setResourceName("Person");
+            e.setFieldsAndValues(Map.of("id", aLong));
+
+            return e;
+        });
+
         personDto.setId(aLong);
+
+        Optional<Person> personWithSameEmail = personRepository.findByEmail(personDto.getEmail());
+        Optional<Person> personWithSamePhone = personRepository.findByPhone(personDto.getPhone());
+
+        if (personWithSameEmail.isPresent()) {
+            if (!personWithSameEmail.get().getId().equals(personDto.getId())) {
+                ResourceException e = new ResourceAlreadyExists("Person with given email already exists");
+
+                e.setFieldsAndValues(Map.of("email", personDto.getEmail()));
+
+                throw e;
+            }
+        }
+
+        if (personWithSamePhone.isPresent()) {
+            if (!personWithSamePhone.get().getId().equals(personDto.getId())) {
+                ResourceException e = new ResourceAlreadyExists("Person with given phone already exists");
+
+                e.setFieldsAndValues(Map.of("phone", personDto.getPhone()));
+
+                throw e;
+            }
+        }
 
         // can't be null because person exist
         Person existingPerson = personRepository.findById(aLong).get();
@@ -77,7 +140,7 @@ public class PersonServiceImpl implements PersonService {
 
         setEncodedPasswordToPerson(unsavedPerson, personDto.getPassword());
 
-        // set encoded password in AccountSecurityDetailsDto
+        // set encoded password in AccountSecurityDetails
         setEncodedPasswordToAccountSecurityDetails(
                 unsavedPerson.getAccount().getAccountSecurityDetails(),
                 personDto.getAccount().getAccountSecurityDetails().getPasswordHash()
@@ -89,9 +152,16 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     @Transactional
-    public PersonDto deleteById(Long aLong) {
-        Person foundPerson = personRepository.findById(aLong).orElseThrow(() ->
-                new ResourceNotFoundException("Person", Map.of("id", aLong)));
+    public PersonDto deleteById(Long aLong) throws ResourceNotFoundException{
+        Person foundPerson = personRepository.findById(aLong).orElseThrow(() -> {
+            ResourceException e = new ResourceNotFoundException("Can't find person with id: " + aLong);
+
+            e.setResourceName("Person");
+            e.setFieldsAndValues(Map.of("id", aLong));
+
+            return e;
+        });
+
         personRepository.delete(foundPerson);
         return personMapper.toDto(foundPerson);
     }
@@ -119,33 +189,44 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     @Transactional
-    public PersonDto getByEmail(String email) {
-        Person foundPerson = personRepository.findByEmail(email).orElseThrow(() ->
-                new ResourceNotFoundException("Person", Map.of("email", email)));
+    public PersonDto getByEmail(String email) throws ResourceNotFoundException{
+        Person foundPerson = personRepository.findByEmail(email).orElseThrow(() -> {
+            ResourceException e = new ResourceNotFoundException("Can't find person with email: " + email);
+
+            e.setResourceName("Person");
+            e.setFieldsAndValues(Map.of("email", email));
+
+            return e;
+        });
+
         return personMapper.toDto(foundPerson);
     }
 
     @Override
     @Transactional
-    public PersonDto getByPhone(String phone) {
-        Person foundPerson = personRepository.findByPhone(phone).orElseThrow(() ->
-                new ResourceNotFoundException("Person", Map.of("phone", phone)));
+    public PersonDto getByPhone(String phone) throws ResourceNotFoundException {
+        Person foundPerson = personRepository.findByPhone(phone).orElseThrow(() -> {
+            ResourceException e = new ResourceNotFoundException("Can't find person with phone: " + phone);
+
+            e.setResourceName("Person");
+            e.setFieldsAndValues(Map.of("phone", phone));
+
+            return e;
+        });
+
         return personMapper.toDto(foundPerson);
     }
 
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        Person person = personRepository.findByEmail(email).orElseThrow(() ->
-                new ResourceNotFoundException("Person", Map.of("email", email)));
-
-        return new PersonPrincipal(person);
+        return personRepository.findByEmail(email).orElseThrow(() ->
+                new UsernameNotFoundException("Can't find person with username (email): " + email));
     }
 
     private void setRolesIdToPerson(Person person) {
         person.getRoles().forEach(role ->
-                // can't be null because all roles must save on application start in @StarterSavingRoles class
-                role.setId(roleRepository.findByRole(role.getRole()).get().getId())
+                roleRepository.findByRole(role.getRole()).ifPresent(val -> role.setId(val.getId()))
         );
     }
 
@@ -155,6 +236,7 @@ public class PersonServiceImpl implements PersonService {
 
     private void setEncodedPasswordToAccountSecurityDetails(AccountSecurityDetails accountSecurityDetails,
                                                             String password) {
+
         accountSecurityDetails.setPasswordHash(encoder.encode(password));
     }
 

@@ -2,6 +2,7 @@ package com.unvise.bankingsystemapp.domain.person.person;
 
 import com.unvise.bankingsystemapp.common.BaseService;
 import com.unvise.bankingsystemapp.domain.person.web.dto.PersonDto;
+import com.unvise.bankingsystemapp.exception.resource.ResourceNotFoundException;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.List;
@@ -14,8 +15,8 @@ public interface PersonService extends BaseService<PersonDto, Long>, UserDetails
 
     List<PersonDto> getByFirstnameAndLastname(String firstname, String lastname);
 
-    PersonDto getByEmail(String email);
+    PersonDto getByEmail(String email) throws ResourceNotFoundException;
 
-    PersonDto getByPhone(String phone);
+    PersonDto getByPhone(String phone) throws ResourceNotFoundException;
 
 }
