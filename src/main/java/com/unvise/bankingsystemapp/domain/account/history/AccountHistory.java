@@ -37,14 +37,14 @@ public class AccountHistory {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(
             name = "deposit_id",
             foreignKey = @ForeignKey(name = "account_history_deposit_fk")
     )
     private Deposit deposit;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "accountHistory")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "accountHistory", cascade = CascadeType.ALL)
     private Set<Credit> credits;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "accountHistory", cascade = CascadeType.ALL)
