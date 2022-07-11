@@ -8,10 +8,12 @@ import org.mapstruct.Mapping;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring", uses = {AccountHistoryMapper.class, AccountSecurityDetailsMapper.class, AccountMapperHelper.class})
+@Mapper(componentModel = "spring",
+        uses = {AccountHistoryMapper.class, AccountSecurityDetailsMapper.class, AccountMapperHelper.class})
 public interface AccountMapper {
 
     @Mapping(source = "accountHistory", target = "accountHistoryId", qualifiedByName = "accountHistoryId")
+    @Mapping(source = "account", target = "personId", qualifiedByName = "personId")
     AccountDto toDto(Account account);
 
     @Mapping(target = "accountHistory", ignore = true)
