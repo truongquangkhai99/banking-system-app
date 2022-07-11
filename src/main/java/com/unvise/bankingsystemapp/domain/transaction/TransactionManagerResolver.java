@@ -4,7 +4,7 @@ import com.unvise.bankingsystemapp.domain.account.account.Account;
 import com.unvise.bankingsystemapp.domain.credit.Credit;
 import com.unvise.bankingsystemapp.domain.currency.util.CurrencyConverter;
 import com.unvise.bankingsystemapp.domain.deposit.Deposit;
-import com.unvise.bankingsystemapp.exception.TransactionFailedException;
+import com.unvise.bankingsystemapp.exception.transaction.TransactionFailedException;
 import com.unvise.bankingsystemapp.domain.transaction.transaction.Transaction;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -18,10 +18,11 @@ import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
-public class TransactionManagerResolver {
+public class TransactionManagerResolver implements TransactionManager {
 
     private final CurrencyConverter currencyConverter;
 
+    @Override
     public void manage(Transaction transaction) throws TransactionFailedException {
         switch (transaction.getTransactionDetails().getTransactionType()) {
             case CREDIT:
@@ -34,6 +35,14 @@ public class TransactionManagerResolver {
 
             case TRANSFER:
                 manageTransfer(transaction);
+                break;
+
+            case TOP_UP_ACCOUNT_BALANCE:
+                manageTopUpAccountBalance(transaction);
+                break;
+
+            case WITHDRAW_DEPOSIT:
+                manageWithdrawDeposit(transaction);
                 break;
         }
     }
@@ -54,14 +63,13 @@ public class TransactionManagerResolver {
 
         checkExistCredit(neededCredit, transaction.getTransactionDetails().getCredit().getId());
 
-        // credit can't null because if it were, it would throw an TransactionFailedException in check methods
         BigDecimal transactionBalance = currencyConverter.convert(
                 fromAccount.getCurrency(),
                 Objects.requireNonNull(neededCredit).getCurrency(),
                 transaction.getTransactionDetails().getAmount()
         );
 
-        if (Objects.requireNonNull(neededCredit).getRemain().compareTo(transactionBalance) < 0) {
+        if (neededCredit.getRemain().compareTo(transactionBalance) < 0) {
             transaction.getTransactionDetails().setAmount(neededCredit.getRemain());
 
             BigDecimal creditBalanceInFromAccountCurrency = currencyConverter.convert(
@@ -122,18 +130,45 @@ public class TransactionManagerResolver {
         toAccount.addToBalance(transactionBalance);
     }
 
+    private void manageTopUpAccountBalance(Transaction transaction) throws TransactionFailedException {
+        Account fromAccount = transaction.getTransactionDetails().getFromAccount();
+
+        BigDecimal convertedTransactionBalance = currencyConverter.convert(
+                transaction.getTransactionDetails().getCurrency(),
+                fromAccount.getCurrency(),
+                transaction.getTransactionDetails().getAmount()
+        );
+
+        fromAccount.addToBalance(convertedTransactionBalance);
+    }
+
+    private void manageWithdrawDeposit(Transaction transaction) throws TransactionFailedException {
+        Account fromAccount = transaction.getTransactionDetails().getFromAccount();
+
+        Deposit deposit = fromAccount.getAccountHistory().getDeposit();
+
+        BigDecimal convertedTransactionBalance = currencyConverter.convert(
+                fromAccount.getCurrency(),
+                deposit.getCurrency(),
+                transaction.getTransactionDetails().getAmount()
+        );
+
+        fromAccount.addToBalance(convertedTransactionBalance);
+        deposit.subtractFromBalance(transaction.getTransactionDetails().getAmount());
+    }
+
     private void checkBalanceByGreaterThanAmount(BigDecimal balance, BigDecimal amount) throws TransactionFailedException {
         if (balance.compareTo(amount) < 0) {
-            TransactionFailedException exception = new TransactionFailedException("Transaction failed because not" +
+            TransactionFailedException e = new TransactionFailedException("Transaction failed because not" +
                     " enough money on from account balance"
             );
 
-            exception.setFieldNameAndValue(Map.of(
+            e.setFieldsAndValues(Map.of(
                     "fromAccount balance", balance,
                     "Transaction amount", amount
             ));
 
-            throw exception;
+            throw e;
         }
     }
 
@@ -145,13 +180,13 @@ public class TransactionManagerResolver {
 
     private void checkExistCredit(Credit neededCredit, Long creditId) throws TransactionFailedException {
         if (neededCredit == null) {
-            TransactionFailedException exception = new TransactionFailedException("Transaction failed because" +
+            TransactionFailedException e = new TransactionFailedException("Transaction failed because" +
                     " from account don't have credits with given id"
             );
 
-            exception.setFieldNameAndValue(Map.of("Credit id", creditId));
+            e.setFieldsAndValues(Map.of("Credit id", creditId));
 
-            throw exception;
+            throw e;
         }
     }
 
