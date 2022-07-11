@@ -1,22 +1,14 @@
-package com.unvise.bankingsystemapp.exception;
+package com.unvise.bankingsystemapp.exception.transaction;
 
 import com.unvise.bankingsystemapp.domain.transaction.transaction.Transaction;
-import lombok.AllArgsConstructor;
+import com.unvise.bankingsystemapp.exception.BaseException;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ResponseStatus;
-
-import java.util.Map;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-public class TransactionFailedException extends RuntimeException {
-
-    protected Transaction transaction;
-    private Map<String, Object> fieldNameAndValue;
+public class TransactionFailedException extends BaseException {
 
     public TransactionFailedException() {
         super();
@@ -33,5 +25,4 @@ public class TransactionFailedException extends RuntimeException {
     public TransactionFailedException(Throwable cause) {
         super(cause);
     }
-
 }
