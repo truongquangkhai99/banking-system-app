@@ -9,7 +9,7 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface CreditMapper {
 
-    @Mapping(target = "accountHistoryId", ignore = true)
+    @Mapping(target = "accountHistoryId", expression = "java(credit.getAccountHistory().getId())")
     CreditDto toDto(Credit credit);
 
     @Mapping(target = "accountHistory", ignore = true)
