@@ -13,6 +13,7 @@ services:
       - spring-cloud-network
     depends_on:
       - db
+      - cache
 
   db:
     container_name: postgersql
@@ -27,6 +28,14 @@ services:
       - spring-cloud-network
     volumes:
       - ./data/dump:/docker-entrypoint-initdb.d
+
+  cache:
+    container_name: redis
+    image: 'redis'
+    ports:
+      - "6688:6379"
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
 
 networks:
   spring-cloud-network:
