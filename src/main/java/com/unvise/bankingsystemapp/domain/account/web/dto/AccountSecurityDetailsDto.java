@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
+import javax.validation.constraints.Size;
 
 @Builder
 @Data
@@ -20,6 +21,7 @@ public class AccountSecurityDetailsDto {
     private Long id;
 
     @NotNull(message = "password_hash must not be null", groups = {View.New.class, View.Update.class})
+    @Size(message = "account password must be in range [4, 20] ", min = 4, max = 20, groups = {View.New.class, View.Update.class})
     @JsonProperty("password_hash")
     private String passwordHash;
 
