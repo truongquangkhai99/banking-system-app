@@ -4,11 +4,15 @@ import com.unvise.bankingsystemapp.domain.account.account.Account;
 import com.unvise.bankingsystemapp.domain.account.account.AccountRepository;
 import com.unvise.bankingsystemapp.domain.credit.Credit;
 import com.unvise.bankingsystemapp.domain.credit.CreditRepository;
-import com.unvise.bankingsystemapp.exception.ResourceNotFoundException;
 import com.unvise.bankingsystemapp.domain.transaction.TransactionManagerResolver;
 import com.unvise.bankingsystemapp.domain.transaction.enums.TransactionType;
 import com.unvise.bankingsystemapp.domain.transaction.web.dto.TransactionDto;
+import com.unvise.bankingsystemapp.exception.resource.ResourceNotFoundException;
+import com.unvise.bankingsystemapp.exception.transaction.TransactionFailedException;
+import com.unvise.bankingsystemapp.exception.resource.ResourceException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -25,9 +29,9 @@ public class TransactionServiceImpl implements TransactionService {
     private final AccountRepository accountRepository;
     private final TransactionMapper transactionMapper;
 
-
     @Override
     @Transactional
+    @Cacheable("transactions")
     public List<TransactionDto> getAll() {
         List<Transaction> foundTransactions = transactionRepository.findAll();
         return transactionMapper.toDtoList(foundTransactions);
@@ -35,15 +39,24 @@ public class TransactionServiceImpl implements TransactionService {
 
     @Override
     @Transactional
-    public TransactionDto getById(Long aLong) {
-        Transaction foundTransaction = transactionRepository.findById(aLong).orElseThrow(() ->
-                new ResourceNotFoundException("Transaction", Map.of("id", aLong)));
+    @Cacheable(cacheNames = "transactions", key = "#aLong")
+    public TransactionDto getById(Long aLong) throws ResourceNotFoundException {
+        Transaction foundTransaction = transactionRepository.findById(aLong).orElseThrow(() -> {
+            ResourceException e = new ResourceNotFoundException("Can't find Transaction with id: " + aLong);
+
+            e.setResourceName("Transaction");
+            e.setFieldsAndValues(Map.of("id", aLong));
+
+            return e;
+        });
+
         return transactionMapper.toDto(foundTransaction);
     }
 
     @Override
     @Transactional
-    public TransactionDto save(TransactionDto transactionDto) {
+    @CacheEvict(cacheNames = "transactions", allEntries = true)
+    public TransactionDto save(TransactionDto transactionDto) throws TransactionFailedException {
         Account fromAccount = getAccountByAccountHistoryId(transactionDto.getTransactionDetails().getFromAccountId());
 
         Transaction transaction = transactionMapper.toEntity(transactionDto);
@@ -79,21 +92,41 @@ public class TransactionServiceImpl implements TransactionService {
 
     @Override
     @Transactional
-    public TransactionDto deleteById(Long aLong) {
-        Transaction foundTransaction = transactionRepository.findById(aLong).orElseThrow(() ->
-                new ResourceNotFoundException("Transaction", Map.of("id", aLong)));
+    @CacheEvict(cacheNames = "transactions", allEntries = true)
+    public TransactionDto deleteById(Long aLong) throws ResourceNotFoundException {
+        Transaction foundTransaction = transactionRepository.findById(aLong).orElseThrow(() -> {
+            ResourceException e = new ResourceNotFoundException("Can't find Transaction with id: " + aLong);
+
+            e.setResourceName("Transaction");
+            e.setFieldsAndValues(Map.of("id", aLong));
+
+            return e;
+        });
+
         transactionRepository.delete(foundTransaction);
         return transactionMapper.toDto(foundTransaction);
     }
 
-    private Account getAccountByAccountHistoryId(Long id) {
-        return accountRepository.findByAccountHistory_Id(id).orElseThrow(() ->
-                new ResourceNotFoundException("AccountHistory", Map.of("id", id)));
+    private Account getAccountByAccountHistoryId(Long id) throws ResourceNotFoundException {
+        return accountRepository.findByAccountHistory_Id(id).orElseThrow(() -> {
+            ResourceException e = new ResourceNotFoundException("Can't find AccountHistory with id: " + id);
+
+            e.setResourceName("Transaction -> AccountHistory");
+            e.setFieldsAndValues(Map.of("id", id));
+
+            return e;
+        });
     }
 
-    private Credit getCreditById(Long id) {
-        return creditRepository.findById(id).orElseThrow(() ->
-                new ResourceNotFoundException("Credit", Map.of("id", id)));
+    private Credit getCreditById(Long id) throws ResourceNotFoundException {
+        return creditRepository.findById(id).orElseThrow(() -> {
+            ResourceException e = new ResourceNotFoundException("Can't find Credit with id: " + id);
+
+            e.setResourceName("Transaction -> Credit");
+            e.setFieldsAndValues(Map.of("id", id));
+
+            return e;
+        });
     }
 
 }
