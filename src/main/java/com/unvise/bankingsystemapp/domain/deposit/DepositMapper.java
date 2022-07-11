@@ -1,15 +1,16 @@
 package com.unvise.bankingsystemapp.domain.deposit;
 
+import com.unvise.bankingsystemapp.domain.account.account.AccountMapperHelper;
 import com.unvise.bankingsystemapp.domain.deposit.web.dto.DepositDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = {AccountMapperHelper.class})
 public interface DepositMapper {
 
-    @Mapping(target = "accountHistoryId", ignore = true)
+    @Mapping(source = "accountHistory", target = "accountHistoryId", qualifiedByName = "accountHistoryId")
     @Mapping(source = "currency", target = "currency")
     DepositDto toDto(Deposit deposit);
 
