@@ -15,6 +15,7 @@ public interface TransactionDetailsMapper {
     @Mapping(target = "fromAccount", ignore = true)
     @Mapping(target = "toAccount", ignore = true)
     @Mapping(target = "credit", ignore = true)
+    @Mapping(target = "currency", source = "currency")
     TransactionDetails toEntity(TransactionDetailsDto transactionDetailsDto);
 
 

@@ -2,6 +2,7 @@ package com.unvise.bankingsystemapp.domain.transaction.details;
 
 import com.unvise.bankingsystemapp.domain.account.account.Account;
 import com.unvise.bankingsystemapp.domain.credit.Credit;
+import com.unvise.bankingsystemapp.domain.currency.enums.CurrencyType;
 import com.unvise.bankingsystemapp.domain.transaction.enums.TransactionType;
 import com.unvise.bankingsystemapp.domain.transaction.transaction.Transaction;
 import lombok.*;
@@ -34,6 +35,9 @@ public class TransactionDetails {
     @JoinColumn(name = "from_account_id", foreignKey = @ForeignKey(name = "transaction_from_account_fk"))
     private Account fromAccount;
 
+    @Column(name = "currency", length = 3)
+    @Enumerated(EnumType.STRING)
+    private CurrencyType currency;
 
     @OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "to_account_id", foreignKey = @ForeignKey(name = "transaction_to_account_fk"))

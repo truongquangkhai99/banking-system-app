@@ -3,9 +3,11 @@ package com.unvise.bankingsystemapp.domain.transaction.web.dto;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.unvise.bankingsystemapp.common.View;
+import com.unvise.bankingsystemapp.domain.currency.enums.CurrencyType;
 import com.unvise.bankingsystemapp.domain.currency.web.validator.FieldUnmatched;
 import com.unvise.bankingsystemapp.domain.transaction.enums.TransactionType;
 import com.unvise.bankingsystemapp.domain.transaction.web.validator.CanBeNull;
+import com.unvise.bankingsystemapp.domain.transaction.web.validator.ValidateTransaction;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,7 +24,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldUnmatched(
-        message = "from_account_id field must not be equals to_account_id",
+        message = "from account id field must not be equals to account id",
         first = "fromAccountId",
         second = "toAccountId",
         groups = {View.New.class}
@@ -35,7 +37,7 @@ public class TransactionDetailsDto {
 
     @NotNull(message = "amount must be not null", groups = {View.New.class})
     @Positive(message = "amount must be a positive number greater than zero", groups = {View.New.class})
-    @Max(value = 10, message = "amount must be lower than billion", groups = {View.New.class})
+    @Max(value = 1000000000, message = "amount must be lower than billion", groups = {View.New.class})
     private BigDecimal amount;
 
     @NotNull(message = "transaction_type must be not null and have valid type", groups = {View.New.class})
@@ -46,6 +48,9 @@ public class TransactionDetailsDto {
     @Positive(message = "from_account_id must be a positive number greater than zero", groups = {View.New.class})
     @JsonProperty("from_account_id")
     private Long fromAccountId;
+
+    @CanBeNull(groups = {View.New.class})
+    private CurrencyType currency;
 
     @CanBeNull(groups = {View.New.class})
     @Positive(message = "to_account_id must be a positive number greater than zero", groups = {View.New.class})
