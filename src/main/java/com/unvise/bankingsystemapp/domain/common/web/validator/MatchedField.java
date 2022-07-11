@@ -1,6 +1,4 @@
-package com.unvise.bankingsystemapp.domain.auth.web.validator;
-
-import com.unvise.bankingsystemapp.domain.currency.web.validator.FieldUnmatched;
+package com.unvise.bankingsystemapp.domain.common.web.validator;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;

@@ -3,7 +3,7 @@ package com.unvise.bankingsystemapp.domain.currency.web.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.unvise.bankingsystemapp.domain.common.View;
 import com.unvise.bankingsystemapp.domain.currency.enums.CurrencyType;
-import com.unvise.bankingsystemapp.domain.currency.web.validator.FieldUnmatched;
+import com.unvise.bankingsystemapp.domain.common.web.validator.FieldUnmatched;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

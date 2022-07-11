@@ -1,35 +1,36 @@
-package com.unvise.bankingsystemapp.domain.currency.web.validator;
+package com.unvise.bankingsystemapp.domain.common.web.validator;
 
 import org.springframework.beans.BeanWrapperImpl;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-public class FieldUnmatchedValidator implements ConstraintValidator<FieldUnmatched, Object> {
+public class MatchedFieldValidator implements ConstraintValidator<MatchedField, Object> {
 
     private String firstFieldName;
     private String secondFieldName;
     private String message;
-    
+
     @Override
-    public void initialize(FieldUnmatched constraintAnnotation) {
+    public void initialize(MatchedField constraintAnnotation) {
         firstFieldName = constraintAnnotation.first();
         secondFieldName = constraintAnnotation.second();
         message = constraintAnnotation.message();
     }
 
     @Override
-    public boolean isValid(Object value, ConstraintValidatorContext context) {
+    public boolean isValid(Object o, ConstraintValidatorContext context) {
         boolean valid = true;
+
         try {
-            BeanWrapperImpl beanWrapper = new BeanWrapperImpl(value);
+            BeanWrapperImpl beanWrapper = new BeanWrapperImpl(o);
             Object firstObj = beanWrapper.getPropertyValue(firstFieldName);
             Object secondObj = beanWrapper.getPropertyValue(secondFieldName);
 
             valid = firstObj == null
                     && secondObj == null
                     || firstObj != null
-                    && !firstObj.equals(secondObj);
+                    && firstObj.equals(secondObj);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -43,5 +44,4 @@ public class FieldUnmatchedValidator implements ConstraintValidator<FieldUnmatch
 
         return valid;
     }
-
 }

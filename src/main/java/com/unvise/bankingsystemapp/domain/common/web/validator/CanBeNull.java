@@ -1,4 +1,4 @@
-package com.unvise.bankingsystemapp.domain.transaction.web.validator;
+package com.unvise.bankingsystemapp.domain.common.web.validator;
 
 import javax.validation.Payload;
 import java.lang.annotation.*;

@@ -1,7 +1,7 @@
 package com.unvise.bankingsystemapp.domain.auth.web.dto;
 
 import com.unvise.bankingsystemapp.domain.common.View;
-import com.unvise.bankingsystemapp.domain.auth.web.validator.MatchedField;
+import com.unvise.bankingsystemapp.domain.common.web.validator.MatchedField;
 import com.unvise.bankingsystemapp.domain.currency.enums.CurrencyType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

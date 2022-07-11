@@ -1,4 +1,4 @@
-package com.unvise.bankingsystemapp.domain.currency.web.validator;
+package com.unvise.bankingsystemapp.domain.common.web.validator;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
