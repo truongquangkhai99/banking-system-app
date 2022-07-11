@@ -15,4 +15,12 @@ public class AccountMapperHelper {
         return accountHistory.getId();
     }
 
+    @Named("personId")
+    public static Long getPersonId(Account account) {
+        if (account.getPerson() == null) {
+            return null;
+        }
+        return account.getPerson().getId();
+    }
+
 }
