@@ -2,6 +2,7 @@ package com.unvise.bankingsystemapp.domain.transaction;
 
 import com.unvise.bankingsystemapp.domain.account.account.Account;
 import com.unvise.bankingsystemapp.domain.credit.Credit;
+import com.unvise.bankingsystemapp.domain.currency.enums.CurrencyType;
 import com.unvise.bankingsystemapp.domain.currency.util.CurrencyConverter;
 import com.unvise.bankingsystemapp.domain.deposit.Deposit;
 import com.unvise.bankingsystemapp.exception.transaction.TransactionFailedException;
@@ -144,6 +145,8 @@ public class TransactionManagerResolver implements TransactionManager {
 
     private void manageWithdrawDeposit(Transaction transaction) throws TransactionFailedException {
         Account fromAccount = transaction.getTransactionDetails().getFromAccount();
+
+        checkExistDeposit(fromAccount.getAccountHistory().getDeposit());
 
         Deposit deposit = fromAccount.getAccountHistory().getDeposit();
 
