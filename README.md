@@ -23,7 +23,7 @@ foo@bar:~$ ./mvnw clean spring-boot:run
 
 2 Way: Run docker with arg '--profile dev'
 
-```
+```console
 foo@bar:~$ docker-compose --profile dev up
 
 foo@bar:~$ ./mvnw clean spring-boot:run
@@ -35,7 +35,7 @@ Prod:
 
 1 Way: Change string to 'prod' on 3 row in [application.yml](src/main/resources/application.yml)
 
-```
+```console
 foo@bar:~$ ./mvnw clean package -DskipTests
 
 foo@bar:~$ docker-compose up
@@ -43,7 +43,7 @@ foo@bar:~$ docker-compose up
 
 2 Way: Run docker with arg '--profile prod'
 
-```
+```console
 foo@bar:~$ ./mvnw clean package -DskipTests
 
 foo@bar:~$ docker-compose --profile prod up
