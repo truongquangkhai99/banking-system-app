@@ -55,7 +55,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin/**").hasAuthority(RoleType.ADMIN.getRoleTypeAsString())
                 .antMatchers("/swagger-ui/**").hasAuthority(RoleType.ADMIN.getRoleTypeAsString())
                 .antMatchers("/api/**").hasAuthority(RoleType.ADMIN.getRoleTypeAsString())
-                .antMatchers("/", "/signin", "/signup").permitAll()
+                .antMatchers("/", "/signin", "/signup", "/exchange-rate").permitAll()
                 .antMatchers(HttpMethod.POST, "/auth/jwt/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
