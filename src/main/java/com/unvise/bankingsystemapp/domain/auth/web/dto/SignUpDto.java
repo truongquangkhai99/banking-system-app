@@ -1,5 +1,6 @@
 package com.unvise.bankingsystemapp.domain.auth.web.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.unvise.bankingsystemapp.domain.common.View;
 import com.unvise.bankingsystemapp.domain.common.web.validator.MatchedField;
 import com.unvise.bankingsystemapp.domain.currency.enums.CurrencyType;
@@ -41,6 +42,7 @@ public class SignUpDto {
 
     @NotNull(message = "dateOfBirth must not be null", groups = View.New.class)
     @DateTimeFormat(pattern = "MM/dd/yyyy")
+    @JsonProperty("date_of_birth")
     private String dateOfBirth;
 
     @NotEmpty(message = "password must not be empty", groups = View.New.class)
@@ -49,6 +51,7 @@ public class SignUpDto {
 
     @NotEmpty(message = "confirmed password must not be empty", groups = View.New.class)
     @Size(message = "confirmed password must be in range [5, 100]", min = 5, max = 100, groups = View.New.class)
+    @JsonProperty("confirmed_password")
     private String confirmedPassword;
 
     @NotNull(message = "currency must not be null", groups = View.New.class)
@@ -56,6 +59,7 @@ public class SignUpDto {
 
     @NotEmpty(message = "password must not be empty", groups = View.New.class)
     @Size(message = "must be in range [4, 20]", min = 4, max = 20, groups = View.New.class)
+    @JsonProperty("account_password")
     private String accountPassword;
 
 }
