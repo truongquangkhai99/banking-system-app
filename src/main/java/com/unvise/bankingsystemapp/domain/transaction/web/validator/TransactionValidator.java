@@ -22,6 +22,9 @@ public class TransactionValidator implements ConstraintValidator<ValidateTransac
         if (transactionDto.getTransactionDetails().getTransactionType() == TransactionType.TRANSFER) {
             check = transactionDto.getTransactionDetails().getToAccountId() != null;
         }
+        if (transactionDto.getTransactionDetails().getTransactionType() == TransactionType.TOP_UP_ACCOUNT_BALANCE) {
+            check = transactionDto.getTransactionDetails().getCurrency() != null;
+        }
         return check;
 
     }
