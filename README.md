@@ -2,12 +2,12 @@
 
 ## Before installation
 
-To start the project, you need to install docker and docker-compose. You should also check if you have at least JRE 11
+To start the project, you need to install docker and docker-compose. You should also check if you have at least Java 11v
 and, if not, install it.
 
 Docker Install: https://docs.docker.com/engine/install/
 
-JRE install: https://docs.oracle.com/goldengate/1212/gg-winux/GDRAD/java.htm#BGBFHBEA
+JAVA install: https://openjdk.org/
 
 ## How to install
 
@@ -15,66 +15,122 @@ Dev:
 
 1 Way: Change string to 'dev' on 3 row in [application.yml](src/main/resources/application.yml)
 
-```
-# docker-compose up
+```console
+foo@bar:~$ docker-compose up
 
-# ./mvnw clean spring-boot:run
+foo@bar:~$ ./mvnw clean spring-boot:run
 ```
 
 2 Way: Run docker with arg '--profile dev'
 
 ```
-# docker-compose --profile dev up
+foo@bar:~$ docker-compose --profile dev up
 
-# ./mvnw clean spring-boot:run
+foo@bar:~$ ./mvnw clean spring-boot:run
 ```
+
+Next in your browser goto [link](http://localhost:8888/)
 
 Prod:
 
 1 Way: Change string to 'prod' on 3 row in [application.yml](src/main/resources/application.yml)
 
 ```
-# ./mvnw clean package -DskipTests
+foo@bar:~$ ./mvnw clean package -DskipTests
 
-# docker-compose up
+foo@bar:~$ docker-compose up
 ```
 
 2 Way: Run docker with arg '--profile prod'
 
 ```
-# ./mvnw clean package -DskipTests
+foo@bar:~$ ./mvnw clean package -DskipTests
 
-# docker-compose --profile prod up
+foo@bar:~$ docker-compose --profile prod up
 ```
+
+Next in your browser goto [link](http://localhost:8888/)
 
 ## Features
 
-- [x] Add a profiles ('dev' and 'prod')
-- [x] Add a docker-compose for db and spring boot app
-- [x] Add a Spring Security
-- [x] Add a Swagger Doc and UI
-- [ ] Add a AOP
-- [ ] Add a UI (Thymeleaf with HTML and CSS or perhaps Angular)
-- [ ] Add a Makefile for simple configuration
+- [x] Profiles ('dev' and 'prod')
+- [x] Spring Security with JWT
+- [x] Spring Cache (Redis)
+- [x] Swagger Doc and UI
+- [x] Spring AOP
+- [x] UI (Thymeleaf with HTML and CSS + Bootstrap 5)
+- [x] Docker-compose for db, redis and spring boot app
 
 ## Entity Relationship Diagram
 
 ![plot](data/erd/erd.jpg)
 
-The diagram was automatically generated in DbVisualizer. [Link](https://www.dbvis.com/)
+The diagram was automatically generated in [DbVisualizer](https://www.dbvis.com/).
 
 ## Initial user credentials
+
+### Admin: 
 
 email: **_admin@admin.com_**
 
 password: _**admin42**_
 
+## MVC
+
+It's worth mentioning that this app is educational in nature.
+When you click on the [link](http://localhost:8888/), the user sees the home page of the site.
+
+![plot](src/main/resources/images/Screenshot%20from%202022-07-12%2012-25-49.jpg)
+
+Next, the new user can register
+![plot](src/main/resources/images/Screenshot%20from%202022-07-12%2012-25-49(1).jpg)
+
+Or, if the user already has an account he can log in using email and password.
+![plot](src/main/resources/images/Screenshot%20from%202022-07-12%2012-25-49(2).jpg)
+
+The user can then check the exchange rate at the current time. Also note that the
+admin and swagger doc tabs are only available to users with the ADMIN role
+![plot](src/main/resources/images/Screenshot%20from%202022-07-12%2012-25-49(3).jpg)
+
+The account page provides information about the current status of the user's account. 
+It is possible to replenish balance, open a deposit, if there is money to withdraw from the deposit,
+close the deposit, take credit and repay credit. Transactions, or history of transactions together with
+credits are shown in the tables below.
+![plot](src/main/resources/images/Screenshot%20from%202022-07-12%2012-25-49(4).jpg)
+
+On the page for performing transactions, the user can select the desired type of transaction,
+fill in the data and, if all conditions are met, perform the transaction.
+![plot](src/main/resources/images/Screenshot%20from%202022-07-12%2012-25-49(5).jpg)
+
+a user with the role of administrator can view the necessary records in the database by
+clicking on the link in the tab admin.
+![plot](src/main/resources/images/Screenshot%20from%202022-07-12%2012-25-49(6).jpg)
+![plot](src/main/resources/images/Screenshot%20from%202022-07-12%2012-25-49(7).jpg)
+
+To delete an entry, click on the delete button. Then, to avoid accidentally clicking the button, an alert pops
+up where the user has to confirm his actions
+![plot](src/main/resources/images/Screenshot%20from%202022-07-12%2012-25-49(8).jpg)
+
+Clicking the update button takes the user to the edit page for that record.
+![plot](src/main/resources/images/Screenshot%20from%202022-07-12%2012-25-49(9).jpg)
+
+It is worth noting that if you enter incorrect data, validation errors appear.   
+![plot](src/main/resources/images/Screenshot%20from%202022-07-12%2012-25-49(10).jpg)
+
 ## REST API
 
-You can check endpoints in swagger http://localhost:port(8181 or 8888)/swagger-ui/
+You can check endpoints in swagger http://localhost:8888/swagger-ui/ (Only for ADMIN role)
+
+! Before you check the REST API, get the JWT and setup your auth settings in Postman, Insomnia and e.t.c.
+
+### Auth
+| Method | Url              | Description             | Sample Valid Request Body |
+|--------|------------------|-------------------------|---------------------------|
+| POST   | /auth/jwt/signin | Sign in and get the jwt | [JSON](#sign-in)          |
+| POST   | /auth/jwt/signup | Sign up and get the jwt | [JSON](#sign-up)          |
 
 ### Person
-
+    
 | Method | Url                                                      | Description                           | Sample Valid Request Body |
 |--------|----------------------------------------------------------|---------------------------------------|---------------------------|
 | GET    | api/v1/person                                            | Get all persons                       |                           |
@@ -95,7 +151,6 @@ You can check endpoints in swagger http://localhost:port(8181 or 8888)/swagger-u
 | GET    | api/v1/account                      | Get all accounts          |                           |
 | GET    | api/v1/account/{id}                 | Get account by id         |                           |
 | GET    | api/v1/account/account-history/{id} | Get account history by id |                           |
-| POST   | api/v1/account                      | Create a new account      | [JSON](#create-account)   |
 | PUT    | api/v1/account/{id}                 | Update account by id      | [JSON](#update-account)   |
 | DELETE | api/v1/account/{id}                 | Delete account by id      |                           |
 
@@ -141,60 +196,90 @@ You can check endpoints in swagger http://localhost:port(8181 or 8888)/swagger-u
 | POST   | api/v1/transaction      | Create a new transaction | [JSON](#create-transaction) |
 | DELETE | api/v1/transaction/{id} | Delete transaction by id |                             |
 
+##### <a id="sign-in">Sign in -> /auth/jwt/signin</a>
+```json
+{
+  "email": "admin@admin.com",
+  "password": "admin42"
+}
+```
+##### <a id="sign-up">Sign up -> /auth/jwt/signup</a>
+```json
+{
+    "firstname": "Maxim",
+    "lastname": "Vinnikov",
+    "email": "vmd@gmail.com",
+    "phone": "+7 (952) 102-23-12",
+    "date_of_birth": "17/11/2002",
+    "password": "12345", 
+    "confirmed_password": "12345",
+    "currency": "RUB",
+    "account_password": "12345"
+}
+```
 ##### <a id="create-person">Create Person -> api/v1/person</a>
 
 ```json
 {
-  "dateOfBirth": "2002-09-17",
+  "date_of_birth": "2020-09-17",
   "firstname": "Maxim",
   "lastname": "Vinnikov",
-  "email": "vin.md@gmail.com",
-  "phone": "+7 (952) 192-24-16",
-  "password": "123",
+  "email": "v13@g.com",
+  "phone": "+7 (961) 192-24-16",
+  "password": "12345",
   "status": true,
   "account": {
     "currency": "RUB",
-    "accountSecurityDetails": {
-      "passwordHash": "2331"
-    }
-  },
-  "roles": [
-    {
-      "role": "ADMIN"
-    }
-  ]
-}
-```
-
-##### <a id="update-person">Update Person -> api/v1/person</a>
-
-```json
-{
-  "dateOfBirth": "2002-09-17",
-  "firstname": "Maxim",
-  "lastname": "Vinnikov",
-  "email": "vin.md@gmail.com",
-  "phone": "+7 (952) 192-24-16",
-  "password": "123",
-  "status": true,
-  "account": {
-    "currency": "EUR",
-    "balance": 90000,
-    "accountSecurityDetails": {
-      "passwordHash": "3222"
+    "account_security_details": {
+      "password_hash": "252525"
     }
   },
   "roles": [
     {
       "role": "USER"
-    },
-    {
-      "role": "ADMIN"
     }
   ]
 }
 ```
 
+##### <a id="update-person">Update Person -> api/v1/person/{id}</a>
+
+```json
+{
+  "date_of_birth": "2002-09-17",
+  "firstname": "Maxim",
+  "lastname": "Vinnikov",
+  "email": "vin.md@gmail.com",
+  "phone": "+7 (952) 192-24-16",
+  "password": "12345",
+  "status": true,
+  "account": {
+    "balance": 999999,
+    "currency": "EUR",
+    "account_security_details": {
+      "password_hash": "2331"
+    }
+  },
+  "roles": [
+    {
+      "role": "USER"
+    }
+  ]
+}
+```
+
+##### <a id="update-account">Update Account -> api/v1/account/{id}</a>
+```json
+{
+    "balance": 1000,
+    "currency": "RUB",
+    "account_security_details": {
+        "password_hash": "252525"
+    },
+    "account_history_id": 1,
+    "person_id": 1
+}
+```
 ##### <a id="create-credit">Create Credit -> api/v1/credit</a>
 
 ```json
@@ -206,7 +291,7 @@ You can check endpoints in swagger http://localhost:port(8181 or 8888)/swagger-u
 }
 ```
 
-##### <a id="update-credit">Update Credit -> api/v1/credit</a>
+##### <a id="update-credit">Update Credit -> api/v1/credit/{id}</a>
 
 ```json
 {
@@ -214,8 +299,8 @@ You can check endpoints in swagger http://localhost:port(8181 or 8888)/swagger-u
   "current": 2000,
   "remain": 78000,
   "currency": "USD",
-  "dateBetweenPaymentsInDays": 30,
-  "accountHistoryId": 1,
+  "date_between_payments_in_days": 30,
+  "account_history_id": 1,
   "isClosed": false
 }
 ```
@@ -224,19 +309,20 @@ You can check endpoints in swagger http://localhost:port(8181 or 8888)/swagger-u
 
 ```json
 {
-  "intenseRate": 1.00123,
+  "intense_rate": 1.00123,
   "currency": "RUB",
   "accountHistoryId": 1
 }
 ```
 
-##### <a id="update-deposit">Update Deposit -> api/v1/deposit</a>
+##### <a id="update-deposit">Update Deposit -> api/v1/deposit/{id}</a>
 
 ```json
 {
   "intenseRate": 1.00169,
   "currency": "RUB",
-  "accountHistoryId": 1
+  "balance": 10000,
+  "account_history_id": 1
 }
 ```
 
@@ -244,18 +330,18 @@ You can check endpoints in swagger http://localhost:port(8181 or 8888)/swagger-u
 
 ```json
 {
-  "fromCurrency": "EUR",
-  "toCurrency": "RUB",
+  "from_currency": "EUR",
+  "to_currency": "RUB",
   "ratio": 0.016
 }
 ```
 
-##### <a id="update-exchange-rate">Update ExchangeRate -> api/v1/exchange-rate</a>
+##### <a id="update-exchange-rate">Update ExchangeRate -> api/v1/exchange-rate/{id}</a>
 
 ```json
 {
-  "fromCurrency": "EUR",
-  "toCurrency": "RUB",
+  "from_currency": "EUR",
+  "to_Currency": "RUB",
   "ratio": 0.018
 }
 ```
@@ -265,43 +351,70 @@ You can check endpoints in swagger http://localhost:port(8181 or 8888)/swagger-u
 If the currency is different between accounts, account and deposit or account and credit, it will be automatically
 converted using the existing exchange rate
 
-1 Way: Transfer to another account. Required existing 'fromAccountId' and 'toAccountId' fields
+1 Way: Transfer to another account. Required existing 'from_account_id' and 'to_account_id' fields
 
 ```json
 {
   "date": "2002-12-09",
-  "transactionDetails": {
+  "transaction_details": {
     "amount": 13200,
-    "transactionType": "TRANSFER",
-    "fromAccountId": 1,
-    "toAccountId": 2
+    "transaction_type": "TRANSFER",
+    "from_account_id": 1,
+    "to_account_id": 2
   }
 }
 ```
 
-2 Way: Top up yourself deposit. Required 'fromAccountId' field
+2 Way: Top up yourself deposit. Required 'from_account_id' field
 
 ```json
 {
   "date": "2002-12-09",
-  "transactionDetails": {
+  "transaction_details": {
     "amount": 13200,
-    "transactionType": "DEPOSIT",
-    "fromAccountId": 1
+    "transaction_type": "DEPOSIT",
+    "from_account_id": 1
   }
 }
 ```
 
-3 Way: Top up yourself credit. Required existing 'creditId' field
+3 Way: Top up yourself credit. Required existing 'credit_id' field
 
 ```json
 {
   "date": "2002-12-09",
-  "transactionDetails": {
+  "transaction_details": {
     "amount": 13200,
-    "transactionType": "CREDIT",
-    "fromAccountId": 1,
-    "creditId": 1
+    "transaction_type": "CREDIT",
+    "from_account_id": 1,
+    "credit_id": 1
+  }
+}
+```
+
+4 Way: withdraw your deposit. Required existing 'deposit_id' field
+
+```json
+{
+  "date": "2002-12-09",
+  "transaction_details": {
+    "amount": 30000,
+    "transaction_type": "WITHDRAW_DEPOSIT",
+    "from_account_id": 1,
+    "deposit_id": 1
+  }
+}
+```
+
+5 Way: top up your account balance. Required existing 'from_account_id' and 'currency' field
+```json
+{
+  "date": "2002-12-09",
+  "transaction_details": {
+    "amount": 30000,
+    "transaction_type": "TOP_UP_ACCOUNT_BALANCE",
+    "currency": "RUB",
+    "from_account_id": 1
   }
 }
 ```
