@@ -16,7 +16,7 @@ import javax.validation.constraints.Null;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@ValidateTransaction(groups = {View.New.class})
+@ValidateTransaction(message = "Invalid transaction. Check for the required field.", groups = {View.New.class})
 public class TransactionDto {
 
     public static final String DATE_PATTERN = "yyyy-MM-dd";
