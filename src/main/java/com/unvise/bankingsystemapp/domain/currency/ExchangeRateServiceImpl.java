@@ -74,9 +74,17 @@ public class ExchangeRateServiceImpl implements ExchangeRateService {
     public ExchangeRateDto updateById(Long aLong, ExchangeRateDto exchangeRateDto)
             throws ResourceAlreadyExists, ResourceNotFoundException {
 
+        ExchangeRate exchangeRate = exchangeRateRepository.findById(aLong).orElseThrow(() -> {
+            ResourceException e = new ResourceNotFoundException("Can't find ExchangeRate with id: " + aLong);
+            e.setResourceName("ExchangeRate");
+            e.setFieldsAndValues(Map.of("id", aLong));
+
+            return e;
+        });
+
         if (exchangeRateRepository.findByFromCurrencyAndToCurrency(
                 exchangeRateDto.getFromCurrency(), exchangeRateDto.getToCurrency()
-        ).isPresent()) {
+        ).isPresent() && !aLong.equals(exchangeRate.getId())) {
             ResourceException e =
                     new ResourceAlreadyExists("ExchangeRate with given currencies already exist.");
 
@@ -87,14 +95,6 @@ public class ExchangeRateServiceImpl implements ExchangeRateService {
 
             throw e;
         }
-
-        exchangeRateRepository.findById(aLong).orElseThrow(() -> {
-            ResourceException e = new ResourceNotFoundException("Can't find ExchangeRate with id: " + aLong);
-            e.setResourceName("ExchangeRate");
-            e.setFieldsAndValues(Map.of("id", aLong));
-
-            return e;
-        });
 
         exchangeRateDto.setId(aLong);
         ExchangeRate savedExchangeRate = exchangeRateRepository.save(exchangeRateMapper.toEntity(exchangeRateDto));
