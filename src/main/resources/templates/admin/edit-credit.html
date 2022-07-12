@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+
+<header th:insert="fragments/navbar :: navbar"></header>
+
+<div class="container-fluid w-100 p-0" style="background-color: #eee;">
+    <section class="min-vh-100">
+        <div class="container h-100">
+
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-lg-12 col-xl-11">
+                    <div class="row justify-content-center">
+                        <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+
+                            <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Update Credit</p>
+
+                            <form th:action="@{/admin/credit/{id}/update(id=${credit.id})}" th:object="${credit}" class="mx-1 mx-md-4" method="post">
+                                <div th:if="${objectError != null}" class="d-flex flex-row align-items-center mb-4">
+                                    <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                                    <div class="form-outline flex-fill mb-0">
+                                        <div th:text="${objectError}" class="alert alert-info"></div>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex flex-row align-items-center mb-4">
+                                    <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                                    <div class="form-outline flex-fill mb-0">
+                                        <input th:field="*{total}" type="number" id="creditTotal" class="form-control"/>
+                                        <label class="form-label" for="creditTotal">Total</label>
+                                        <div th:if="${#fields.hasErrors('total')}" th:errors="*{total}" class="alert alert-info"></div>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex flex-row align-items-center mb-4">
+                                    <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                                    <div class="form-outline flex-fill mb-0">
+                                        <input th:field="*{current}" type="number" id="creditCurrent" class="form-control"/>
+                                        <label class="form-label" for="creditCurrent">Current</label>
+                                        <div th:if="${#fields.hasErrors('current')}" th:errors="*{current}" class="alert alert-info"></div>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex flex-row align-items-center mb-4">
+                                    <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                                    <div class="form-outline flex-fill mb-0">
+                                        <input th:field="*{remain}" type="number" id="creditRemain" class="form-control"/>
+                                        <label class="form-label" for="creditRemain">Remain</label>
+                                        <div th:if="${#fields.hasErrors('remain')}" th:errors="*{remain}" class="alert alert-info"></div>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex flex-row align-items-center mb-4">
+                                    <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                                    <div class="form-outline flex-fill mb-0">
+                                        <select id="creditCurrency" class="form-select" th:field="*{currency}" aria-label="Currency">
+                                            <option th:each="currencyType: ${allCurrencies}"
+                                                    th:text="${currencyType.currencyTypeAsString}"
+                                                    th:value="${currencyType.currencyTypeAsString}"
+                                                    th:selected="${allCurrencies[0].currencyTypeAsString}"/>
+                                        </select>
+                                        <label for="creditCurrency">Currency</label>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex flex-row align-items-center mb-4">
+                                    <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                                    <div class="form-outline flex-fill mb-0">
+                                        <input th:field="*{dateBetweenPaymentsInDays}" type="number"
+                                               id="creditDateBetweenPaymentsInDays" class="form-control" step="1"/>
+                                        <label class="form-label" for="creditDateBetweenPaymentsInDays">Date Between Payments In Days</label>
+                                        <div th:if="${#fields.hasErrors('dateBetweenPaymentsInDays')}"
+                                             th:errors="*{dateBetweenPaymentsInDays}" class="alert alert-info"></div>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex flex-row align-items-center mb-4">
+                                    <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                                    <div class="form-outline flex-fill mb-0">
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="creditIsClosed"
+                                                   th:value="${credit.isClosed}" th:field="*{isClosed}">
+                                            <label class="form-check-label" for="creditIsClosed">Is closed</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                                    <button id="updateButton" type="submit" class="btn btn-primary btn-lg">Update
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div th:insert="fragments/footer :: footer"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+        integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+
+</body>
+</html>

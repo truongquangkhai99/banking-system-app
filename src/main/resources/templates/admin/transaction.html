@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+</head>
+<body>
+
+<div class="container-fluid w-100 p-0" style="background-color: #eee;">
+    <header th:insert="fragments/navbar :: navbar"></header>
+
+    <section class="bg-light p-5 min-vh-100">
+        <div class="table-responsive" id="no-more-tables">
+            <table class="table bg-white">
+                <thead class="bg-dark text-light">
+                <tr>
+                    <th>ID</th>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Transaction type</th>
+                    <th>From Account id</th>
+                    <th>To Account id</th>
+                    <th>Credit id</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="transaction: ${transactions}">
+                    <td th:text="${transaction.id}"></td>
+                    <td th:text="${transaction.date}"></td>
+                    <td th:text="${transaction.transactionDetails.amount}"></td>
+                    <td th:text="${transaction.transactionDetails.transactionType}"></td>
+                    <td th:text="${transaction.transactionDetails.fromAccountId}"></td>
+                    <td th:text="${transaction.transactionDetails.toAccountId == null}? '-' : ${transaction.transactionDetails.toAccountId}"></td>
+                    <td th:text="${transaction.transactionDetails.creditId == null}? '-' : ${transaction.transactionDetails.creditId}"></td>
+                    <td>
+                        <form th:action="@{/admin/transaction/{id}/delete(id=${transaction.id})}" method="post">
+                            <button class="btn btn-danger" onclick="if (!(confirm('Are you sure you want to delete this transaction?'))) return false"
+                                    type="submit">Delete
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <div th:insert="fragments/footer :: footer"></div>
+</div>
+
+<script th:inline="javascript" th:if="${success != null}">
+    let message = [[${success}]]
+    window.onload = function () {
+        alert(message)
+    }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+        integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+
+</body>
+</html>

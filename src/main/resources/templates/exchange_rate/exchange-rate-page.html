@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exchange Rates</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+</head>
+<body>
+
+<div class="container-fluid w-100 p-0" style="background-color: #eee;">
+    <header th:insert="fragments/navbar :: navbar"></header>
+
+    <section class="bg-light p-5 min-vh-100">
+
+        <h2 class="text-center">Exchange Rates on <span id="currentTime"> </span></h2>
+
+        <hr><br>
+
+        <div class="table-responsive" id="no-more-tables">
+            <table class="table bg-white">
+                <thead class="bg-dark text-light">
+                <tr>
+                    <th>From Currency</th>
+                    <th>To Currency</th>
+                    <th>Ratio</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="exchangeRate: ${exchangeRates}">
+                    <td th:text="${exchangeRate.fromCurrency}"></td>
+                    <td th:text="${exchangeRate.toCurrency}"></td>
+                    <td th:text="${exchangeRate.ratio}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <div th:insert="fragments/footer :: footer"></div>
+</div>
+
+<script>
+    let datetime = new Date();
+    document.getElementById("currentTime").textContent = datetime.toDateString() + ' ' + datetime.toLocaleTimeString();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+        integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+
+</body>
+</html>
