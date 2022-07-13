@@ -2,10 +2,6 @@ spring:
   profiles:
     active: prod
 
-  redis:
-    port: 6688
-    host: localhost
-
 logging:
   file:
     name: logs/logs.log
