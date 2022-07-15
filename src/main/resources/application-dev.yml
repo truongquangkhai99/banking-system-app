@@ -5,6 +5,10 @@ spring:
     hibernate:
       ddl-auto: update
 
+  redis:
+    port: 6688
+    host: localhost
+
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher

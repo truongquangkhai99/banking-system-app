@@ -5,6 +5,10 @@ spring:
     hibernate:
       ddl-auto: validate
 
+  redis:
+    port: 6379
+    host: redis
+
   datasource:
     url: jdbc:postgresql://db:5432/postgres
     driverClassName: org.postgresql.Driver
