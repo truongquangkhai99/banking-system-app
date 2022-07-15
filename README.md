@@ -13,15 +13,7 @@ JAVA install: https://openjdk.org/
 
 Dev:
 
-1 Way: Change string to 'dev' on 3 row in [application.yml](src/main/resources/application.yml)
-
-```console
-foo@bar:~$ docker-compose up
-
-foo@bar:~$ ./mvnw clean spring-boot:run
-```
-
-2 Way: Run docker with arg '--profile dev'
+Change value for property 'spring.profiles.active' to 'dev' in [application.yml](src/main/resources/application.yml)
 
 ```console
 foo@bar:~$ docker-compose --profile dev up
@@ -33,15 +25,7 @@ Next in your browser goto [link](http://localhost:8888/)
 
 Prod:
 
-1 Way: Change string to 'prod' on 3 row in [application.yml](src/main/resources/application.yml)
-
-```console
-foo@bar:~$ ./mvnw clean package -DskipTests
-
-foo@bar:~$ docker-compose up
-```
-
-2 Way: Run docker with arg '--profile prod'
+Change value for property 'spring.profiles.active' to 'prod' in [application.yml](src/main/resources/application.yml)
 
 ```console
 foo@bar:~$ ./mvnw clean package -DskipTests
@@ -285,7 +269,7 @@ You can check endpoints in swagger http://localhost:8888/swagger-ui/ (Only for A
 ```json
 {
   "total": 80000,
-  "dateBetweenPaymentsInDays": 30,
+  "date_between_payments_in_days": 30,
   "currency": "USD",
   "accountHistoryId": 1
 }
