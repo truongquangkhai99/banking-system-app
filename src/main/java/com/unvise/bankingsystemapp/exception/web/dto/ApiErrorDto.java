@@ -14,7 +14,7 @@ public class ApiErrorDto {
 
     private String message;
 
-    private Map<?, ?> fields;
+    private Map<String, Object> fields;
 
     private HttpStatus status;
 
