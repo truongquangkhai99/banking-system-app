@@ -1,8 +1,9 @@
 package com.unvise.bankingsystemapp.domain.account.history;
 
 import com.unvise.bankingsystemapp.domain.account.web.dto.AccountHistoryDto;
-import com.unvise.bankingsystemapp.exception.resource.ResourceNotFoundException;
+import com.unvise.bankingsystemapp.exception.impl.NotImplementedException;
 import com.unvise.bankingsystemapp.exception.resource.ResourceException;
+import com.unvise.bankingsystemapp.exception.resource.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -40,18 +41,18 @@ public class AccountHistoryServiceImpl implements AccountHistoryService {
         The history will be updated if, add, update or delete (transaction(s), credit(s), deposit).
     */
     @Override
-    public AccountHistoryDto save(AccountHistoryDto accountHistoryDto) {
-        return null;
+    public AccountHistoryDto save(AccountHistoryDto accountHistoryDto) throws NotImplementedException {
+        throw new NotImplementedException("This method has no implementation because it should not be used");
     }
 
     @Override
-    public AccountHistoryDto updateById(Long aLong, AccountHistoryDto accountHistoryDto) {
-        return null;
+    public AccountHistoryDto updateById(Long aLong, AccountHistoryDto accountHistoryDto) throws NotImplementedException {
+        throw new NotImplementedException("This method has no implementation because it should not be used");
     }
 
     @Override
-    public AccountHistoryDto deleteById(Long aLong) {
-        return null;
+    public AccountHistoryDto deleteById(Long aLong) throws NotImplementedException {
+        throw new NotImplementedException("This method has no implementation because it should not be used");
     }
 
 }
