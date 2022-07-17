@@ -1,4 +1,4 @@
-package com.unvise.bankingsystemapp.domain.auth;
+package com.unvise.bankingsystemapp.config;
 
 import com.unvise.bankingsystemapp.domain.auth.jwt.JwtTokenFilter;
 import com.unvise.bankingsystemapp.domain.person.role.RoleType;
