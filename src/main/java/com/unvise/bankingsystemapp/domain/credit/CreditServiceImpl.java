@@ -3,6 +3,7 @@ package com.unvise.bankingsystemapp.domain.credit;
 import com.unvise.bankingsystemapp.domain.account.account.Account;
 import com.unvise.bankingsystemapp.domain.account.account.AccountRepository;
 import com.unvise.bankingsystemapp.domain.credit.web.dto.CreditDto;
+import com.unvise.bankingsystemapp.domain.transaction.web.dto.TransactionDto;
 import com.unvise.bankingsystemapp.exception.resource.ResourceNotFoundException;
 import com.unvise.bankingsystemapp.exception.resource.ResourceException;
 import lombok.RequiredArgsConstructor;
@@ -11,6 +12,7 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -21,6 +23,13 @@ public class CreditServiceImpl implements CreditService {
     private final CreditRepository creditRepository;
     private final AccountRepository accountRepository;
     private final CreditMapper creditMapper;
+
+    public static List<CreditDto> sortCreditsInReverseOrder(List<CreditDto> credits) {
+        List<CreditDto> creditCopy = new ArrayList<>(credits);
+        creditCopy.sort((o1, o2) -> o2.getId().compareTo(o1.getId()));
+
+        return creditCopy;
+    }
 
     @Override
     @Transactional

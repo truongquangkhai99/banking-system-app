@@ -4,6 +4,7 @@ import com.unvise.bankingsystemapp.domain.common.View;
 import com.unvise.bankingsystemapp.domain.account.account.AccountService;
 import com.unvise.bankingsystemapp.domain.account.history.AccountHistoryService;
 import com.unvise.bankingsystemapp.domain.account.web.dto.TopUpAccountBalanceDto;
+import com.unvise.bankingsystemapp.domain.credit.CreditServiceImpl;
 import com.unvise.bankingsystemapp.domain.credit.web.dto.CreditDto;
 import com.unvise.bankingsystemapp.domain.credit.web.dto.RepayCreditDto;
 import com.unvise.bankingsystemapp.domain.currency.enums.CurrencyType;
@@ -11,6 +12,7 @@ import com.unvise.bankingsystemapp.domain.deposit.web.dto.DepositDto;
 import com.unvise.bankingsystemapp.domain.person.person.Person;
 import com.unvise.bankingsystemapp.domain.transaction.enums.TransactionType;
 import com.unvise.bankingsystemapp.domain.transaction.transaction.TransactionService;
+import com.unvise.bankingsystemapp.domain.transaction.transaction.TransactionServiceImpl;
 import com.unvise.bankingsystemapp.domain.transaction.web.dto.TransactionDetailsDto;
 import com.unvise.bankingsystemapp.domain.transaction.web.dto.TransactionDto;
 import lombok.RequiredArgsConstructor;
@@ -70,11 +72,13 @@ public class AccountController {
             model.addAttribute("allCurrencies", CurrencyType.values());
         }
 
-        List<TransactionDto> transactionDtos = accountHistoryService.getById(accountHistoryId).getTransaction();
-        List<CreditDto> creditDtos = accountHistoryService.getById(accountHistoryId).getCredits();
+        List<TransactionDto> transactionDtos = TransactionServiceImpl.sortTransactionsInReverseOrder(
+                accountHistoryService.getById(accountHistoryId).getTransaction()
+        );
 
-        transactionDtos.sort((o1, o2) -> o2.getId().compareTo(o1.getId()));
-        creditDtos.sort((o1, o2) -> o2.getId().compareTo(o1.getId()));
+        List<CreditDto> creditDtos = CreditServiceImpl.sortCreditsInReverseOrder(
+                accountHistoryService.getById(accountHistoryId).getCredits()
+        );
 
         model.addAttribute("topUpBalance", new TopUpAccountBalanceDto());
         model.addAttribute("transactions", transactionDtos);
