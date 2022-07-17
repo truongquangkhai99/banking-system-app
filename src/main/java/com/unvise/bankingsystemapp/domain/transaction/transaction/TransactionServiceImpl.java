@@ -16,6 +16,7 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -28,6 +29,13 @@ public class TransactionServiceImpl implements TransactionService {
     private final TransactionManagerResolver transactionManagerResolver;
     private final AccountRepository accountRepository;
     private final TransactionMapper transactionMapper;
+
+    public static List<TransactionDto> sortTransactionsInReverseOrder(List<TransactionDto> transactions) {
+        List<TransactionDto> transactionCopy = new ArrayList<>(transactions);
+        transactionCopy.sort((o1, o2) -> o2.getId().compareTo(o1.getId()));
+
+        return transactionCopy;
+    }
 
     @Override
     @Transactional

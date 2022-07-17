@@ -90,7 +90,7 @@ public class GlobalRestControllerAdvice {
         ApiErrorDto apiErrorDto = ApiErrorDto.builder()
                 .message("Can't manage transaction. " + e.getMessage())
                 .fields(e.getFieldsAndValues())
-                .status(HttpStatus.FORBIDDEN)
+                .status(HttpStatus.BAD_REQUEST)
                 .build();
 
         return new ResponseEntity<>(apiErrorDto, apiErrorDto.getStatus());
@@ -101,7 +101,7 @@ public class GlobalRestControllerAdvice {
         ApiErrorDto apiErrorDto = ApiErrorDto.builder()
                 .message(e.getLocalizedMessage())
                 .fields(e.getFieldsAndValues())
-                .status(HttpStatus.FORBIDDEN)
+                .status(HttpStatus.BAD_REQUEST)
                 .build();
 
         return new ResponseEntity<>(apiErrorDto, apiErrorDto.getStatus());

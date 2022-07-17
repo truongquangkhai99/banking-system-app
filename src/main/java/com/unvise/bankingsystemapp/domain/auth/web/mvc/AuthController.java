@@ -1,18 +1,18 @@
 package com.unvise.bankingsystemapp.domain.auth.web.mvc;
 
-import com.unvise.bankingsystemapp.domain.common.View;
 import com.unvise.bankingsystemapp.domain.auth.AuthServiceImpl;
 import com.unvise.bankingsystemapp.domain.auth.web.dto.SignInDto;
 import com.unvise.bankingsystemapp.domain.auth.web.dto.SignUpDto;
+import com.unvise.bankingsystemapp.domain.common.View;
 import com.unvise.bankingsystemapp.exception.resource.ResourceAlreadyExists;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 @RequiredArgsConstructor
@@ -59,15 +59,4 @@ public class AuthController {
         return "redirect:/signin";
     }
 
-    @ResponseBody
-    @PostMapping("/auth/jwt/signin")
-    public ResponseEntity<?> signInJwt(@RequestBody @Validated(View.New.class) SignInDto signInDto) {
-        return new ResponseEntity<>(authService.signin(signInDto), HttpStatus.OK);
-    }
-
-    @ResponseBody
-    @PostMapping("/auth/jwt/signup")
-    public ResponseEntity<?> signUpJwt(@RequestBody @Validated(View.New.class) SignUpDto signUpDto) {
-        return new ResponseEntity<>(authService.signup(signUpDto), HttpStatus.OK);
-    }
 }
