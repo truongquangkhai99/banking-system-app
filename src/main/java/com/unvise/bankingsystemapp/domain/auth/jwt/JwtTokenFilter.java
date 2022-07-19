@@ -17,7 +17,6 @@ import java.io.IOException;
 @Slf4j
 @Component
 @RequiredArgsConstructor
-// We should use OncePerRequestFilter since we are doing a database call, there is no point in doing this more than once
 public class JwtTokenFilter extends OncePerRequestFilter {
 
     private final JwtTokenProvider jwtTokenProvider;
@@ -35,7 +34,7 @@ public class JwtTokenFilter extends OncePerRequestFilter {
         } catch (JwtTokenException e) {
             // this is very important, since it guarantees the user is not authenticated at all
             SecurityContextHolder.clearContext();
-            httpServletResponse.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.getMessage());
+            httpServletResponse.sendError(HttpServletResponse.SC_UNAUTHORIZED, e.getLocalizedMessage());
             return;
         }
 
