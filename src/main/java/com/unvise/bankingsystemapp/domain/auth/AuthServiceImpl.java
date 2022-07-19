@@ -38,7 +38,7 @@ public class AuthServiceImpl implements AuthService {
 
             return jwtTokenProvider.createToken(signInDto.getEmail(), roleTypeSet);
         } catch (AuthenticationException e) {
-            throw new JwtTokenException("Invalid email/password supplied");
+            throw new JwtTokenException(e.getLocalizedMessage());
         }
     }
 
