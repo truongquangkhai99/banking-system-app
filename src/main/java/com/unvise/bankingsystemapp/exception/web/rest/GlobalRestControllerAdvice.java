@@ -1,5 +1,6 @@
 package com.unvise.bankingsystemapp.exception.web.rest;
 
+import com.unvise.bankingsystemapp.exception.token.JwtTokenException;
 import com.unvise.bankingsystemapp.exception.transaction.TransactionFailedException;
 import com.unvise.bankingsystemapp.exception.web.dto.ApiErrorDto;
 import com.unvise.bankingsystemapp.exception.resource.ResourceAlreadyExists;
@@ -98,6 +99,17 @@ public class GlobalRestControllerAdvice {
 
     @ExceptionHandler(ResourceAlreadyExists.class)
     protected ResponseEntity<ApiErrorDto> handleExchangeRate(ResourceAlreadyExists e) {
+        ApiErrorDto apiErrorDto = ApiErrorDto.builder()
+                .message(e.getLocalizedMessage())
+                .fields(e.getFieldsAndValues())
+                .status(HttpStatus.BAD_REQUEST)
+                .build();
+
+        return new ResponseEntity<>(apiErrorDto, apiErrorDto.getStatus());
+    }
+
+    @ExceptionHandler(JwtTokenException.class)
+    protected ResponseEntity<ApiErrorDto> handleJwt(JwtTokenException e) {
         ApiErrorDto apiErrorDto = ApiErrorDto.builder()
                 .message(e.getLocalizedMessage())
                 .fields(e.getFieldsAndValues())
